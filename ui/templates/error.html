@@ -1,0 +1,22 @@
+<F3:check if="{{ @HIGHLIGHT }}">
+
+</F3:check>
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ @headline }}</h3>
+        </div>
+        <div class="panel-body">
+        <div class="center-block mt50 mw800 animated fadeIn">
+          <h1 class="error-title">{{ @ERROR.code }}! </h1>
+          <h2 class="error-subtitle">  {{ @text }}</h2>
+        </div>
+            <F3:check if="{{ isset(@trace) }}">
+                <hr/>
+                <div class="error-trace well">{{ @trace }}</div>
+            </F3:check>
+            <F3:check if="{{ isset(@db_log) }}">
+                <hr/>
+                <div class="well">{{ @db_log }}</div>
+            </F3:check>
+        </div>
+    </div>

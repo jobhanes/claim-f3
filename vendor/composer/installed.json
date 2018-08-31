@@ -1,0 +1,225 @@
+[
+    {
+        "name": "bcosca/fatfree-core",
+        "version": "3.6.4",
+        "version_normalized": "3.6.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bcosca/fatfree-core.git",
+            "reference": "4d1a08829b14468c4821c03b9a5f3b6e4bc981e5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/4d1a08829b14468c4821c03b9a5f3b6e4bc981e5",
+            "reference": "4d1a08829b14468c4821c03b9a5f3b6e4bc981e5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "time": "2018-04-19T17:35:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "."
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
+        "homepage": "http://fatfreeframework.com/"
+    },
+    {
+        "name": "ikkez/f3-assets",
+        "version": "v1.1.5",
+        "version_normalized": "1.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ikkez/f3-assets.git",
+            "reference": "77189fb6270897c38e41a7e66cf703f56446d8d0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ikkez/f3-assets/zipball/77189fb6270897c38e41a7e66cf703f56446d8d0",
+            "reference": "77189fb6270897c38e41a7e66cf703f56446d8d0",
+            "shasum": ""
+        },
+        "time": "2018-05-08T12:11:55+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "CSS/JS Assets Plugin for PHP Fat-Free Framework",
+        "homepage": "https://github.com/ikkez/f3-assets",
+        "keywords": [
+            "F3",
+            "JS",
+            "css",
+            "fatfree",
+            "minify"
+        ]
+    },
+    {
+        "name": "ikkez/f3-cortex",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ikkez/f3-cortex.git",
+            "reference": "269c80a635cad9eebe612a6710b6037b651265cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ikkez/f3-cortex/zipball/269c80a635cad9eebe612a6710b6037b651265cd",
+            "reference": "269c80a635cad9eebe612a6710b6037b651265cd",
+            "shasum": ""
+        },
+        "require": {
+            "ikkez/f3-schema-builder": "2.*"
+        },
+        "time": "2018-05-18T15:17:57+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "A multi-engine ORM / ODM for the PHP Fat-Free Framework",
+        "homepage": "https://github.com/ikkez/f3-cortex",
+        "keywords": [
+            "F3",
+            "fatfree",
+            "mongo",
+            "orm",
+            "sql"
+        ]
+    },
+    {
+        "name": "ikkez/f3-flash",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ikkez/f3-flash.git",
+            "reference": "c98a10271d9564157819e688536cac6487d44b96"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ikkez/f3-flash/zipball/c98a10271d9564157819e688536cac6487d44b96",
+            "reference": "c98a10271d9564157819e688536cac6487d44b96",
+            "shasum": ""
+        },
+        "require": {
+            "bcosca/fatfree-core": "3.*"
+        },
+        "time": "2017-02-17T13:44:09+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "Add simple Flash Messages and Flash Keys to PHP Fat-Free Framework",
+        "homepage": "https://github.com/ikkez/f3-middleware",
+        "keywords": [
+            "F3",
+            "fatfree",
+            "flash",
+            "session"
+        ]
+    },
+    {
+        "name": "ikkez/f3-pagination",
+        "version": "v1.4.4",
+        "version_normalized": "1.4.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ikkez/f3-pagination.git",
+            "reference": "099cd47a7b52c827e3d8f33aed977beee4565565"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ikkez/f3-pagination/zipball/099cd47a7b52c827e3d8f33aed977beee4565565",
+            "reference": "099cd47a7b52c827e3d8f33aed977beee4565565",
+            "shasum": ""
+        },
+        "require": {
+            "bcosca/fatfree-core": "3.*"
+        },
+        "time": "2017-12-31T11:49:11+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "Provides a pagebrowser and some pagination utilities for the PHP Fat-Free Framework",
+        "homepage": "https://github.com/ikkez/f3-pagination",
+        "keywords": [
+            "F3",
+            "fatfree",
+            "pagebrowser",
+            "pagination"
+        ]
+    },
+    {
+        "name": "ikkez/f3-schema-builder",
+        "version": "v2.2.3",
+        "version_normalized": "2.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ikkez/f3-schema-builder.git",
+            "reference": "42d8f3f0a117dce29ab3fe30ef46fafb419224e3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ikkez/f3-schema-builder/zipball/42d8f3f0a117dce29ab3fe30ef46fafb419224e3",
+            "reference": "42d8f3f0a117dce29ab3fe30ef46fafb419224e3",
+            "shasum": ""
+        },
+        "time": "2018-05-15T13:03:21+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0"
+        ],
+        "description": "SQL Schema Builder Plugin for PHP Fat-Free Framework",
+        "homepage": "https://github.com/ikkez/f3-schema-builder",
+        "keywords": [
+            "F3",
+            "fatfree",
+            "sql"
+        ]
+    }
+]

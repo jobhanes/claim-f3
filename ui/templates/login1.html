@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="{{@SCHEME.'://'.@HOST.@BASE.'/'}}"/>
+<meta charset="{{@$ENCODING}}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="{{@UI}}ico/favicon.png">
+<title>{{@@page.title}}</title>
+<!-- Font CSS (Via CDN) -->
+<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+<!-- Theme CSS -->
+<link rel="stylesheet" type="text/css" href="app/ui/assets/skin/default_skin/css/theme.css">
+</head>
+
+<body class="error-page sb-l-o sb-r-c">
+<div id="main"> 
+  <!-- Start: Topbar -->
+  <header id="topbar" class="alt">
+    <div class="topbar-left">
+      <ol class="breadcrumb">
+        <li class="crumb-active"> <a href="{{ @BASE }}/">{{@CONFIG.blog_title}}</a> </li>
+        <li class="crumb-icon"> <a href="dashboard.html"> <span class="glyphicon glyphicon-home"></span> </a> </li>
+        <li class="crumb-link"> <a href="{{ @BASE }}/">Home</a> </li>
+        <li class="crumb-trail">Error {{@ERROR.code}}</li>
+      </ol>
+    </div>
+  </header>
+  <!-- End: Topbar --> 
+  <!-- Begin: Content -->
+  <section id="content" class="pn animated fadeIn" style="margin-top: 100px;">
+    <div class="container" id="main"> <include if="{{@ERROR && @ERROR.code != 400}}" href="templates/error.html"/> <include if="{{isset(@SUBPART)}}" href="{{'templates/'.@SUBPART}}"/> </div>
+  </section>
+  <!-- End: Content --> 
+</div>
+</body>
+</html>
