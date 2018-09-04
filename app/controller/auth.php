@@ -32,7 +32,7 @@ class Auth extends Base
         $f3 = \Base::instance();
         if ($f3->exists('SESSION.user_id')) {
             $user = new \Model\User();
-            $user->load(array('_id = ?',$f3->get('SESSION.user_id')));
+            $user->load(array('id = ?',$f3->get('SESSION.user_id')));
             if (!$user->dry()) {
                 $f3->set('BACKEND_USER',$user);
                 return true;
@@ -70,6 +70,7 @@ class Auth extends Base
                     
                     //store in the session
                     $f3->set('SESSION.user_id',$user->id);
+                    $f3->set('SESSION.user_name',$user->username);
                     $f3->set('SESSION.userTypeId',$userType->category);
                     if ($f3->get('CONFIG.ssl_backend'))
                     $f3->reroute('https://'.$f3->get('HOST').$f3->get('BASE').'/admin');
