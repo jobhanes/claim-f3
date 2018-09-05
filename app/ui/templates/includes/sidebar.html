@@ -1,0 +1,173 @@
+<aside id="sidebar_left" class="nano nano-light affix">
+  <!-- Start: Sidebar Left Content -->
+      <div class="sidebar-left-content nano-content">
+		<!-- Start: Sidebar Header -->
+        <header class="sidebar-header">
+
+            <!-- Sidebar Widget - Author -->
+            <div class="sidebar-widget author-widget">
+                <div class="media">
+                    <a class="media-left" href="#">
+                        <img src="app/ui/assets/img/avatars/3.jpg" class="img-responsive">
+                    </a>
+                    <div class="media-body">
+                        <div class="media-links">
+                            <a href="#" class="sidebar-menu-toggle">
+                                {{@SESSION.userTypeId}} -
+                            </a>
+                            <a href="{{@BASE}}/logout">
+                                Logout
+                            </a>
+                        </div>
+                        <div class="media-author">
+                            {{@SESSION.user_name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Widget - Search (hidden) -->
+            <div class="sidebar-widget search-widget hidden">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-search">
+                        </i>
+                    </span>
+                    <input type="text" id="sidebar-search" class="form-control" placeholder="Search...">
+                </div>
+            </div>
+
+        </header>
+        <!-- End: Sidebar Header -->
+
+        <!-- Start: Sidebar Menu -->
+        <ul class="nav sidebar-menu">
+            <li class="sidebar-label pt20">
+                Claims
+            </li>
+            <li class="active">
+                <a href="{{@BASE.'/dashboard'}}">
+                    <span class="glyphicon glyphicon-home">
+                    </span>
+                    <span class="sidebar-title">
+                        Dashboard
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims/file-claim'}}">
+                    <span class="fa fa-upload">
+                    </span>
+                    <span class="sidebar-title">
+                        File a claim
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims'}}">
+                    <span class="fa fa-history">
+                    </span>
+                    <span class="sidebar-title">
+                        Claim History
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-label pt15">
+                Status
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims/pending'}}">
+                    <span class="fa fa-exclamation">
+                    </span>
+                    <span class="sidebar-title">
+                        Pending
+                    </span>
+
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims/processing'}}">
+                    <span class="fa fa-spinner">
+                    </span>
+                    <span class="sidebar-title">
+                        Processing
+                    </span>
+
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims/approved'}}">
+                    <span class="glyphicon glyphicon-check">
+                    </span>
+                    <span class="sidebar-title">
+                        Approved
+                    </span>
+
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/claims/rejected'}}">
+                    <span class="fa fa-ban">
+                    </span>
+                    <span class="sidebar-title">
+                        Rejected
+                    </span>
+
+                </a>
+            </li>
+
+            <li class="sidebar-label pt20">
+                Profile
+            </li>
+            <li>
+                <a href="{{@BASE.'/profile'}}">
+                    <span class="fa fa-user">
+                    </span>
+                    <span class="sidebar-title">
+                        Profile
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/support'}}">
+                    <span class="fa fa-question">
+                    </span>
+                    <span class="sidebar-title">
+                        Support
+                    </span>
+                    <span class="sidebar-title-tray">
+                        <span class="label label-xs bg-success">
+                            2
+                        </span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{@BASE.'/notification'}}">
+                    <span class="fa fa-envelope-o">
+                    </span>
+                    <span class="sidebar-title">
+                        Notifications
+                    </span>
+                    <span class="sidebar-title-tray">
+                        <span class="label label-xs bg-danger">
+                            5
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+        <!-- End: Sidebar Menu -->
+	      <!-- Start: Sidebar Collapse Button -->
+	      <div class="sidebar-toggle-mini">
+	        <a href="#">
+	          <span class="fa fa-sign-out"></span>
+	        </a>
+	      </div>
+	      <!-- End: Sidebar Collapse Button -->
+
+      </div>
+      <!-- End: Sidebar Left Content -->
+
+    </aside>

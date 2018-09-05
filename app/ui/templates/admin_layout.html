@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="{{@SCHEME.'://'.@HOST.@BASE.'/'}}"/>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <title>
+            Claims | {{@page.name}}
+        </title>
+        <meta name="keywords" content="Claims Management System" />
+        <meta name="description" content="Admin | Dashboard">
+        <meta name="author" content="DimeHub Ltd">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Font CSS (Via CDN) -->
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+        <!-- custom Plugin CSS -->
+        <include if="{{isset(@TOPSCRIPTS)}}" href="{{@TOPSCRIPTS}}"/>
+        <!-- End: custom Plugin CSS -->
+
+        <!-- Theme CSS -->
+        <link rel="stylesheet" type="text/css" href="app/ui/assets/skin/default_skin/css/theme.css">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="app/ui/assets/img/favicon.ico">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body class="dashboard-page">
+        <!-------------------------------------------------------------+
+        <body> Helper Classes:
+        ---------------------------------------------------------------+
+        '.sb-l-o' - Sets Left Sidebar to "open"
+        '.sb-l-m' - Sets Left Sidebar to "minified"
+        '.sb-l-c' - Sets Left Sidebar to "closed"
+
+        '.sb-r-o' - Sets Right Sidebar to "open"
+        '.sb-r-c' - Sets Right Sidebar to "closed"
+        ---------------------------------------------------------------+
+        Example: <body class="example-page sb-l-o sb-r-c">
+        Results: Sidebar left Open, Sidebar right Closed
+        --------------------------------------------------------------->
+
+        <!-- Start: Theme Preview Pane -->
+        <div id="skin-toolbox">
+            <include if="{{isset(@THEMESETTINGS)}}" href="{{@THEMESETTINGS}}"/>
+        </div>
+        <!-- End: Theme Preview Pane -->
+        <!-- Start: Main -->
+        <div id="main">
+
+            <!-- Start: Header -->
+            <include if="{{isset(@HEADER)}}" href="{{@HEADER}}"/>
+            <!-- End: Header -->
+
+            <!-- Start: Sidebar -->
+
+            <include if="{{isset(@SIDEBAR)}}" href="{{@SIDEBAR}}"/>
+
+            <!-- End: Sidebar Left -->
+
+            <!-- Start: Content-Wrapper -->
+            <section id="content_wrapper">
+                <!-- Begin: Content -->
+                <section id="content" class="table-layout animated fadeIn">
+                    <include if="{{isset(@page.CONTENT)}}" href="{{@page.CONTENT}}"/>
+                </section>
+                <!-- End: Content -->
+
+                <!-- Begin: Page Footer -->
+                <include if="{{isset(@FOOTER)}}" href="{{@FOOTER}}"/>
+                <!-- End: Page Footer -->
+
+            </section>
+            <!-- End: Content-Wrapper -->
+
+            <!-- Start: Right Sidebar -->
+            <aside id="sidebar_right" class="nano affix">
+                <!-- Start: Sidebar Right Content -->
+                <div class="sidebar-right-content nano-content">
+                    <include if="{{isset(@CHATBAR)}}" href="{{@CHATBAR}}"/>
+                </div>
+            </aside>
+            <!-- End: Right Sidebar -->
+
+        </div>
+        <!-- End: Main -->
+
+        <!-- BEGIN: PAGE SCRIPTS -->
+
+        <!-- jQuery -->
+        <script src="app/ui/vendor/jquery/jquery-1.11.1.min.js">
+        </script>
+        <script src="app/ui/vendor/jquery/jquery_ui/jquery-ui.min.js">
+        </script>
+        <!-- Theme Javascript -->
+        <script src="app/ui/assets/js/utility/utility.js">
+        </script>
+        <script src="app/ui/assets/js/demo/demo.js">
+        </script>
+        <script src="app/ui/assets/js/main.js">
+        </script>
+
+        <include if="{{isset(@BOTTOMSCRIPTS)}}" href="{{@BOTTOMSCRIPTS}}"/>
+
+        <!-- END: PAGE SCRIPTS -->
+
+    </body>
+
+</html>

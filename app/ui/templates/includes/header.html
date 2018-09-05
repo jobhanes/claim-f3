@@ -1,0 +1,79 @@
+ <header class="navbar navbar-fixed-top navbar-shadow">
+      <div class="navbar-branding">
+        <a class="navbar-brand" href="dashboard.html">
+          <b>Claims Manager</b>
+        </a>
+        <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+      </div>
+      <ul class="nav navbar-nav navbar-left">
+        <li class="hidden-xs">
+          <a class="request-fullscreen toggle-active" href="{{@BASE.@SESSION.CurrentPageURL}}#">
+            <span class="ad ad-screen-full fs18"></span>
+          </a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left navbar-search alt" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search...">
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="menu-divider hidden-xs">
+          <i class="fa fa-circle bg-success" title="Online"></i>
+        </li>
+        <li class="dropdown menu-merge">
+          <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
+          	<img src="app/ui/assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64">
+          	<span class="hidden-xs pl15"> {{@SESSION['user_name']}} </span>
+            <span class="caret caret-tp hidden-xs"></span>
+          </a>
+          <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+            <li class="dropdown-header clearfix">
+              <div class="pull-left ml10">
+                <select id="user-status">
+                  <optgroup label="Current Status:">
+                    <option value="1-1">Away</option>
+                    <option value="1-2">Offline</option>
+                    <option value="1-3" selected="selected">Online</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="pull-right mr10">
+                <select id="user-role">
+                  <optgroup label="Logged in As:">
+                    <option value="1-1"  selected>Client</option>
+                    <option value="1-3">Agent</option>
+                    <option value="1-2">Insurance</option>
+                  </optgroup>
+                </select>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-envelope"></span> Messages
+                <span class="label label-warning">2</span>
+              </a>
+            </li>
+            <!--<li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-user"></span> Friends
+                <span class="label label-warning">6</span>
+              </a>
+            </li> -->
+            <li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-bell"></span> Notifications </a>
+            </li>
+            <li class="list-group-item">
+              <a href="#" class="animated animated-short fadeInUp">
+                <span class="fa fa-gear"></span> Settings </a>
+            </li>
+            <li class="dropdown-footer">
+              <a href="{{@BASE.'/logout'}}" class="">
+              <span class="fa fa-power-off pr5"></span> Logout </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </header>

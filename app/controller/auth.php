@@ -46,6 +46,11 @@ class Auth extends Base
     */
     public function login($f3,$params)
     {
+    	if($this->isLoggedIn()===true){
+    		$f3 = \Base::instance();
+    		$f3->reroute('/dashboard');
+			//$f3->reroute($f3->get('SESSION.LastPageURL'));
+		}
         if ($f3->exists('POST.username') && $f3->exists('POST.password')) {
             sleep(3); // login should take a while to kick - ass brute force attacks
             $user = new \Model\User();
@@ -87,7 +92,8 @@ class Auth extends Base
     {
         $f3 = \Base::instance();
         //check the submited fields
-        if ($f3->exists('POST.user_type') && $f3->exists('POST.username') && $f3->exists('POST.email') && $f3->exists('POST.password')) {
+        if ($f3->get('VERB') == 'POST'){
+        	if ($f3->exists('POST.user_type') && $f3->exists('POST.username') && $f3->exists('POST.email') && $f3->exists('POST.password')) {
 
             $user = new \Model\User();
             $user->load(array('username = ?',$f3->get('POST.username')));
@@ -110,7 +116,7 @@ class Auth extends Base
                 \Flash::instance()->addMessage('The username or password already taken, please try another one or login','danger');
             }
         }
-
+		}
         $this->response->setTemplate('templates/register.html');
     }
 
