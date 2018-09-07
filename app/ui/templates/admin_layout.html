@@ -109,8 +109,10 @@
         </script>
 
         <include if="{{isset(@BOTTOMSCRIPTS)}}" href="{{@BOTTOMSCRIPTS}}"/>
-
-        <!-- END: PAGE SCRIPTS -->
+         <!-- Theme Javascript -->
+        <include if="{{isset(@OTHERBOTTOMSCRIPTS)}}" href="{{@OTHERBOTTOMSCRIPTS}}"/>
+     	<!-- Theme Javascript -->
+     	<!-- END: PAGE SCRIPTS -->
 
     </body>
 

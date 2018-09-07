@@ -70,9 +70,10 @@ class Claims extends Base {
     public function fileClaim(\Base $f3, $params){
 		$data = array();
     	$data['name']	= 'New Claim';
-    	$data['status']	= 'info';
-    	$data['icon']	= 'spinner';
-    	$data['CONTENT']= 'templates/claim-content.html';
+    	$this->response->topscripts('templates/includes/forms-top-css.html');
+    	$data['CONTENT']= 'templates/new-claim.html';
+    	$this->response->bottomscripts('templates/includes/forms-bottom-scripts.html');
+    	//$this->response->otherbottomscripts('templates/includes/forms-validation-script.html');
     	$f3->set('page',$data);
         $this->response;
 	}

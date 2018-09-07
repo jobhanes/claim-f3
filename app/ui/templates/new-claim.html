@@ -1,0 +1,482 @@
+      <!-- Begin: Content -->
+      <section id="content" class="animated fadeIn">
+
+        <!-- Content Header -->
+        <!--<div class="content-header">
+          <h2><b class="text-primary">Mix and Match</b> settings with our Admin Wizard</h2>
+          <p class="lead">Built in options that make creating a new form wizard easier and faster than ever.</p>
+        </div> -->
+
+        <div class="mw1000 center-block">
+
+          <!-- Wizard Menubar -->
+         <!-- <div class="panel">
+            <div class="panel-body text-center">
+              <div class="row wizard-options">
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15 holder-active" data-steps-style="steps-left">
+                      <span class="fa fa-align-left holder-icon"></span>
+                      <br> Steps Left
+                    </a>
+                  </div>
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15" data-steps-style="steps-right">
+                      <span class="fa fa-align-right holder-icon"></span>
+                      <br> Steps Right
+                    </a>
+                  </div>
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15 holder-active" data-steps-style="steps-bg">
+                      <span class="fa fa-eyedropper holder-icon"></span>
+                      <br> Background
+                    </a>
+                  </div>
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15" data-steps-style="steps-tabs">
+                      <span class="fa fa-bookmark holder-icon"></span>
+                      <br> As Tabs
+                    </a>
+                  </div>
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15" data-steps-style="steps-justified">
+                      <span class="fa fa-arrows-h holder-icon"></span>
+                      <br> Justified
+                    </a>
+                  </div>
+                  <div class="col-xs-4 col-sm-2 ph10">
+                    <a class="holder-style p15 steps-type" data-steps-style="steps-show-icons">
+                      <span class="fa fa-rocket holder-icon"></span>
+                      <br> With Icons
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div> -->
+
+          <!-- Form Wizard -->
+          <div class="admin-form">
+
+            <form method="post" action="/" id="form-wizard">
+              <div class="wizard steps-bg steps-left">
+                <!-- Claim step 1 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-car pr5"></i> Vehicle Details</h4>
+                <section class="wizard-section">
+            	<!-- Vehicle Details -->
+				<div class="panel heading-border">
+
+
+                  <div class="panel-body bg-light">
+
+                    <div class="section-divider mt20 mb40">
+                      <span> Vehicle Details </span>
+                    </div>
+                    <!-- .section-divider -->
+
+                    <div class="section row hidden" id="spy1">
+                      <div class="col-md-12">
+                        <label for="Claim Number" class="field prepend-icon">
+                          <input class="gui-input" name="claimNo" id="disabledInput" type="text" value="KCQ-343-R-00001" disabled="">
+                          <label for="firstname" class="field-icon">
+                            <i class="fa fa-paperclip"></i>
+                          </label>
+                        </label>
+                      </div>
+                      </div>
+                      
+                      <!-- Registration Number -->
+                      <div class="section">
+                        <label for="RegNo" class="field prepend-icon">
+                          <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number">
+                          <label for="RegNo" class="field-icon">
+                            <i class="fa fa-car"></i>
+                          </label>
+                        </label>
+                      </div>
+                                     
+				<!-- Policy Number -->
+               	<div class="section row">
+
+                  <div class="col-md-6">
+                    <label for="policy number" class="field prepend-icon">
+                        <input type="text" name="policyNo" id="policyNo" class="gui-input" placeholder="Policy Number">
+                        <label for="policy number icon" class="field-icon">
+                          <i class="fa fa-file-text-o"></i>
+                        </label>
+                      </label>
+                  </div>
+                  
+                  <!-- Expiry Date -->
+                  <div class="col-md-6">
+                    <label for="exp_date" class="field prepend-icon" title="Expiry Date">
+                      <input type="text" name="exp_date" id="datetimepicker1" class="gui-input" placeholder="Expiry Date">
+                      <label for="exp_date" class="field-icon">
+                        <i class="fa fa-calendar"></i>
+                      </label>
+                    </label>
+                  </div>
+
+                </div>
+                <div class="section row">
+                    <!-- Car Make -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="make" id="Make" class="gui-input" placeholder="Car Make">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-text-width"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!-- Car Model -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="model" id="Make" class="gui-input" placeholder="Car Model">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-text-height"></i>
+                        </label>
+                      </label>
+                    </div>
+                </div>
+                <div class="section row">    
+                    <!-- Color -->
+                	<div class="col-md-6">
+                		<label for="model" class="field prepend-icon">
+                        <input type="text" name="color" id="color" class="gui-input" placeholder="Car Color">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-tint"></i>
+                        </label>
+                      </label>
+                	</div> 
+                    <!-- Car Year of Manufacture -->
+                    <div class="col-md-6">
+                      <label class="field select">
+	                    <select id="year_of_manufacture" name="year_of_manufacture">
+	                      <option value="">Year of Manufacture</option>
+	                      <option value="EN">2018</option>
+	                      <option value="FR">2017</option>
+	                      <option value="SP">2016</option>
+	                      <option value="CH">2015</option>
+	                      <option value="JP">2014</option>
+	                    </select>
+                    	<i class="arrow double"></i>
+                  		</label>
+                    </div>    	                    
+                 </div> 
+                 
+                <div class="section-divider mv40">
+                    <span> Accident Type</span>
+                </div>
+                
+                <div class="section row">  
+                    <div class="option-group field">
+                    	<div class="col-md-4">
+                          <label for="female" class="option option-primary block">
+                            <input type="radio" name="gender" id="female" value="female">
+                            <span class="radio"></span> Accident
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="male" class="option block option-primary mt10">
+                            <input type="radio" name="gender" id="male" value="male">
+                            <span class="radio"></span> Part Theft
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="other" class="option block option-primary mt10">
+                            <input type="radio" name="gender" id="other" value="other">
+                            <span class="radio"></span> Whole Theft
+                          </label>
+                        </div>  
+
+                    </div>
+
+                </div> 
+                
+                <!-- Owner's Details-->
+				<div class="section-divider mv40">
+                    <span> Owner's Details </span>
+                </div>
+               	<div class="section row">
+               	
+                <!-- Owner Name -->
+                  <div class="col-md-6">
+                    <label for="name" class="field prepend-icon">
+                        <input type="text" name="ownerName" id="name" class="gui-input" placeholder="Full Name">
+                        <label for="Name icon" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                  </div>
+                  
+                  <!-- Email -->
+                  <div class="col-md-6">
+                    <label for="email" class="field prepend-icon" title="Expiry Date">
+                      <input type="email" name="ownerEmail" id="ownerEmail" class="gui-input" placeholder="Email Address">
+                      <label for="email" class="field-icon">
+                        <i class="fa fa-keyboard-o"></i>
+                      </label>
+                    </label>
+                  </div>
+
+                </div>
+                
+            </div>
+                  <!-- end .form-body section -->
+                  <!--<div class="panel-footer text-right">
+                    <button type="submit" class="button btn-primary"> Validate Form </button>
+                    <button type="reset" class="button"> Cancel </button>
+                  </div> -->
+                  <!-- end .form-footer section -->
+
+
+
+				</div>
+            	<!-- end: .vehicle-form -->
+
+                </section>
+
+                <!-- Claim step 2 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-ambulance pr5"></i> Accident Details</h4>
+                <section class="wizard-section">
+				  <div class="panel heading-border">
+                  <div class="section">
+                    <label for="firstname" class="field prepend-icon">
+                      <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First name...">
+                      <label for="firstname" class="field-icon">
+                        <i class="fa fa-user"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+
+                  <div class="section">
+                    <label for="lastname" class="field prepend-icon">
+                      <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Last name...">
+                      <label for="lastname" class="field-icon">
+                        <i class="fa fa-user"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+				</div>
+                </section>
+
+                <!-- Claim step 3 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-renren pr5"></i> Driver's Details</h4>
+                <section class="wizard-section">
+                <div class="panel heading-border">
+                
+                <div class="panel-body bg-light">
+
+                    <div class="section-divider mt20 mb40">
+                      <span> Driver's Details </span>
+                    </div>
+                    <!-- .section-divider -->
+
+                    <div class="section row hidden" id="spy1">
+                      <div class="col-md-12">
+                        <label for="Claim Number" class="field prepend-icon">
+                          <input class="gui-input" name="claimNo" id="disabledInput" type="text" value="KCQ-343-R-00001" disabled="">
+                          <label for="firstname" class="field-icon">
+                            <i class="fa fa-paperclip"></i>
+                          </label>
+                        </label>
+                      </div>
+                      </div>
+                                     
+				<!-- First Name -->
+               	<div class="section row">
+
+                  <div class="col-md-6">
+                     <label for="First Name" class="field prepend-icon">
+                        <input type="text" name="firstName" id="firstName" class="gui-input" placeholder="First Name">
+                        <label for="first name icon" class="field-icon">
+                          <i class="fa fa-toggle-left"></i>
+                        </label>
+                     </label>
+                  </div>
+                  
+                  <!-- Last Name -->
+                  <div class="col-md-6">
+                    <label for="last Name" class="field prepend-icon" title="Last Name">
+                      <input type="text" name="lastName" id="lastName" class="gui-input" placeholder="Last Name">
+                      <label for="lastName" class="field-icon">
+                        <i class="fa fa-toggle-right"></i>
+                      </label>
+                    </label>
+                  </div>
+
+                </div>
+                <div class="section row">
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                      <label for="phone" class="field prepend-icon">
+                        <input type="text" name="phone" id="phone" class="gui-input" placeholder="Phone Number">
+                        <label for="phone icon" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!-- Date of Birth -->
+                    <div class="col-md-6">
+                      <label for="dob" class="field prepend-icon">
+                        <input type="text" name="dob" id="dob" class="gui-input" placeholder="Date of Birth">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>
+                </div>
+                <div class="section row">    
+                    <!-- Lincence Number -->
+                	<div class="col-md-6">
+                		<label for="dl" class="field prepend-icon">
+                        <input type="text" name="lincence" id="color" class="gui-input" placeholder="Driving Lincence">
+                        <label for="lincence icon" class="field-icon">
+                          <i class="fa fa-credit-card"></i>
+                        </label>
+                      </label>
+                	</div> 
+                    <!-- Expiry date -->
+                    <div class="col-md-6">
+                      <label for="dl" class="field prepend-icon">
+                        <input type="text" name="expiry_date" id="dl_expiry_date" class="gui-input" placeholder="Expiry Date">
+                        <label for="lincence icon" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>    	                    
+                 </div>              
+               	<div class="section row">
+    
+                <!-- Years of Experience -->
+                  <div class="col-md-6">
+                    <label for="name" class="field prepend-icon">
+                        <input type="number" name="experience" id="experience" class="gui-input" placeholder="Year of Experience">
+                        <label for="experience icon" class="field-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </label>
+                      </label>
+                  </div>
+                  
+                  <!-- Category -->
+                  <div class="col-md-6">
+                  	  <label>Lincence Category</label>
+                      <label class="field select-multiple">
+	                    <select name="dl_category" id="dl_category" multiple>
+	                      <option value="A">A</option>
+	                      <option value="B">B</option>
+	                      <option value="C">C</option>
+	                      <option value="D">D</option>
+	                      <option value="E">E</option>
+	                      <option value="F">F</option>
+	                      <option value="G">G</option>
+	                    </select>
+                  	 </label>
+                  </div>
+
+                </div>
+                
+            	 </div>
+            	
+            	</div>	
+                </section>
+
+				<!--Wizard step 4 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-medkit pr5"></i> Damage</h4>
+                <section class="wizard-section">
+				  <div class="panel heading-border">
+                  <div class="section">
+                    <label for="email" class="field prepend-icon">
+                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                      <label for="email" class="field-icon">
+                        <i class="fa fa-envelope"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+
+                  <div class="section">
+                    <label for="mobile" class="field prepend-icon">
+                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
+                      <label for="mobile" class="field-icon">
+                        <i class="fa fa-phone-square"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+				</div>
+                </section>
+				
+				<!--Wizard step 5 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-cloud-upload pr5"></i> Uploads</h4>
+                <section class="wizard-section">
+				<div class="panel heading-border">
+                  <div class="section">
+                    <label for="email" class="field prepend-icon">
+                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                      <label for="email" class="field-icon">
+                        <i class="fa fa-envelope"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+
+                  <div class="section">
+                    <label for="mobile" class="field prepend-icon">
+                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
+                      <label for="mobile" class="field-icon">
+                        <i class="fa fa-phone-square"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+				</div>
+                </section>
+				
+				<!--Wizard step 6 -->
+                <h4 class="wizard-section-title">
+                  <i class="fa fa-check pr5"></i> Confirm</h4>
+                <section class="wizard-section">
+				<div class="panel heading-border">
+                  <div class="section">
+                    <label for="email" class="field prepend-icon">
+                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                      <label for="email" class="field-icon">
+                        <i class="fa fa-envelope"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+
+                  <div class="section">
+                    <label for="mobile" class="field prepend-icon">
+                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
+                      <label for="mobile" class="field-icon">
+                        <i class="fa fa-phone-square"></i>
+                      </label>
+                    </label>
+                  </div>
+                  <!-- end section -->
+				</div>
+                </section>
+				
+			  </div>
+              <!-- End: Wizard -->
+
+            </form>
+            <!-- End Account2 Form -->
+
+          </div>
+          <!-- end: .admin-form -->
+
+        </div>
+
+      </section>
+      <!-- End: Content -->
