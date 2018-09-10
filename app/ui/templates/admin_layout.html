@@ -67,7 +67,7 @@
             <!-- End: Sidebar Left -->
 
             <!-- Start: Content-Wrapper -->
-            <section id="content_wrapper">
+            <section id="content_wrapper" id="content" class="animated fadeIn">
                 <!-- Begin: Content -->
                 <section id="content" class="table-layout animated fadeIn">
                     <include if="{{isset(@page.CONTENT)}}" href="{{@page.CONTENT}}"/>
@@ -94,6 +94,20 @@
         <!-- End: Main -->
 
         <!-- BEGIN: PAGE SCRIPTS -->
+		<style>
+  /*dropzone demo css*/
+  .dz-demo .dz-message {
+    opacity: 0 !important;
+  }
+  .dropzone .dz-preview.example-preview .dz-success-mark,
+  .dropzone-previews .dz-preview.example-preview .dz-success-mark {
+    opacity: 1;
+  }
+  .dropzone .dz-preview.example-preview .dz-error-mark,
+  .dropzone-previews .dz-preview.example-preview .dz-error-mark {
+    opacity: 0;
+  }
+  </style>
 
         <!-- jQuery -->
         <script src="app/ui/vendor/jquery/jquery-1.11.1.min.js">
@@ -107,13 +121,11 @@
         </script>
         <script src="app/ui/assets/js/main.js">
         </script>
-
         <include if="{{isset(@BOTTOMSCRIPTS)}}" href="{{@BOTTOMSCRIPTS}}"/>
          <!-- Theme Javascript -->
         <include if="{{isset(@OTHERBOTTOMSCRIPTS)}}" href="{{@OTHERBOTTOMSCRIPTS}}"/>
      	<!-- Theme Javascript -->
      	<!-- END: PAGE SCRIPTS -->
-
     </body>
 
 </html>

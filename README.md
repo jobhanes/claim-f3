@@ -1,14 +1,9 @@
-fabulog
-=======
+Claim Management System
+=======================
 
-fabulog is a lightweight blogging system, based on the awesome php fat-free framework. Check out the [demo](http://www.ikkez.de/fabulog) [admin:fabulog]
+This is a system that is purely built on Fat Free framework:
 
-fabulog currently has the following features:
-
-* Jig, SQL and Mongo database support with Cortex ORM
-* Post module with publishing by state and date
-* Tag management
-* Comment module with backend moderation
+* Buit with fast 
 * simple User management module
 * Sommernote Bootstrap WYSIWYG editor
 * powered by fat-free framework

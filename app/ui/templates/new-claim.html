@@ -57,7 +57,7 @@
           <div class="admin-form">
 
             <form method="post" action="/" id="form-wizard">
-              <div class="wizard steps-bg steps-left">
+              <div class="wizard steps-bg steps-lefts">
                 <!-- Claim step 1 -->
                 <h4 class="wizard-section-title">
                   <i class="fa fa-car pr5"></i> Vehicle Details</h4>
@@ -358,7 +358,7 @@
                     <label for="name" class="field prepend-icon">
                         <input type="number" name="experience" id="experience" class="gui-input" placeholder="Year of Experience">
                         <label for="experience icon" class="field-icon">
-                          <i class="fa fa-clock-o"></i>
+                          <i class="fa fa-clock-o-o"></i>
                         </label>
                       </label>
                   </div>
@@ -388,55 +388,210 @@
 
 				<!--Wizard step 4 -->
                 <h4 class="wizard-section-title">
-                  <i class="fa fa-medkit pr5"></i> Damage</h4>
+                <i class="fa fa-medkit pr5"></i> Damage</h4>
                 <section class="wizard-section">
-				  <div class="panel heading-border">
-                  <div class="section">
-                    <label for="email" class="field prepend-icon">
-                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
-                      <label for="email" class="field-icon">
-                        <i class="fa fa-envelope"></i>
-                      </label>
+				  <div class="panel-body bg-light">
+                  <div class="section" id="spy3">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describle the Damage to the vehicle"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Explain/State the damage done to the car.
+                        </span>
                     </label>
                   </div>
                   <!-- end section -->
 
-                  <div class="section">
-                    <label for="mobile" class="field prepend-icon">
-                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
-                      <label for="mobile" class="field-icon">
-                        <i class="fa fa-phone-square"></i>
-                      </label>
+                  <div class="section row">
+                    <div class="option-group field">
+                    	<div class="col-md-4">
+                          <label for="la" class="option option-primary block">
+                            <span>Is the car still in use?</span>
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="yes" class="option block option-primary mt10">
+                            <input type="radio" name="yes" id="Yes" value="Yes">
+                            <span class="radio"></span> Yes
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="no" class="option block option-primary mt10">
+                            <input type="radio" name="no" id="No" value="No">
+                            <span class="radio"></span> No
+                          </label>
+                        </div>  
+
+                    </div>
+                  </div>
+                  <div class="section row">
+                    <div class="section" id="spy3">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="When and where can it be repaired?"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> State the prefered repair time & place .
+                        </span>
                     </label>
                   </div>
+                  </div>
                   <!-- end section -->
-				</div>
+                  <div class="section row">
+                  <div class="section" id="spy3">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="Other Vehicle and /or Property Damaged?"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Other damage(s) .
+                        </span>
+                     </label>
+                  </div>
+                  </div>
+                  <!-- Property details-->
+                  <div class="section-divider mv40">
+                      <span> Property Details </span>
+                  </div>
+                    <!-- .section-divider -->
+                  <div class="section row">
+                    <!-- Owner name -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="property_owner_name" id="property_owner_name" class="gui-input" placeholder="Owner's Full Name">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="property_owner_phone" id="property_owner_phone" class="gui-input" placeholder="Phone Number">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row">
+                    <!-- Car Registration Number -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="damaged_car_reg_no" id="damaged_car_reg_no" class="gui-input" placeholder="Damaged Car Registration Number">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-car"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="damaged_propertys" placeholder="Property Damaged?"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Damaged property.
+                        </span>
+                      </label>
+                    </div>
+                    </div>
+                    
+                    <!-- Person Injured -->
+                  <div class="section-divider mv40">
+                    <span> Person Injured Details </span>
+                  </div>
+                  <div class="section row">
+                    <!-- Injured Person name -->
+                    <div class="col-md-6">
+                      <label for="person_name" class="field prepend-icon">
+                        <input type="text" name="person_name" id="person_name" class="gui-input" placeholder="Injured Person Full Name">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!--Injured Phone Number -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="injured_phone" id="injured_phone" class="gui-input" placeholder="Injured Person's Phone Number">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <!-- Relationship With the injured person-->
+	               <div class="section row">
+	                <!--Relationship Person name -->
+	                <div class="col-md-6">
+	                  <label for="person_name" class="field prepend-icon">
+	                    <input type="text" name="kin_name" id="kin_name" class="gui-input" placeholder="Next of Kin Full Name">
+	                    <label for="make icon" class="field-icon">
+	                      <i class="fa fa-male"></i>
+	                    </label>
+	                  </label>
+	                </div>
+	                
+	                <!--Relationship Type -->
+	                <div class="col-md-6">
+                      <label class="field select">
+	                    <select id="relationship_type" name="relationship_type">
+	                      <option value="">Relatioship Type</option>
+	                      <option value="Father_Mother">Father/Mother</option>
+	                      <option value="Brother_Sister">Brother/Sister</option>
+	                      <option value="Auncle_Aunt">Auncle/Aunt</option>
+	                      <option value="Guardian">Guardian</option>
+	                      <option value="Other">Other</option>
+	                    </select>
+                    	<i class="arrow double"></i>
+                  		</label>
+                    </div>    
+	              </div>
+                  </div>
                 </section>
 				
 				<!--Wizard step 5 -->
                 <h4 class="wizard-section-title">
                   <i class="fa fa-cloud-upload pr5"></i> Uploads</h4>
                 <section class="wizard-section">
-				<div class="panel heading-border">
-                  <div class="section">
-                    <label for="email" class="field prepend-icon">
-                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
-                      <label for="email" class="field-icon">
-                        <i class="fa fa-envelope"></i>
-                      </label>
-                    </label>
-                  </div>
+				<div class="panel-body bg-light">
+				<!-- Upload's Details-->
+				<div class="section-divider mv40">
+                    <span> Uploads </span>
+                </div>
+                <div class="section">
+                  <label for="file1" class="field file">
+                    <span class="button btn-primary"> Choose File </span>
+                    <input type="file" class="gui-file" name="police_report" id="file1" onChange="document.getElementById('uploader1').value = this.value;">
+                    <input type="text" class="gui-input" id="uploader1" placeholder="Police Report" readonly>
+                  </label>
+                </div>
                   <!-- end section -->
 
-                  <div class="section">
-                    <label for="mobile" class="field prepend-icon">
-                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
-                      <label for="mobile" class="field-icon">
-                        <i class="fa fa-phone-square"></i>
-                      </label>
-                    </label>
+                <div class="section">
+                 <div class="row">
+                    <div class="col-xs-12 col-sm-8 pl30">
+		              <div class="tray-bin pl10 mb10" style="min-height: 250px;">
+		                <h5 class="text-muted mt10 fw600 pl10">
+		                <i class="fa fa-exclamation-circle text-info fa-lg pr10"></i> Drag and Drop Pictures and other related ducuments </h5>
+		                  <div class="fallback">
+		                    <input name="file" type="file" multiple />
+		                  </div>
+		              </div>
+            		</div>
                   </div>
                   <!-- end section -->
+				</div>
 				</div>
                 </section>
 				
@@ -444,25 +599,469 @@
                 <h4 class="wizard-section-title">
                   <i class="fa fa-check pr5"></i> Confirm</h4>
                 <section class="wizard-section">
-				<div class="panel heading-border">
-                  <div class="section">
-                    <label for="email" class="field prepend-icon">
-                      <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
-                      <label for="email" class="field-icon">
-                        <i class="fa fa-envelope"></i>
-                      </label>
-                    </label>
-                  </div>
-                  <!-- end section -->
+				<!--<div class="panel heading-border"></div> -->
+				<div class="panel-body bg-light">
+                  <!-- create new order panel -->
+          <div class="panel mb25 mt5">
+            <div class="panel-heading">
+              <span class="panel-title hidden-xs"> Confirm the Details</span>
+              <ul class="nav panel-tabs-border panel-tabs">
+                <li class="active">
+                  <a href="#tab1_1" data-toggle="tab">Vehicle Details</a>
+                </li>
+                <li>
+                  <a href="#tab1_2" data-toggle="tab">Accident Details</a>
+                </li>
+                <li>
+                  <a href="#tab1_3" data-toggle="tab">Driver's Details</a>
+                </li>
+                <li>
+                  <a href="#tab1_4" data-toggle="tab">Damage</a>
+                </li>
+                <li>
+                  <a href="#tab1_5" data-toggle="tab">Uploads</a>
+                </li>
+              </ul>
+            </div>
+            <div class="panel-body p20 pb10">
+            <div class="tab-content pn br-n admin-form">
+            <form method="post" action="/">
+                <!-- Vehicle Details -->
+            <div id="tab1_1" class="tab-pane active">
 
-                  <div class="section">
-                    <label for="mobile" class="field prepend-icon">
-                      <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
-                      <label for="mobile" class="field-icon">
-                        <i class="fa fa-phone-square"></i>
+            <!-- Vehicle edit Details -->
+            <div class="panel panel-primary panel-border top mb35">
+              <div class="panel-heading">
+                <span class="panel-title">Vehicle Details</span>
+              </div>
+              <div class="panel-body bg-light dark">
+                <div class="admin-form">
+
+                  <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-center">Registration Number : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" required disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-car"></i>
+                        </label>
                       </label>
-                    </label>
+                    </div>
                   </div>
+
+                  <div class="section row mb10">
+                    <label for="store-currency" class="field-label col-md-3 text-center">Policy Number : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-book"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-units" class="field-label col-md-3 text-center">Expiry Date : </label>
+                    <div class="col-md-9">
+                      <label for="store-units" class="field prepend-icon">
+                        <input type="text" name="store-units" id="store-units" class="gui-input" value="" placeholder="Metric System" disabled>
+                        <label for="store-units" class="field-icon">
+                          <i class="fa fa-exchange"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-weight" class="field-label col-md-3 text-center">Car Make : </label>
+                    <div class="col-md-9">
+                      <label for="store-weight" class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-weight" class="field-icon">
+                          <i class="fa fa-anchor"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Car Model : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Year of Manufacture : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Type of Claim : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <div class="section-divider mv40">
+                    <span> Owner's Details </span>
+                </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Full Name : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Email Address : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" disabled>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+        	</div>
+                
+                <!-- Accidents Details -->
+                <div id="tab1_2" class="tab-pane">
+
+
+                </div>
+                
+                <!-- Driver's Details -->
+                <div id="tab1_3" class="tab-pane">
+				
+				      <!-- Store Settings -->
+            <div class="panel panel-primary panel-border top mb35">
+              <div class="panel-heading">
+                <span class="panel-title">Driver Edit Details</span>
+              </div>
+              <div class="panel-body bg-light dark">
+                <div class="admin-form">
+
+                  <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-center">First Name : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="First Name" required readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-currency" class="field-label col-md-3 text-center">Last Name : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Last Name" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-units" class="field-label col-md-3 text-center">Phone Number : </label>
+                    <div class="col-md-9">
+                      <label for="store-units" class="field prepend-icon">
+                        <input type="text" name="store-units" id="store-units" class="gui-input" value="" placeholder="Phone Number" readonly>
+                        <label for="store-units" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-weight" class="field-label col-md-3 text-center">Date of Birth : </label>
+                    <div class="col-md-9">
+                      <label for="store-weight" class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Date of Birth" readonly>
+                        <label for="store-weight" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Driving Lincence : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Driving Lincence Number" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-credit-card"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Expiry Date	 : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Expiery Date" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Years of Experience : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Years of Experience" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Lincence Category : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Lincence Category" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-edit"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  
+
+                </div>
+              </div>
+            </div>
+
+
+                </div>
+				
+				<!-- Damages -->
+				<div id="tab1_4" class="tab-pane">
+				 <div class="panel panel-primary panel-border top mb35">
+              <div class="panel-heading">
+                <span class="panel-title">Damage Details</span>
+              </div>
+              <div class="panel-body bg-light dark">
+                <div class="admin-form">
+
+                  <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-center">Damage Description : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Damage Desc" required readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-times"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-currency" class="field-label col-md-3 text-center">Car Condition : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Condition" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-car"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-units" class="field-label col-md-3 text-center">Place & Time of Repair : </label>
+                    <div class="col-md-9">
+                      <label for="store-units" class="field prepend-icon">
+                        <input type="text" name="store-units" id="store-units" class="gui-input" value="" placeholder="Place & Time of Repair" readonly>
+                        <label for="store-units" class="field-icon">
+                          <i class="fa fa-map-marker"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-weight" class="field-label col-md-3 text-center">Other vehicle and/Or property Damaged: </label>
+                    <div class="col-md-9">
+                      <label for="store-weight" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describle the Damage to the vehicle" readonly></textarea>
+                        <label for="store-weight" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Owner Full names : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Full Name" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-credit-card"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Damaged Car Reg No	 : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="damaged Car Reg No" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row mb10">
+                  <label for="store-desc" class="field-label col-md-3 text-center">Property : </label>
+                    <div class="col-md-9">
+                      <label class="field prepend-icon">
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Property Damaged" readonly>
+                        <label for="store-desc" class="field-icon">
+                          <i class="fa fa-list-alt"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section-divider mt20 mb40">
+                      <span>Person(s) Injured Details </span>
+                  </div>
+                 <!-- Person Injured-->
+				<!-- 
+				<table class="table">
+				  <thead>
+				    <tr class="warning">
+				      <th>#</th>
+				      <th>Full Name</th>
+				      <th>
+				        Phone Number
+				      </th>
+				      <th>
+				        Next Of Kin
+				      </th>
+				      <th>
+				       Relationship
+				      </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1</td>
+				      <td>Mark</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				    </tr>
+				    <tr>
+				        <td>1</td>
+				      <td>Mark</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				    </tr>
+				    <tr>
+				      <td>3</td>
+				      <td>Larry</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				    </tr>
+				    <tr>
+				       <td>1</td>
+				      <td>Mark</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				      <td>Cell</td>
+				    </tr>
+				  </tbody>
+				</table>
+				
+				
+				-->
+                  
+
+                </div>
+              </div>
+            </div>
+				</div>
+				
+				<!-- Uploads -->
+				<div id="tab1_5" class="tab-pane"> 
+				<table class="table">
+				  <thead>
+				    <tr class="warning">
+				      <th>#</th>
+				      <th>Police abstract</th>
+				      <th>
+				        Other Uploads
+				      </th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1</td>
+				      <td><span><i class="fa fa-check"></i> Uploaded </span></td>
+				      <td><span><i class="fa fa-check"></i> Uploaded </span></td>
+				    </tr>
+				  </tbody>
+				</table>
+				
+				
+				<div class="section row mbn">
+                    <div class="col-sm-8">
+                      <label class="field option mt10">
+                        <input type="checkbox" name="info" checked>
+                        <span class="checkbox"></span>Confirm
+                        <em class="small-text text-muted">- Every details filled in this form is legit and true</em>
+                      </label>
+                    </div>
+                    <div class="col-sm-4">
+                      <p class="text-right">
+                        <input type="submit" class="btn btn-primary" value="Submit the claim">
+                      </p>
+                    </div>
+                  </div>
+				</div>
+				</form>
+              </div>
+            </div>
+          </div>
+                  
                   <!-- end section -->
 				</div>
                 </section>
