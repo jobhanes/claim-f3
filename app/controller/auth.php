@@ -93,28 +93,28 @@ class Auth extends Base
         $f3 = \Base::instance();
         //check the submited fields
         if ($f3->get('VERB') == 'POST'){
-        	if ($f3->exists('POST.user_type') && $f3->exists('POST.username') && $f3->exists('POST.email') && $f3->exists('POST.password')) {
+        	if ($f3->exists('POST.user_type') && $f3->exists('POST.username') && $f3->exists('POST.email') && $f3->exists('POST.password')) 
+        	 {
+	            $user = new \Model\User();
+	            $user->load(array('username = ?',$f3->get('POST.username')));
+	            $user->load(array('emailAddress = ?',$f3->get('POST.email')));
+	            if ($user->dry()) {
+	                $user->reset();
+	                $user->copyfrom('POST','username','password');
+	                $user->emailAddress = trim($f3->get('POST.email'));
+	                $user->userTypeId = trim($f3->get('POST.user_type'));
+	                $user->password = $f3->get('POST.password');
+	                $user->save();
 
-            $user = new \Model\User();
-            $user->load(array('username = ?',$f3->get('POST.username')));
-            $user->load(array('emailAddress = ?',$f3->get('POST.email')));
-            if ($user->dry()) {
-                $user->reset();
-                $user->copyfrom('POST','username','password');
-                $user->emailAddress = trim($f3->get('POST.email'));
-                $user->userTypeId = trim($f3->get('POST.user_type'));
-                $user->password = $f3->get('POST.password');
-                $user->save();
+	                //@todo: Send a confirmation Email
 
-                //@todo: Send a confirmation Email
-
-                \Flash::instance()->addMessage('Account has been created, a confirmation email has been sent to your email','success');
-                //reroute if you want
-                $f3->reroute('/auth/register');
-            }
-            else {
-                \Flash::instance()->addMessage('The username or password already taken, please try another one or login','danger');
-            }
+	                \Flash::instance()->addMessage('Account has been created, a confirmation email has been sent to your email','success');
+	                //reroute if you want
+	                $f3->reroute('/auth/register');
+	            }
+	            else {
+	                \Flash::instance()->addMessage('The username or password already taken, please try another one or login','danger');
+	            }
         }
 		}
         $this->response->setTemplate('templates/register.html');

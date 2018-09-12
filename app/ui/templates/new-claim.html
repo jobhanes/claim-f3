@@ -1,6 +1,13 @@
       <!-- Begin: Content -->
       <section id="content" class="animated fadeIn">
-
+						<F3:repeat group="{{ \Flash::instance()->getMessages() }}" value="{{ @msg }}">
+                            <div class="alert alert-{{ @msg.status }} alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                {{ @msg.text | esc }}
+                            </div>
+                        </F3:repeat>
         <!-- Content Header -->
         <!--<div class="content-header">
           <h2><b class="text-primary">Mix and Match</b> settings with our Admin Wizard</h2>
@@ -52,6 +59,187 @@
                 </div>
             </div>
           </div> -->
+           <div class="panel-body bg-light">
+           		<form name="frm_damage" method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">
+                  <div class="section row hidden" id="spy1">
+                      <div class="col-md-12">
+                        <label for="Claim Number" class="field prepend-icon">
+                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
+                          <label for="claimNo" class="field-icon">
+                            <i class="fa fa-paperclip"></i>
+                          </label>
+                        </label>
+                      </div>
+                    </div>
+                  <div class="section" id="spy3">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="damageDesc" placeholder="Describle the Damage"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Explain/State the damage done to the car.
+                        </span>
+                    </label>
+                  </div>
+                  <!-- end section -->
+
+                  <div class="section row">
+                    <div class="option-group field">
+                    	<div class="col-md-4">
+                          <label for="la" class="option option-primary block">
+                            <span>Is the car still in use?</span>
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="yes" class="option block option-primary mt10">
+                            <input type="radio" name="still_in_use" id="yes" value="Yes">
+                            <span class="radio"></span> Yes
+                          </label>
+						</div>
+						<div class="col-md-4">
+                          <label for="no" class="option block option-primary mt10">
+                            <input type="radio" name="still_in_use" id="no" value="No">
+                            <span class="radio"></span> No
+                          </label>
+                        </div>  
+
+                    </div>
+                  </div>
+                  <div class="section row">
+                    <div class="section" id="spy3">
+	                     <!--Repair Date/time-->
+	                     <div class="col-md-6">
+		                    <label for="model" class="field prepend-icon">
+		                    <input type="text" name="repairDate" id="repairDate" class="gui-input" placeholder="Repair Date">
+		                    <label for="model icon" class="field-icon">
+		                        <i class="fa fa-calendar"></i>
+		                    </label>
+		                    </label>
+	                     </div>
+	                     
+	                     <!--Repair place-->
+	                     <div class="col-md-6">
+		                    <label for="model" class="field prepend-icon">
+		                    <input type="text" name="repairPlace" id="repairPlace" class="gui-input" placeholder="Repair Place">
+		                    <label for="model icon" class="field-icon">
+		                        <i class="fa fa-map-marker"></i>
+		                    </label>
+		                    </label>
+	                     </div>
+                  	</div>
+                  </div>
+                  <!-- end section -->
+                  <div class="section row">
+                  <div class="section" id="spy3">
+                     <label for="otherDamages" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="otherDamages" name="otherDamages" placeholder="Other Vehicle and /or Property Damaged?"></textarea>
+                        <label for="otherDamages" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Other damage(s) .
+                        </span>
+                     </label>
+                  </div>
+                  </div>
+                  <!-- Property details-->
+                  <div class="section-divider mv40">
+                      <span> Property Details </span>
+                  </div>
+                    <!-- .section-divider -->
+                  <div class="section row">
+                    <!--Property Owner name -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="property_owner_name" id="property_owner_name" class="gui-input" placeholder="Owner's Full Name">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="property_owner_phone" id="property_owner_phone" class="gui-input" placeholder="Phone Number">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="section row">
+                    <!-- Car Registration Number -->
+                    <div class="col-md-12">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="damaged_car_reg_no" id="damaged_car_reg_no" class="gui-input" placeholder="Damaged Car Registration Number">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-car"></i>
+                        </label>
+                      </label>
+                    </div>
+                    </div>
+                    
+                    <!-- Person Injured -->
+                  <div class="section-divider mv40">
+                    <span> Person Injured Details </span>
+                  </div>
+                  <div class="section row">
+                    <!-- Injured Person name -->
+                    <div class="col-md-6">
+                      <label for="person_name" class="field prepend-icon">
+                        <input type="text" name="person_name" id="injured_name" class="gui-input" placeholder="Injured Person Full Name">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-male"></i>
+                        </label>
+                      </label>
+                    </div>
+                    
+                    <!--Injured Phone Number -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="injured_phone" id="injured_phone" class="gui-input" placeholder="Injured Person's Phone Number">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-phone"></i>
+                        </label>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <!-- Relationship With the injured person-->
+	               <div class="section row">
+	                <!--Relationship Person name -->
+	                <div class="col-md-6">
+	                  <label for="person_name" class="field prepend-icon">
+	                    <input type="text" name="kin_name" id="kin_name" class="gui-input" placeholder="Next of Kin Full Name">
+	                    <label for="make icon" class="field-icon">
+	                      <i class="fa fa-male"></i>
+	                    </label>
+	                  </label>
+	                </div>
+	                
+	                <!--Relationship Type -->
+	                <div class="col-md-6">
+                      <label class="field select">
+	                    <select id="relationship_type" name="relationship_type">
+	                      <option value="">Relatioship Type</option>
+	                      <option value="Father_Mother">Father/Mother</option>
+	                      <option value="Brother_Sister">Brother/Sister</option>
+	                      <option value="Auncle_Aunt">Auncle/Aunt</option>
+	                      <option value="Guardian">Guardian</option>
+	                      <option value="Other">Other</option>
+	                    </select>
+                    	<i class="arrow double"></i>
+                  		</label>
+                    </div>    
+	              </div>
+	              <div class="col-md-12">
+                	<input name="btn_damage" class="btn btn-primary" type="submit" value="Submit Damage"/>
+                  </div>
+	              </form>
+                  </div>
+                  
 
           <!-- Form Wizard -->
           <div class="admin-form">
@@ -65,7 +253,7 @@
             	<!-- Vehicle Details -->
 				<div class="panel heading-border">
 
-
+				<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">
                   <div class="panel-body bg-light">
 
                     <div class="section-divider mt20 mb40">
@@ -73,10 +261,10 @@
                     </div>
                     <!-- .section-divider -->
 
-                    <div class="section row hidden" id="spy1">
+                    <div class="section row" id="spy1">
                       <div class="col-md-12">
                         <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="disabledInput" type="text" value="KCQ-343-R-00001" disabled="">
+                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
                           <label for="firstname" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
@@ -87,7 +275,7 @@
                       <!-- Registration Number -->
                       <div class="section">
                         <label for="RegNo" class="field prepend-icon">
-                          <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number">
+                          <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number" required>
                           <label for="RegNo" class="field-icon">
                             <i class="fa fa-car"></i>
                           </label>
@@ -153,11 +341,11 @@
                       <label class="field select">
 	                    <select id="year_of_manufacture" name="year_of_manufacture">
 	                      <option value="">Year of Manufacture</option>
-	                      <option value="EN">2018</option>
-	                      <option value="FR">2017</option>
-	                      <option value="SP">2016</option>
-	                      <option value="CH">2015</option>
-	                      <option value="JP">2014</option>
+	                      <option value="{{DATE('Y')}}">{{DATE('Y')}}</option>
+	                      <option value="2017">2017</option>
+	                      <option value="2016">2016</option>
+	                      <option value="2015">2015</option>
+	                      <option value="2014">2014</option>
 	                    </select>
                     	<i class="arrow double"></i>
                   		</label>
@@ -165,27 +353,39 @@
                  </div> 
                  
                 <div class="section-divider mv40">
-                    <span> Accident Type</span>
+                    <span>Claim Type</span>
                 </div>
                 
                 <div class="section row">  
                     <div class="option-group field">
                     	<div class="col-md-4">
                           <label for="female" class="option option-primary block">
-                            <input type="radio" name="gender" id="female" value="female">
+                            <input type="radio" name="claim_type" id="female" value="Accident">
                             <span class="radio"></span> Accident
                           </label>
 						</div>
 						<div class="col-md-4">
                           <label for="male" class="option block option-primary mt10">
-                            <input type="radio" name="gender" id="male" value="male">
-                            <span class="radio"></span> Part Theft
+                            <input type="radio" name="claim_type" id="male" value="Theft">
+                            <span class="radio"></span> Theft
                           </label>
-						</div>
-						<div class="col-md-4">
+						</div> 
+                        <div class="col-md-4">
                           <label for="other" class="option block option-primary mt10">
-                            <input type="radio" name="gender" id="other" value="other">
-                            <span class="radio"></span> Whole Theft
+                            <input type="radio" name="claim_type" id="other" value="Riots">
+                            <span class="radio"></span> Riots/Civil servants Commotion
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="acts" class="option block option-primary mt10">
+                            <input type="radio" name="claim_type" id="acts" value="Acts_of_God">
+                            <span class="radio"></span> Act of God
+                          </label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="screen" class="option block option-primary mt10">
+                            <input type="radio" name="claim_type" id="screen" value="wind_screen">
+                            <span class="radio"></span> Wind Screen
                           </label>
                         </div>  
 
@@ -220,8 +420,15 @@
                   </div>
 
                 </div>
+                <div class="col-md-12">
+                	<input name="btn_vehicle" class="btn btn-primary" type="submit" value="Submit Vehicle"/>
+                	
+                </div>
                 
             </div>
+            	</form>
+				
+				
                   <!-- end .form-body section -->
                   <!--<div class="panel-footer text-right">
                     <button type="submit" class="button btn-primary"> Validate Form </button>
@@ -238,39 +445,166 @@
 
                 <!-- Claim step 2 -->
                 <h4 class="wizard-section-title">
-                  <i class="fa fa-ambulance pr5"></i> Accident Details</h4>
+                  <i class="fa fa-ambulance pr5"></i> Incidence Details</h4>
                 <section class="wizard-section">
 				  <div class="panel heading-border">
-                  <div class="section">
-                    <label for="firstname" class="field prepend-icon">
-                      <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First name...">
-                      <label for="firstname" class="field-icon">
-                        <i class="fa fa-user"></i>
+				   <div class="panel-body bg-light">
+				  <!-- If Accident type if WINDSCREEN-->
+                    	<div class="section-divider mt20 mb40">
+                      		<span id="heading"> Incidence Details </span>
+                    	</div>
+                    <!-- .section-divider -->
+					<div class="section row hidden" id="spy1">
+	                    <div class="alert alert-micro alert-border-left alert-success alert-dismissable">
+						  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						  <i class="fa fa-check pr10"></i>
+						  <strong>It is well!</strong> You have nothing to fill here for the WINDSCREEN.
+						  <b class="alert-link">Please proceed to the next step</b>.
+						</div>
+                    </div> 
+                    <!--General top-->   
+                    <div class="section row">
+                    <!-- Date -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                        <input type="text" name="incidence_date" id="Make" class="gui-input" placeholder="Date of Incidence">
+                        <label for="make icon" class="field-icon">
+                          <i class="fa fa-calendar"></i>
+                        </label>
                       </label>
-                    </label>
+                    </div>
+                    
+                    <!-- time -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="incidence_time" id="Make" class="gui-input" placeholder="time of Incidence">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </label>
+                      </label>
+                    </div>
+                </div>
+                <!-- Location -->
+	            <div class="section row">
+	              <div class="col-md-12">
+	                <label for="RegNo" class="field prepend-icon">
+	                  <input type="text" name="incidence_location" id="RegNo" class="gui-input" placeholder="Location of the Incidence">
+	                  <label for="RegNo" class="field-icon">
+	                    <i class="fa fa-map-marker"></i>
+	                  </label>
+	                </label>
+	                </div>
+	              </div>              
+              <!-- end IF -->
+              
+              <!-- IF Theft -->
+              	<div class="section row hidden">
+              	  <div class="col-md-12">
+              		<label class="field select">
+	                    <select id="theft_type" name="theft_type">
+	                      <option value="">Theft type</option>
+	                      <option value="Parts">Parts</option>
+	                      <option value="Whole">Wholesum</option>
+	                    </select>
+                    	<i class="arrow double"></i>
+                  	</label>
                   </div>
-                  <!-- end section -->
+              	</div>
+              	<!-- IF Parts-->
+              	<div class="section row hidden">
+              	 <div class="col-md-12">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="stollen_parts" placeholder="Describe the the stollen parts"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> State the stollen parts.
+                        </span>
+                    </label>
+                    </div>
+                </div>
+                
+              <!-- IF Accident-->
+              	<div class="section row">
+              		<div class="col-md-6">
+	              	 	<label class="field select">
+		                    <select id="accident_driver" name="accident_driver">
+		                      <option value=""> -- Who was driving the car? -- </option>
+		                      <option value="self">Self</option>
+		                      <option value="someone">Someone else</option>
+		                    </select>
+	                    	<i class="arrow double"></i>
+	                  	</label>
+              		</div>               
+                    <!-- time -->
+                    <div class="col-md-6">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="accident_speed" id="speed" class="gui-input" placeholder="Speed of the Vehicle(Km/hr)">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-strikethrough"></i>
+                        </label>
+                      </label>
+                    </div>
+                </div>
+              	
+              	<div class="section row">    
+              	<div class="col-md-12">
+                      <label for="model" class="field prepend-icon">
+                        <input type="text" name="accident_speed" id="speed" class="gui-input" placeholder="Weather Condition">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-sun-o"></i>
+                        </label>
+                      </label>
+                    </div>
+                </div>
 
-                  <div class="section">
-                    <label for="lastname" class="field prepend-icon">
-                      <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Last name...">
-                      <label for="lastname" class="field-icon">
-                        <i class="fa fa-user"></i>
-                      </label>
+			  <!--Scenarios->
+			  
+			  
+              <!-- General Bottom details-->
+              	<div class="section" id="spy3">
+                     <label for="comment" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describe what happened"></textarea>
+                        <label for="comment" class="field-icon">
+                          <i class="fa fa-comments"></i>
+                        </label>
+                        <span class="input-footer">
+                          <strong>Hint!:</strong> Explain/State the incidence took place.
+                        </span>
                     </label>
                   </div>
-                  <!-- end section -->
-				</div>
-                </section>
+              	
+               	<div class="section row">
+                    <!-- questions -->
+                    <div class="col-md-6">
+                      <label for="make" class="field prepend-icon">
+                       Was the Incidence Reported?
+                      </label>
+                    </div>
+                    
+                    <!-- reported?-->
+                    <div class="col-md-6">
+                       <div class="radio-custom radio-primary mb5">
+						  <input type="radio" id="radioExample4" name="reported" value="Yes">
+						  <label for="radioExample4">Yes</label>
+						
+						  <input type="radio" id="radioExample5" name="reported" value="No">
+						  <label for="radioExample5">No</label>
+						</div>
+                    </div>
+                </div>
+               </div>	 
+			</div>
+            </section>
 
                 <!-- Claim step 3 -->
                 <h4 class="wizard-section-title">
                   <i class="fa fa-renren pr5"></i> Driver's Details</h4>
                 <section class="wizard-section">
                 <div class="panel heading-border">
-                
-                <div class="panel-body bg-light">
-
+            	<!--<form name="frm_driver" method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}"> -->
+		  			<div class="panel-body bg-light">
                     <div class="section-divider mt20 mb40">
                       <span> Driver's Details </span>
                     </div>
@@ -279,17 +613,16 @@
                     <div class="section row hidden" id="spy1">
                       <div class="col-md-12">
                         <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="disabledInput" type="text" value="KCQ-343-R-00001" disabled="">
-                          <label for="firstname" class="field-icon">
+                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
+                          <label for="claimNo" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
                         </label>
                       </div>
-                      </div>
+                    </div>
                                      
 				<!-- First Name -->
                	<div class="section row">
-
                   <div class="col-md-6">
                      <label for="First Name" class="field prepend-icon">
                         <input type="text" name="firstName" id="firstName" class="gui-input" placeholder="First Name">
@@ -308,7 +641,6 @@
                       </label>
                     </label>
                   </div>
-
                 </div>
                 <div class="section row">
                     <!-- Phone Number -->
@@ -331,20 +663,30 @@
                       </label>
                     </div>
                 </div>
+                <div class="section row">
+                <div class="col-md-12">
+                      <label for="idnumber" class="field prepend-icon">
+                        <input type="number" name="idnumber" id="idnumber" class="gui-input" placeholder="Identity Number">
+                        <label for="model icon" class="field-icon">
+                          <i class="fa fa-text"></i>
+                        </label>
+                      </label>
+                </div>
+                </div>
                 <div class="section row">    
                     <!-- Lincence Number -->
                 	<div class="col-md-6">
                 		<label for="dl" class="field prepend-icon">
-                        <input type="text" name="lincence" id="color" class="gui-input" placeholder="Driving Lincence">
+                        <input type="text" name="lincence" id="lincence" class="gui-input" placeholder="Driving Lincence">
                         <label for="lincence icon" class="field-icon">
                           <i class="fa fa-credit-card"></i>
                         </label>
-                      </label>
+                      	</label>
                 	</div> 
                     <!-- Expiry date -->
                     <div class="col-md-6">
                       <label for="dl" class="field prepend-icon">
-                        <input type="text" name="expiry_date" id="dl_expiry_date" class="gui-input" placeholder="Expiry Date">
+                        <input type="text" name="dl_expiry_date" id="dl_expiry_date" class="gui-input" placeholder="Expiry Date">
                         <label for="lincence icon" class="field-icon">
                           <i class="fa fa-calendar"></i>
                         </label>
@@ -367,7 +709,7 @@
                   <div class="col-md-6">
                   	  <label>Lincence Category</label>
                       <label class="field select-multiple">
-	                    <select name="dl_category" id="dl_category" multiple>
+	                    <select name="dl_category[]" id="dl_category" multiple>
 	                      <option value="A">A</option>
 	                      <option value="B">B</option>
 	                      <option value="C">C</option>
@@ -380,9 +722,12 @@
                   </div>
 
                 </div>
-                
-            	 </div>
-            	
+                <div class="col-md-12">
+                	<input name="btn_driver" class="btn btn-primary" type="submit" value="Submit Driver"/>
+                </div>
+            	</div>
+		 <!-- </form> -->
+              
             	</div>	
                 </section>
 
@@ -413,13 +758,13 @@
 						</div>
 						<div class="col-md-4">
                           <label for="yes" class="option block option-primary mt10">
-                            <input type="radio" name="yes" id="Yes" value="Yes">
+                            <input type="radio" name="still_in_use" id="yes" value="Yes">
                             <span class="radio"></span> Yes
                           </label>
 						</div>
 						<div class="col-md-4">
                           <label for="no" class="option block option-primary mt10">
-                            <input type="radio" name="no" id="No" value="No">
+                            <input type="radio" name="still_in_use" id="no" value="No">
                             <span class="radio"></span> No
                           </label>
                         </div>  
@@ -627,7 +972,7 @@
             <div class="tab-content pn br-n admin-form">
             <form method="post" action="/">
                 <!-- Vehicle Details -->
-            <div id="tab1_1" class="tab-pane active">
+            	<div id="tab1_1" class="tab-pane active">
 
             <!-- Vehicle edit Details -->
             <div class="panel panel-primary panel-border top mb35">
@@ -641,7 +986,7 @@
                     <label for="names" class="field-label col-md-3 text-center">Registration Number : </label>
                     <div class="col-md-9">
                       <label class="field prepend-icon">
-                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Car Make" required disabled>
+                        <input type="text" name="store-weight" id="jb_mito" class="gui-input" placeholder="Car Make" required readonly>
                         <label for="store-desc" class="field-icon">
                           <i class="fa fa-car"></i>
                         </label>
@@ -871,7 +1216,7 @@
 				
 				<!-- Damages -->
 				<div id="tab1_4" class="tab-pane">
-				 <div class="panel panel-primary panel-border top mb35">
+				<div class="panel panel-primary panel-border top mb35">
               <div class="panel-heading">
                 <span class="panel-title">Damage Details</span>
               </div>
@@ -1052,7 +1397,7 @@
                     </div>
                     <div class="col-sm-4">
                       <p class="text-right">
-                        <input type="submit" class="btn btn-primary" value="Submit the claim">
+                        <input type="submit" name="btn_confirm" class="btn btn-primary" value="Submit the claim">
                       </p>
                     </div>
                   </div>
