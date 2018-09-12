@@ -86,7 +86,19 @@ class Claims extends Base {
 	    	//fill the Driver's details
 	    	if($f3->exists('POST.btn_driver'))
 	    	{
-				$this->DriverFill($f3, $params);
+				$this->driverFill($f3, $params);
+			}
+			
+			//fill the Damage details
+	    	if($f3->exists('POST.btn_damage'))
+	    	{
+				$this->damageFill($f3, $params);
+			}
+			
+			//fill the Damage details
+	    	if($f3->exists('POST.btn_upload'))
+	    	{
+				$this->uploadFill($f3, $params);
 			}
 		}
     	
@@ -125,7 +137,7 @@ class Claims extends Base {
    
    
    //Fill the filing Driver's details
-	public function DriverFill(\Base $f3, $params)
+	public function driverFill(\Base $f3, $params)
 	{	
 		if ($f3->get('VERB') == 'POST')
 		{
@@ -167,7 +179,7 @@ class Claims extends Base {
 	}
    
 	//Fill the filling Damage details
-	public function DamageFill(\Base $f3, $params)
+	public function damageFill(\Base $f3, $params)
 	{	
 		if ($f3->get('VERB') == 'POST')
 		{
@@ -177,13 +189,29 @@ class Claims extends Base {
                 // the damage doesnt exist
                 $damage->reset();
                 $damage->copyfrom('POST','claimNo','damageDesc','still_in_use','repairDate','repairPlace','otherDamages','property_owner_name','property_owner_phone','damaged_car_reg_no','injured_name','injured_phone','kin_name','relationship_type');
-                $damage->claimId 		= trim($f3->get('POST.claimNo'));
-                $damage->damageDesc 	= trim($f3->get('POST.damageDesc'));
-                //store
-                $damage->optionCategory = ''; //trim($f3->get('POST.model'));
-                $damage->otherDamages 	= ''; //trim($f3->get('POST.year_of_manufacture'));
-                $damage->ownerDetails 	= ''; //trim($f3->get('POST.policyNo'));
-                $damage->personsInured 	= ''; //trim($f3->get('POST.exp_date'));
+                
+                $damage->claimId 				= trim($f3->get('POST.claimNo'));
+                $damage->damageDesc 			= trim($f3->get('POST.damageDesc')); 
+                //store options in Json 
+                $damageoptions					= array();
+                $damageoptions['stillInUse']	= trim($f3->get('POST.still_in_use'));
+                $damageoptions['repairDate']	= trim($f3->get('POST.repairDate'));
+                $damageoptions['repairPlace']	= trim($f3->get('POST.repairPlace'));
+                $damage->optionCategory 		= json_encode($damageoptions);
+                $damage->otherDamages 			= trim($f3->get('POST.otherDamages'));
+                //store damaged owner details
+                $ownerDetails					= array();
+                $ownerDetails['pOwnerName']		= trim($f3->get('POST.property_owner_name'));
+                $ownerDetails['pOwnerPhone']	= trim($f3->get('POST.property_owner_phone'));
+                $ownerDetails['damagedCarNo']	= trim($f3->get('POST.damaged_car_reg_no'));
+                $damage->ownerDetails 			= json_encode($ownerDetails);
+                //store persons injured
+                $personsInj						= array();
+                $personsInj['injuredName']		= trim($f3->get('POST.injured_name'));
+                $personsInj['injuredPhone']		= trim($f3->get('POST.injured_phone'));
+                $personsInj['kinName']			= trim($f3->get('POST.kin_name'));
+                $personsInj['relationship']		= trim($f3->get('POST.relationship_type'));
+                $damage->personsInured 			= json_encode($personsInj);
                 $damage->save();
                 
 				\Flash::instance()->addMessage('Sucessfully inserted the Damage details','success');
@@ -195,5 +223,32 @@ class Claims extends Base {
 		       
 	}
       
+   //Fill the Upload files
+	public function uploadFill(\Base $f3, $params)
+	{	
+		if ($f3->get('VERB') == 'POST')
+		{
+			$upload = new \Model\Document();
+        	$upload->load(array('claimId = ?',$f3->get('POST.claimNo')));
+            if ($upload->dry()) {
+                // the upload doesnt exist
+                $upload->reset();
+                $upload->copyfrom('POST','claimNo','photos','licenceDoc','idDoc','video');
+                $upload->claimId 			= trim($f3->get('POST.claimNo'));
+                $upload->licence 			= trim($f3->get('POST.licenceDoc'));
+                $upload->identityDocument 	= trim($f3->get('POST.idDoc'));
+                $upload->video 				= trim($f3->get('POST.video'));
+                $upload->photo 				= trim($f3->get('POST.photos'));
+                $upload->save();
+                
+				\Flash::instance()->addMessage('Sucessfully uploaded the files','success');
+            }
+            else
+            //@todo: You can update this data or just leave it.
+             \Flash::instance()->addMessage('This upload documents are already available','danger');
+		}  
+	}
+   
+
 
 } 

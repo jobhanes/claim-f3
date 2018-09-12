@@ -59,187 +59,6 @@
                 </div>
             </div>
           </div> -->
-           <div class="panel-body bg-light">
-           		<form name="frm_damage" method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">
-                  <div class="section row hidden" id="spy1">
-                      <div class="col-md-12">
-                        <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
-                          <label for="claimNo" class="field-icon">
-                            <i class="fa fa-paperclip"></i>
-                          </label>
-                        </label>
-                      </div>
-                    </div>
-                  <div class="section" id="spy3">
-                     <label for="comment" class="field prepend-icon">
-                        <textarea class="gui-textarea" id="comment" name="damageDesc" placeholder="Describle the Damage"></textarea>
-                        <label for="comment" class="field-icon">
-                          <i class="fa fa-comments"></i>
-                        </label>
-                        <span class="input-footer">
-                          <strong>Hint!:</strong> Explain/State the damage done to the car.
-                        </span>
-                    </label>
-                  </div>
-                  <!-- end section -->
-
-                  <div class="section row">
-                    <div class="option-group field">
-                    	<div class="col-md-4">
-                          <label for="la" class="option option-primary block">
-                            <span>Is the car still in use?</span>
-                          </label>
-						</div>
-						<div class="col-md-4">
-                          <label for="yes" class="option block option-primary mt10">
-                            <input type="radio" name="still_in_use" id="yes" value="Yes">
-                            <span class="radio"></span> Yes
-                          </label>
-						</div>
-						<div class="col-md-4">
-                          <label for="no" class="option block option-primary mt10">
-                            <input type="radio" name="still_in_use" id="no" value="No">
-                            <span class="radio"></span> No
-                          </label>
-                        </div>  
-
-                    </div>
-                  </div>
-                  <div class="section row">
-                    <div class="section" id="spy3">
-	                     <!--Repair Date/time-->
-	                     <div class="col-md-6">
-		                    <label for="model" class="field prepend-icon">
-		                    <input type="text" name="repairDate" id="repairDate" class="gui-input" placeholder="Repair Date">
-		                    <label for="model icon" class="field-icon">
-		                        <i class="fa fa-calendar"></i>
-		                    </label>
-		                    </label>
-	                     </div>
-	                     
-	                     <!--Repair place-->
-	                     <div class="col-md-6">
-		                    <label for="model" class="field prepend-icon">
-		                    <input type="text" name="repairPlace" id="repairPlace" class="gui-input" placeholder="Repair Place">
-		                    <label for="model icon" class="field-icon">
-		                        <i class="fa fa-map-marker"></i>
-		                    </label>
-		                    </label>
-	                     </div>
-                  	</div>
-                  </div>
-                  <!-- end section -->
-                  <div class="section row">
-                  <div class="section" id="spy3">
-                     <label for="otherDamages" class="field prepend-icon">
-                        <textarea class="gui-textarea" id="otherDamages" name="otherDamages" placeholder="Other Vehicle and /or Property Damaged?"></textarea>
-                        <label for="otherDamages" class="field-icon">
-                          <i class="fa fa-comments"></i>
-                        </label>
-                        <span class="input-footer">
-                          <strong>Hint!:</strong> Other damage(s) .
-                        </span>
-                     </label>
-                  </div>
-                  </div>
-                  <!-- Property details-->
-                  <div class="section-divider mv40">
-                      <span> Property Details </span>
-                  </div>
-                    <!-- .section-divider -->
-                  <div class="section row">
-                    <!--Property Owner name -->
-                    <div class="col-md-6">
-                      <label for="make" class="field prepend-icon">
-                        <input type="text" name="property_owner_name" id="property_owner_name" class="gui-input" placeholder="Owner's Full Name">
-                        <label for="make icon" class="field-icon">
-                          <i class="fa fa-male"></i>
-                        </label>
-                      </label>
-                    </div>
-                    
-                    <!-- Phone Number -->
-                    <div class="col-md-6">
-                      <label for="model" class="field prepend-icon">
-                        <input type="text" name="property_owner_phone" id="property_owner_phone" class="gui-input" placeholder="Phone Number">
-                        <label for="model icon" class="field-icon">
-                          <i class="fa fa-phone"></i>
-                        </label>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="section row">
-                    <!-- Car Registration Number -->
-                    <div class="col-md-12">
-                      <label for="make" class="field prepend-icon">
-                        <input type="text" name="damaged_car_reg_no" id="damaged_car_reg_no" class="gui-input" placeholder="Damaged Car Registration Number">
-                        <label for="make icon" class="field-icon">
-                          <i class="fa fa-car"></i>
-                        </label>
-                      </label>
-                    </div>
-                    </div>
-                    
-                    <!-- Person Injured -->
-                  <div class="section-divider mv40">
-                    <span> Person Injured Details </span>
-                  </div>
-                  <div class="section row">
-                    <!-- Injured Person name -->
-                    <div class="col-md-6">
-                      <label for="person_name" class="field prepend-icon">
-                        <input type="text" name="person_name" id="injured_name" class="gui-input" placeholder="Injured Person Full Name">
-                        <label for="make icon" class="field-icon">
-                          <i class="fa fa-male"></i>
-                        </label>
-                      </label>
-                    </div>
-                    
-                    <!--Injured Phone Number -->
-                    <div class="col-md-6">
-                      <label for="model" class="field prepend-icon">
-                        <input type="text" name="injured_phone" id="injured_phone" class="gui-input" placeholder="Injured Person's Phone Number">
-                        <label for="model icon" class="field-icon">
-                          <i class="fa fa-phone"></i>
-                        </label>
-                      </label>
-                    </div>
-                  </div>
-                  
-                  <!-- Relationship With the injured person-->
-	               <div class="section row">
-	                <!--Relationship Person name -->
-	                <div class="col-md-6">
-	                  <label for="person_name" class="field prepend-icon">
-	                    <input type="text" name="kin_name" id="kin_name" class="gui-input" placeholder="Next of Kin Full Name">
-	                    <label for="make icon" class="field-icon">
-	                      <i class="fa fa-male"></i>
-	                    </label>
-	                  </label>
-	                </div>
-	                
-	                <!--Relationship Type -->
-	                <div class="col-md-6">
-                      <label class="field select">
-	                    <select id="relationship_type" name="relationship_type">
-	                      <option value="">Relatioship Type</option>
-	                      <option value="Father_Mother">Father/Mother</option>
-	                      <option value="Brother_Sister">Brother/Sister</option>
-	                      <option value="Auncle_Aunt">Auncle/Aunt</option>
-	                      <option value="Guardian">Guardian</option>
-	                      <option value="Other">Other</option>
-	                    </select>
-                    	<i class="arrow double"></i>
-                  		</label>
-                    </div>    
-	              </div>
-	              <div class="col-md-12">
-                	<input name="btn_damage" class="btn btn-primary" type="submit" value="Submit Damage"/>
-                  </div>
-	              </form>
-                  </div>
-                  
 
           <!-- Form Wizard -->
           <div class="admin-form">
@@ -909,35 +728,73 @@
                 <h4 class="wizard-section-title">
                   <i class="fa fa-cloud-upload pr5"></i> Uploads</h4>
                 <section class="wizard-section">
-				<div class="panel-body bg-light">
+        		<div class="panel-body bg-light">
+        		<!--<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}"> -->
 				<!-- Upload's Details-->
 				<div class="section-divider mv40">
                     <span> Uploads </span>
                 </div>
-                <div class="section">
-                  <label for="file1" class="field file">
-                    <span class="button btn-primary"> Choose File </span>
-                    <input type="file" class="gui-file" name="police_report" id="file1" onChange="document.getElementById('uploader1').value = this.value;">
-                    <input type="text" class="gui-input" id="uploader1" placeholder="Police Report" readonly>
-                  </label>
+                <div class="section row hidden" id="spy1">
+                    <div class="col-md-12">
+                        <label for="Claim Number" class="field prepend-icon">
+                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
+                          <label for="firstname" class="field-icon">
+                            <i class="fa fa-paperclip"></i>
+                          </label>
+                        </label>
+                    </div>
                 </div>
-                  <!-- end section -->
-
-                <div class="section">
-                 <div class="row">
-                    <div class="col-xs-12 col-sm-8 pl30">
-		              <div class="tray-bin pl10 mb10" style="min-height: 250px;">
+                
+                <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Driving Licence </label>
+                    <div class="col-md-9">
+                      <label for="file1" class="field file">
+	                    <span class="button btn-primary"> Choose File </span>
+	                    <input type="file" class="gui-file" name="licenceDoc" id="file1" onChange="document.getElementById('uploader1').value = this.value;">
+	                    <input type="text" class="gui-input" id="uploader1" placeholder="Driving Licence" readonly>
+                  	</label>
+                    </div>
+                </div>
+                
+                <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Scene Photos </label>
+                    <div class="col-md-9">
+                      <div class="tray-bin pl10 mb10" style="min-height: 250px;">
 		                <h5 class="text-muted mt10 fw600 pl10">
 		                <i class="fa fa-exclamation-circle text-info fa-lg pr10"></i> Drag and Drop Pictures and other related ducuments </h5>
 		                  <div class="fallback">
-		                    <input name="file" type="file" multiple />
+		                    <input name="photos" type="file" multiple />
 		                  </div>
 		              </div>
-            		</div>
-                  </div>
-                  <!-- end section -->
+                    </div>
+                </div>
+                <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Identity Document </label>
+                    <div class="col-md-9">
+                      <label for="file3" class="field file">
+	                    <span class="button btn-primary"> Choose File </span>
+	                    <input type="file" class="gui-file" name="idDoc" id="file3" onChange="document.getElementById('uploader1').value = this.value;">
+	                    <input type="text" class="gui-input" id="uploader1" placeholder="Identity Document" readonly>
+                  	</label>
+                    </div>
+                </div>
+                <div class="section row mb10">
+                    <label for="store-desc" class="field-label col-md-3 text-center">Video </label>
+                    <div class="col-md-9">
+                      <label for="file4" class="field file">
+	                    <span class="button btn-primary"> Choose File </span>
+	                    <input type="file" class="gui-file" name="video" id="file4" onChange="document.getElementById('uploader1').value = this.value;">
+	                    <input type="text" class="gui-input" id="uploader1" placeholder="Video" readonly>
+                  	</label>
+                    </div>
+                </div>
+                
+				<div class="col-md-12">
+                	<input name="btn_upload" class="btn btn-primary" type="submit" value="upload"/>
+                </div>
+                <!--</form>-->
 				</div>
-				</div>
+				
                 </section>
 				
 				<!--Wizard step 6 -->
