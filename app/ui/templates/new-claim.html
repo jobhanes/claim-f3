@@ -284,7 +284,6 @@
                     <span> Owner's Details </span>
                 </div>
                	<div class="section row">
-               	
                 <!-- Owner Name -->
                   <div class="col-md-6">
                     <label for="name" class="field prepend-icon">
@@ -301,6 +300,28 @@
                       <input type="email" name="ownerEmail" id="ownerEmail" class="gui-input" placeholder="Email Address">
                       <label for="email" class="field-icon">
                         <i class="fa fa-keyboard-o"></i>
+                      </label>
+                    </label>
+                  </div>
+
+                </div>
+                <div class="section row">
+                <!-- Owner Name -->
+                  <div class="col-md-6">
+                    <label for="name" class="field prepend-icon">
+                        <input type="text" name="idNumber" id="idNumber" class="gui-input" placeholder="Id Number">
+                        <label for="Name icon" class="field-icon">
+                          <i class="fa fa-credit-card"></i>
+                        </label>
+                      </label>
+                  </div>
+                  
+                  <!-- Email -->
+                  <div class="col-md-6">
+                    <label for="email" class="field prepend-icon" title="Expiry Date">
+                      <input type="text" name="address" id="address" class="gui-input" placeholder="Physical Location">
+                      <label for="email" class="field-icon">
+                        <i class="fa fa-map-marker"></i>
                       </label>
                     </label>
                   </div>
@@ -378,7 +399,7 @@
               		<label class="field select">
 	                    <select id="theft_type" onchange="javascript:stolen();" name="theft_type">
 	                      <option value="">Theft type</option>
-	                      <option value="Part">Parts</option>
+	                      <option value="Parts">Parts</option>
 	                      <option value="Whole">Wholesum</option>
 	                    </select>
                     	<i class="arrow double"></i>

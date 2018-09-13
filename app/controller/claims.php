@@ -75,6 +75,11 @@ class Claims extends Base {
     	$this->response->bottomscripts('templates/includes/forms-bottom-scripts.html');
     	//$this->response->otherbottomscripts('templates/includes/forms-validation-script.html');
     	
+    	//$damage = new \Model\Insurance();
+    	//$damage->load();
+    	//print_r ($damage->last()->_id);
+    	//exit();
+    	
     	if ($f3->get('VERB') == 'POST')
     	{
 			//fill the car details
@@ -107,11 +112,34 @@ class Claims extends Base {
 				$this->IncidenceFill($f3, $params);
 				
 			}
+			if($f3->exists('POST.btn_vehicle')&&$f3->exists('POST.btn_driver')&&$f3->exists('POST.btn_damage')&&$f3->exists('POST.btn_upload')&&$f3->exists('POST.btn_incidence'))
+			{
+				$this->claimFill($f3, $params);
+			}
 		}
     	
 		//$f3->reroute('/auth/register'); 
     	$f3->set('page',$data);
         $this->response;
+	}
+	
+	//Claim
+	public function claimFill(\Base $f3, $params)
+	{
+		//file
+		if ($f3->get('VERB') == 'POST')
+		{ 
+			$claim = new \Model\Claim();
+			$claim->insuranceId 	= $f3->get('SESSION.insurance');
+            $claim->userId 			= $f3->get('SESSION.user_id');
+            $claim->claimTypeId 	= $f3->get('SESSION.claimTypeId');
+            $claim->vehicleId 		= $f3->get('SESSION.vehicleId');
+            $claim->ownerId 		= $f3->get('SESSION.ownerId');
+            $claim->stageId 		= '1';
+            $claim->action 			= 'Pending';
+            $claim->save();
+			
+		}
 	}
 	
 	//Fill the filing vehicle details
@@ -127,16 +155,37 @@ class Claims extends Base {
                 $vehicle->copyfrom('POST','registrationNo','policyNo','exp_date','make','model','color','year_of_manufacture','claim_type','ownerName','ownerEmail','claimNo','insurance');
                 $vehicle->registrationNo 	= trim($f3->get('POST.registrationNo'));
                 //set vehicle sessions 
-                //$f3->set('SESSION.user_id',$user->id);
-                $vehicle->registrationNo 	= trim($f3->get('POST.insurance'));
+ 				$f3->set('SESSION.insurance',trim($f3->get('POST.insurance')));
+ 				$f3->set('SESSION.claimNo',trim($f3->get('POST.claimNo')));
                 $vehicle->make 				= trim($f3->get('POST.make'));
                 $vehicle->model 			= trim($f3->get('POST.model'));
                 $vehicle->yearOfManufacture = trim($f3->get('POST.year_of_manufacture'));
                 $vehicle->policyNo 			= trim($f3->get('POST.policyNo'));
                 $vehicle->expiryDate 		= trim($f3->get('POST.exp_date'));
                 $vehicle->save();
+                //store the inserted id
+                $vehicle->load();
+                $f3->set('SESSION.vehicleId',$vehicle->last()->_id);
                 
-				\Flash::instance()->addMessage('Sucessfully inserted the vehicle details','success');
+                //owner details
+                $owner = new \Model\Owner();
+                $owner->load(array('emailAddress = ?',$f3->get('POST.ownerEmail')));
+                if($owner->dry())
+                {
+					$owner->reset();
+					$owner->fullName 		= trim($f3->get('POST.ownerName'));
+                	$owner->emailAddress 	= trim($f3->get('POST.ownerEmail'));
+                	$owner->idNumber 		= trim($f3->get('POST.idNumber'));
+                	$owner->physicalAddress = trim($f3->get('POST.address'));
+                	$owner->save();
+                	
+                	//store the inserted id
+                	$owner->load();
+                	$f3->set('SESSION.ownerId',$owner->last()->_id);
+				}
+                
+                
+				//\Flash::instance()->addMessage('Sucessfully inserted the vehicle details','success');
             }
             else
             //@todo: You can update this data or just leave it.
@@ -179,7 +228,7 @@ class Claims extends Base {
 				
                 $driver->save();
                 
-				\Flash::instance()->addMessage('Sucessfully inserted the Driver\'s details','success');
+				//\Flash::instance()->addMessage('Sucessfully inserted the Driver\'s details','success');
             }
             else
             //@todo: You can update this data or just leave it.
@@ -224,7 +273,7 @@ class Claims extends Base {
                 $damage->personsInured 			= json_encode($personsInj);
                 $damage->save();
                 
-				\Flash::instance()->addMessage('Sucessfully inserted the Damage details','success');
+				//\Flash::instance()->addMessage('Sucessfully inserted the Damage details','success');
             }
             else
             //@todo: You can update this data or just leave it.
@@ -251,7 +300,7 @@ class Claims extends Base {
                 $upload->photo 				= trim($f3->get('POST.photos'));
                 $upload->save();
                 
-				\Flash::instance()->addMessage('Sucessfully uploaded the files','success');
+				//\Flash::instance()->addMessage('Sucessfully uploaded the files','success');
             }
             else
             //@todo: You can update this data or just leave it.
@@ -278,6 +327,8 @@ class Claims extends Base {
                 $incidence->description 		= trim($f3->get('POST.incidence_desc'));
                 $incidence->reported 			= trim($f3->get('POST.incidence_reported'));
                 $incidence->claimtypeId 		= trim($f3->get('POST.claimTypeId'));
+                //store session
+                $f3->set('SESSION.claimTypeId',trim($f3->get('POST.claimTypeId')));
                 $incidence->save();
                 
                 //check the claimType selected
@@ -312,7 +363,7 @@ class Claims extends Base {
 					}
 				}
                 
-				\Flash::instance()->addMessage('Sucessfully saved the Incidence details','success');
+				//\Flash::instance()->addMessage('Sucessfully saved the Incidence details','success');
             }
             else
             //@todo: You can update this data or just leave it.
