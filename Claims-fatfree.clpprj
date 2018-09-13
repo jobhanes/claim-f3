@@ -8,11 +8,23 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\claims.php"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\model\stage.php"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\model\claim.php"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\new-claim.hrml"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\admin_layout.html"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\claim-content.html"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\new-claim.html"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\model\vehicle.php"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\templates\register.html"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\forms-bottom-scripts.html"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\model\driver.php"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\model\damage.php"/>
 	</lastopfiles>
 	<todoblock>
 		<todofile name="C:\xampp\htdocs\claims-fab\app\controller\auth.php">
-			<todo name="@todo: Send a confirmation Email" pos="17;108"/>
+			<todo name="@todo: Send a confirmation Email" pos="18;108"/>
+		</todofile>
+		<todofile name="C:\xampp\htdocs\claims-fab\app\controller\claims.php">
+			<todo name="@todo: You can update this data or just leave it." pos="13;119"/>
+			<todo name="@todo: You can update this data or just leave it." pos="13;162"/>
+			<todo name="@todo: You can update this data or just leave it." pos="13;191"/>
 		</todofile>
 		<todofile name="C:\xampp\htdocs\claims-fab\app\inc\template\tags\image.php">
 			<todo name="TODO: file ext" pos="3;72"/>
@@ -1558,6 +1570,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\theme.1519o.min.css" crc="1536054153"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\tagmanager.38a6w.min.js" crc="1536051547"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\tagmanager.1gufp.min.css" crc="1536051489"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\limstegccv4g.js" crc="1536234768"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\jquery.dataTables.244ex.min.js" crc="1536062366"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\jquery.1et0y.min.js" crc="1536051547"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\datepicker.1o5yx.min.css" crc="1536051489"/>
@@ -1565,12 +1578,20 @@
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\dataTables.bootstrap.8p8lu.min.css" crc="1536150578"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\dataTables.bootstrap.3tene.min.js" crc="1536062366"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\bootstrap-datepicker.dmeux.min.js" crc="1536051547"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\blgr0si5kfks.css" crc="1536670567"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\backend.3416p.min.css" crc="1536051489"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\app.2lbyh.min.js" crc="1536051547"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\3nr3yphjwdgkk.css" crc="1536054153"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\3md2swen3zswg.js" crc="1536242285"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\39wy81k7iha8g.js" crc="1536062366"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\2y9q5hdw16qsw.js" crc="1536225117"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\2tlw14b9vq4gk.js" crc="1536242014"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\2jhek68k384k4.js" crc="1536572079"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\2gffk2xcam80k.css" crc="1536151490"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\2e1yko8vpjb4k.js" crc="1536051547"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\23cu6ldotgbo4.js" crc="1536233400"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\1nwxia1t5ou8.css" crc="1536219796"/>
+		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\1g0u448pdnfo4.js" crc="1536220036"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\1fu1pcgame9wo.js" crc="1536135750"/>
 		<file name="C:\xampp\htdocs\claims-fab\ui\compressed\1ayvebf1thy8g.css" crc="1536150578"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\cache\3ft212rl0ask8.dmeuxc2e2vww.js" crc="1536051547"/>
@@ -1584,6 +1605,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\tmp\cache\3ft212rl0ask8.1o5yxtdo8pog0.css" crc="1536051489"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\cache\3ft212rl0ask8.1gufpenx8pokk.css" crc="1536051489"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\cache\3ft212rl0ask8.1et0yku61esgg.js" crc="1536051547"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.ygp85qk8pn4c.php" crc="1536303736"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.xw6yd8f8ttcs.php" crc="1536141164"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.v3ajrpnl7lco.php" crc="1536135750"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.udvanvuqay8s.php" crc="1535360481"/>
@@ -1605,6 +1627,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.30r3oumsa7i8s.php" crc="1536137990"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2y1brd2u5p44w.php" crc="1536150578"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2u0pr1pvhyio0.php" crc="1536057570"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2shol3bq9xyc0.php" crc="1536219796"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2sdzq6yt56m84.php" crc="1536054237"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2f2axshb76tcc.php" crc="1536149999"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.2bj1rcidb5z40.php" crc="1535443527"/>
@@ -1612,12 +1635,34 @@
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.27zf7datv0w0c.php" crc="1536150492"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.262xw26zeglcs.php" crc="1535356017"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.245lf294fytc0.php" crc="1536072263"/>
-		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1omf3pf47dokk.php" crc="1536152894"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1yi78hxzy0kkw.php" crc="1536220036"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1omf3pf47dokk.php" crc="1536748698"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1o8xpq0ywpfoo.php" crc="1536159850"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1izj1zn871vog.php" crc="1536133912"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1fdxxhjfw15w4.php" crc="1536137990"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1cgnd6duf95w0.php" crc="1536150492"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.1bir19ept7q8c.php" crc="1536765889"/>
 		<file name="C:\xampp\htdocs\claims-fab\tmp\3ft212rl0ask8.19j198g2r5hcs.php" crc="1535621775"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.tlyhntwniesc.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.lrwyi4l623kg.php" crc="1536303205"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.b9z8rs88qj48.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.3pmp24rvp5kw8.php" crc="1536303160"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.3n44bssoxx4w0.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.3n3s0ssxmmm8g.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.3iix85ze5ekgk.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.386o364rls4ks.php" crc="1536303160"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.37qszozbicu8s.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.2y1brd2u5p44w.php" crc="1536303205"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.2shol3bq9xyc0.php" crc="1536303249"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.2f2axshb76tcc.php" crc="1536303205"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.2afakrpiyhuso.php" crc="1536303160"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.27zf7datv0w0c.php" crc="1536303178"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.1yi78hxzy0kkw.php" crc="1536303249"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.1omf3pf47dokk.php" crc="1536303178"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.1o8xpq0ywpfoo.php" crc="1536303296"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.1cgnd6duf95w0.php" crc="1536303179"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.1bir19ept7q8c.php" crc="1536303249"/>
+		<file name="C:\xampp\htdocs\claims-fab\tmp\1mzucoh799no0.19j198g2r5hcs.php" crc="1536303165"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\verification.php" crc="1535365533"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\test.php" crc="1535620581"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\register.php" crc="1535360800"/>
@@ -1626,7 +1671,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\view\frontend.php" crc="1534495813"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\front.php" crc="1534421780"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\forgot.php" crc="1535360228"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\view\claims.php" crc="1536152619"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\view\claims.php" crc="1536235095"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\base.php" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\backend.php" crc="1536155155"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\view\all.php" crc="1536050452"/>
@@ -2800,7 +2845,11 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\tables-top-scripts.html" crc="1536150570"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\tables-bottom-scripts.html" crc="1536149921"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\sidebar.html" crc="1536157002"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\NewFile1.html" crc="1536588174"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\header.html" crc="1536151989"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\forms-validation-script.html" crc="1536242261"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\forms-top-css.html" crc="1536218459"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\forms-bottom-scripts.html" crc="1536218402"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\footer.html" crc="1536151741"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\dash-top-scripts.html" crc="1536150357"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\includes\dash-bottom-scripts.html" crc="1536149343"/>
@@ -2816,6 +2865,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\post_edit.html" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\pagebrowser.html" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\overview.html" crc="1528448744"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\new-claim.html" crc="1536766706"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\login1.html" crc="1535354766"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\login.html" crc="1535355637"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\layout.html" crc="1536057563"/>
@@ -2829,7 +2879,7 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\claim-content.html" crc="1536140629"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\alert.html" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\admin_page_layout.html" crc="1536135728"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\admin_layout.html" crc="1536152890"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\ui\templates\admin_layout.html" crc="1536748670"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\landing-page\landing1\less\mixins\mixins.less" crc="1422033646"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\landing-page\landing1\less\variables.less" crc="1422064208"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\ui\landing-page\landing1\less\timeline.less" crc="1421879530"/>
@@ -3224,10 +3274,10 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\dashboard.php" crc="1536153124"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\comment.php" crc="1528448744"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\controller\claims.php" crc="1536159598"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\controller\claims.php" crc="1536767382"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\base.php" crc="1528448744"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\backend.php" crc="1536154640"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\controller\auth.php" crc="1536156035"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\controller\auth.php" crc="1536743556"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\controller\admin_back_layout.php" crc="1536136770"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\assets\front\less\mixins\mixins.less" crc="1422033646"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\assets\front\less\variables.less" crc="1422064208"/>
@@ -3274,8 +3324,8 @@
 		<file name="C:\xampp\htdocs\claims-fab\app\assets\front\css\theme.css" crc="1427100132"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\assets\front\css\bootstrap.min.css" crc="1422030832"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\assets\front\css\bootstrap.css" crc="1422030854"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\routes_admin.ini" crc="1536157324"/>
-		<file name="C:\xampp\htdocs\claims-fab\app\routes.ini" crc="1536156055"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\routes_admin.ini" crc="1536747901"/>
+		<file name="C:\xampp\htdocs\claims-fab\app\routes.ini" crc="1536217322"/>
 		<file name="C:\xampp\htdocs\claims-fab\app\config.ini" crc="1535530708"/>
 		<file name="C:\xampp\htdocs\claims-fab\index.php" crc="1535533094"/>
 		<file name="C:\xampp\htdocs\claims-fab\.htaccess" crc="1528448744"/>

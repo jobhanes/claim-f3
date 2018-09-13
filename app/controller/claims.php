@@ -95,10 +95,17 @@ class Claims extends Base {
 				$this->damageFill($f3, $params);
 			}
 			
-			//fill the Damage details
+			//fill the upload details
 	    	if($f3->exists('POST.btn_upload'))
 	    	{
 				$this->uploadFill($f3, $params);
+			}
+			
+			//fill the Incidence details
+	    	if($f3->exists('POST.btn_incidence'))
+	    	{
+				$this->IncidenceFill($f3, $params);
+				
 			}
 		}
     	
@@ -117,8 +124,11 @@ class Claims extends Base {
             if ($vehicle->dry()) {
                 // the car doesnt exist
                 $vehicle->reset();
-                $vehicle->copyfrom('POST','registrationNo','policyNo','exp_date','make','model','color','year_of_manufacture','claim_type','ownerName','ownerEmail','claimNo');
+                $vehicle->copyfrom('POST','registrationNo','policyNo','exp_date','make','model','color','year_of_manufacture','claim_type','ownerName','ownerEmail','claimNo','insurance');
                 $vehicle->registrationNo 	= trim($f3->get('POST.registrationNo'));
+                //set vehicle sessions 
+                //$f3->set('SESSION.user_id',$user->id);
+                $vehicle->registrationNo 	= trim($f3->get('POST.insurance'));
                 $vehicle->make 				= trim($f3->get('POST.make'));
                 $vehicle->model 			= trim($f3->get('POST.model'));
                 $vehicle->yearOfManufacture = trim($f3->get('POST.year_of_manufacture'));
@@ -248,7 +258,68 @@ class Claims extends Base {
              \Flash::instance()->addMessage('This upload documents are already available','danger');
 		}  
 	}
-   
+	
+	//Incidence Filling 
+      //Fill the Upload files
+	public function IncidenceFill(\Base $f3, $params)
+	{	
+		if ($f3->get('VERB') == 'POST')
+		{
+			$incidence = new \Model\Incidence();
+        	$incidence->load(array('claimId = ?',$f3->get('POST.claimNo')));
+            if ($incidence->dry()) {
+                // the Incidence doesnt exist
+                $incidence->reset();
+                $incidence->copyfrom('POST','claimNo','incidence_date','incidence_time','claimTypeId','incidence_location','incidence_desc','incidence_reported');
+                $incidence->claimId 			= trim($f3->get('POST.claimNo'));
+                $incidence->date 				= trim($f3->get('POST.incidence_date'));
+                $incidence->time 				= trim($f3->get('POST.incidence_time'));
+                $incidence->location 			= trim($f3->get('POST.incidence_location'));
+                $incidence->description 		= trim($f3->get('POST.incidence_desc'));
+                $incidence->reported 			= trim($f3->get('POST.incidence_reported'));
+                $incidence->claimtypeId 		= trim($f3->get('POST.claimTypeId'));
+                $incidence->save();
+                
+                //check the claimType selected
+                //if accident
+                if($f3->get('POST.claimTypeId')==1){
+					$accident = new \Model\Accident();
+        			$accident->load(array('claimId = ?',$f3->get('POST.claimNo')));
+	        		if ($accident->dry()) {
+	        			$accident->reset();
+	        			$accident->copyfrom('POST','accident_speed','weather');
+	        			$accident->claimId 			= trim($f3->get('POST.claimNo'));
+	        			//$accident->driving 			= trim($f3->get('POST.accident_driver'));
+	        			$accident->speed 			= trim($f3->get('POST.accident_speed'));
+	                	$accident->weather 			= trim($f3->get('POST.weather'));
+	                	$accident->save();
+	                	
+					}
+				}
+                 
+                 //if Theft
+                 if($f3->get('POST.claimTypeId')==2){
+					$theft = new \Model\Theft();
+        			$theft->load(array('claimId = ?',$f3->get('POST.claimNo')));
+	        		if ($theft->dry()) {
+	        			$theft->reset();
+	        			$theft->copyfrom('POST','theft_type','stolen_parts');
+	        			$theft->claimId 			= trim($f3->get('POST.claimNo'));
+	        			$theft->category 			= trim($f3->get('POST.theft_type'));
+	                	$theft->parts 				= trim($f3->get('POST.stolen_parts'));
+	                	$theft->save();
+	                	
+					}
+				}
+                
+				\Flash::instance()->addMessage('Sucessfully saved the Incidence details','success');
+            }
+            else
+            //@todo: You can update this data or just leave it.
+             \Flash::instance()->addMessage('This incidence details are already available','danger');
+		}  
+	}
+	
 
 
 } 

@@ -15,7 +15,61 @@
         </div> -->
 
         <div class="mw1000 center-block">
+		<script type="text/javascript">
+				function incidenceOption() {
+					//accident
+				    if(document.getElementById('accident').checked) {
+				        document.getElementById('accident_options').style.display = 'block';
+				        //var accident = document.getElementById("accident").value;
+			    		document.getElementById("claimTypeId").value = 1;//accident;
+				    }
+				    else {
+				    		document.getElementById('accident_options').style.display = 'none';
+				    	}
+				    
+				    //Theft
+				    if(document.getElementById('theft').checked) {
+				        document.getElementById('option_theft').style.display = 'block';
+				        //var theft = document.getElementById("theft").value;
+			    		document.getElementById("claimTypeId").value = 2;//theft;
+				    }
+				    else {
+				    		document.getElementById('option_theft').style.display = 'none';
+				    	}
+			    	
+			    	//riots
+				    if(document.getElementById('riots').checked) {
+			    	//var riots = document.getElementById("riots").value;
+			    	document.getElementById("claimTypeId").value = 3;//riots;
+				        
+				    }
+				    
+				    //Acts
+				    if(document.getElementById('acts').checked) {
+				        //var acts = document.getElementById("acts").value;
+			    		document.getElementById("claimTypeId").value = 4;//acts;
+				    }
+				    
+				    //screen
+				    if(document.getElementById('screen').checked) {
+				        //var screen = document.getElementById("screen").value;
+			    		document.getElementById("claimTypeId").value = 5;//screen;
+				    }
+			    			   
+					}
+			  function stolen()
+			  {
+			  	var e 			= document.getElementById("theft_type");
+				var selected	= e.options[e.selectedIndex].value;
+				
+			  	if(selected=='Parts') {
+			  		//display the next
+			  		document.getElementById('stolen_parts').style.display='block'
+			  	}
+			  	else document.getElementById('stolen_parts').style.display = 'none';
+			  }
 
+		</script>
           <!-- Wizard Menubar -->
          <!-- <div class="panel">
             <div class="panel-body text-center">
@@ -59,11 +113,11 @@
                 </div>
             </div>
           </div> -->
-
+	
           <!-- Form Wizard -->
           <div class="admin-form">
 
-            <form method="post" action="/" id="form-wizard">
+            <form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}" id="form-wizard" >
               <div class="wizard steps-bg steps-lefts">
                 <!-- Claim step 1 -->
                 <h4 class="wizard-section-title">
@@ -71,46 +125,59 @@
                 <section class="wizard-section">
             	<!-- Vehicle Details -->
 				<div class="panel heading-border">
-
-				<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">
                   <div class="panel-body bg-light">
 
                     <div class="section-divider mt20 mb40">
                       <span> Vehicle Details </span>
                     </div>
                     <!-- .section-divider -->
-
+					<!--Hidden vehicle details-->
+					<!--<input type="hidden" name="ClaimNo" id="claimNo" />-->
                     <div class="section row" id="spy1">
                       <div class="col-md-12">
                         <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
+                        <input class="gui-input" name="btn_vehicle" id="btn_vehicle" type="hidden" value="0" readonly>
+                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="{{rand(1,100)}}" readonly>
                           <label for="firstname" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
                         </label>
                       </div>
-                      </div>
+                    </div>
                       
-                      <!-- Registration Number -->
-                      <div class="section">
+                    <!-- Registration Number -->
+                    <div class="section row">
+                    <div class="col-md-6">
                         <label for="RegNo" class="field prepend-icon">
-                          <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number" required>
+                          <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number" >
                           <label for="RegNo" class="field-icon">
                             <i class="fa fa-car"></i>
                           </label>
                         </label>
-                      </div>
+                        </div>
+                        <div class="col-md-6">
+	                      <label class="field select">
+		                    <select id="insurance" name="insurance">
+		                      <option value="">Insurance Company</option>
+		                      <option value="1">Intra Insurance</option>
+		                      <option value="2">Jubilee Insurance </option>
+		                      <option value="3">Next Insurance</option>
+		                      <option value="4">CIC Insurance</option>
+		                    </select>
+	                    	<i class="arrow double"></i>
+	                  		</label>
+                    </div>   
+                    </div>
                                      
 				<!-- Policy Number -->
                	<div class="section row">
-
                   <div class="col-md-6">
                     <label for="policy number" class="field prepend-icon">
                         <input type="text" name="policyNo" id="policyNo" class="gui-input" placeholder="Policy Number">
                         <label for="policy number icon" class="field-icon">
                           <i class="fa fa-file-text-o"></i>
                         </label>
-                      </label>
+                    </label>
                   </div>
                   
                   <!-- Expiry Date -->
@@ -178,31 +245,31 @@
                 <div class="section row">  
                     <div class="option-group field">
                     	<div class="col-md-4">
-                          <label for="female" class="option option-primary block">
-                            <input type="radio" name="claim_type" id="female" value="Accident">
+                          <label for="accident" class="option option-primary block">
+                            <input type="radio" onclick="javascript:incidenceOption();" name="claim_type" id="accident" value="Accident">
                             <span class="radio"></span> Accident
                           </label>
 						</div>
 						<div class="col-md-4">
-                          <label for="male" class="option block option-primary mt10">
-                            <input type="radio" name="claim_type" id="male" value="Theft">
+                          <label for="theft" class="option block option-primary mt10">
+                            <input type="radio" onclick="javascript:incidenceOption();" name="claim_type" id="theft" value="Theft">
                             <span class="radio"></span> Theft
                           </label>
 						</div> 
                         <div class="col-md-4">
-                          <label for="other" class="option block option-primary mt10">
-                            <input type="radio" name="claim_type" id="other" value="Riots">
+                          <label for="riots" class="option block option-primary mt10">
+                            <input type="radio" onclick="javascript:incidenceOption();" name="claim_type" id="riots" value="Riots">
                             <span class="radio"></span> Riots/Civil servants Commotion
                           </label>
                         </div>
                         <div class="col-md-4">
-                          <label for="acts" class="option block option-primary mt10">
+                          <label for="acts" onclick="javascript:incidenceOption();" class="option block option-primary mt10">
                             <input type="radio" name="claim_type" id="acts" value="Acts_of_God">
                             <span class="radio"></span> Act of God
                           </label>
                         </div>
                         <div class="col-md-4">
-                          <label for="screen" class="option block option-primary mt10">
+                          <label for="screen" onclick="javascript:incidenceOption();" class="option block option-primary mt10">
                             <input type="radio" name="claim_type" id="screen" value="wind_screen">
                             <span class="radio"></span> Wind Screen
                           </label>
@@ -239,34 +306,16 @@
                   </div>
 
                 </div>
-                <div class="col-md-12">
-                	<input name="btn_vehicle" class="btn btn-primary" type="submit" value="Submit Vehicle"/>
-                	
-                </div>
-                
             </div>
-            	</form>
-				
-				
-                  <!-- end .form-body section -->
-                  <!--<div class="panel-footer text-right">
-                    <button type="submit" class="button btn-primary"> Validate Form </button>
-                    <button type="reset" class="button"> Cancel </button>
-                  </div> -->
-                  <!-- end .form-footer section -->
-
-
-
 				</div>
             	<!-- end: .vehicle-form -->
-
                 </section>
-
                 <!-- Claim step 2 -->
                 <h4 class="wizard-section-title">
                   <i class="fa fa-ambulance pr5"></i> Incidence Details</h4>
                 <section class="wizard-section">
-				  <div class="panel heading-border">
+				<div class="panel heading-border">
+	<!--<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">-->
 				   <div class="panel-body bg-light">
 				  <!-- If Accident type if WINDSCREEN-->
                     	<div class="section-divider mt20 mb40">
@@ -274,41 +323,47 @@
                     	</div>
                     <!-- .section-divider -->
 					<div class="section row hidden" id="spy1">
-	                    <div class="alert alert-micro alert-border-left alert-success alert-dismissable">
-						  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-						  <i class="fa fa-check pr10"></i>
-						  <strong>It is well!</strong> You have nothing to fill here for the WINDSCREEN.
-						  <b class="alert-link">Please proceed to the next step</b>.
-						</div>
+	                    <input class="gui-input" name="btn_incidence" id="btn_incidence" type="hidden" value="0" readonly>
                     </div> 
-                    <!--General top-->   
+                    <!--General top-->  
+                    <div class="section row" id="spy1">
+                      <!--Claim Type-->
+                      <div class="col-md-12 hidden">
+                        <label for="claimTypeId" class="field prepend-icon">
+                          <input class="gui-input" name="claimTypeId" id="claimTypeId" type="number" readonly>
+                          <label for="ClaimTypeId" class="field-icon">
+                            <i class="fa fa-paperclip"></i>
+                          </label>
+                        </label>
+                      </div>
+                      </div> 
                     <div class="section row">
                     <!-- Date -->
-                    <div class="col-md-6">
-                      <label for="make" class="field prepend-icon">
-                        <input type="text" name="incidence_date" id="Make" class="gui-input" placeholder="Date of Incidence">
-                        <label for="make icon" class="field-icon">
-                          <i class="fa fa-calendar"></i>
-                        </label>
-                      </label>
-                    </div>
-                    
-                    <!-- time -->
-                    <div class="col-md-6">
-                      <label for="model" class="field prepend-icon">
-                        <input type="text" name="incidence_time" id="Make" class="gui-input" placeholder="time of Incidence">
-                        <label for="model icon" class="field-icon">
-                          <i class="fa fa-clock-o"></i>
-                        </label>
-                      </label>
-                    </div>
-                </div>
+	                    <div class="col-md-6">
+	                      <label for="make" class="field prepend-icon">
+	                        <input type="text" name="incidence_date" id="Make" class="gui-input" placeholder="Date of Incidence">
+	                        <label for="make icon" class="field-icon">
+	                          <i class="fa fa-calendar"></i>
+	                        </label>
+	                      </label>
+	                    </div>
+	                    
+	                    <!-- time -->
+	                    <div class="col-md-6">
+	                      <label for="model" class="field prepend-icon">
+	                        <input type="text" name="incidence_time" id="Make" class="gui-input" placeholder="time of Incidence">
+	                        <label for="model icon" class="field-icon">
+	                          <i class="fa fa-clock-o"></i>
+	                        </label>
+	                      </label>
+	                    </div>
+                	</div>
                 <!-- Location -->
 	            <div class="section row">
 	              <div class="col-md-12">
-	                <label for="RegNo" class="field prepend-icon">
-	                  <input type="text" name="incidence_location" id="RegNo" class="gui-input" placeholder="Location of the Incidence">
-	                  <label for="RegNo" class="field-icon">
+	                <label for="incidence_location" class="field prepend-icon">
+	                  <input type="text" name="incidence_location" id="incidence_location" class="gui-input" placeholder="Location of the Incidence">
+	                  <label for="incidence_location" class="field-icon">
 	                    <i class="fa fa-map-marker"></i>
 	                  </label>
 	                </label>
@@ -317,12 +372,13 @@
               <!-- end IF -->
               
               <!-- IF Theft -->
-              	<div class="section row hidden">
+              <div id="option_theft" style="display: none">
+              	<div class="section row">
               	  <div class="col-md-12">
               		<label class="field select">
-	                    <select id="theft_type" name="theft_type">
+	                    <select id="theft_type" onchange="javascript:stolen();" name="theft_type">
 	                      <option value="">Theft type</option>
-	                      <option value="Parts">Parts</option>
+	                      <option value="Part">Parts</option>
 	                      <option value="Whole">Wholesum</option>
 	                    </select>
                     	<i class="arrow double"></i>
@@ -330,21 +386,23 @@
                   </div>
               	</div>
               	<!-- IF Parts-->
-              	<div class="section row hidden">
+              	<div class="section row" style="display:none" id="stolen_parts">
               	 <div class="col-md-12">
                      <label for="comment" class="field prepend-icon">
-                        <textarea class="gui-textarea" id="comment" name="stollen_parts" placeholder="Describe the the stollen parts"></textarea>
+                        <textarea class="gui-textarea" id="comment" name="stolen_parts" placeholder="Describe the the stolen parts"></textarea>
                         <label for="comment" class="field-icon">
                           <i class="fa fa-comments"></i>
                         </label>
                         <span class="input-footer">
-                          <strong>Hint!:</strong> State the stollen parts.
+                          <strong>Hint!:</strong> State the stolen parts.
                         </span>
                     </label>
                     </div>
                 </div>
+                </div>
                 
               <!-- IF Accident-->
+              <div id="accident_options" style="display:none">
               	<div class="section row">
               		<div class="col-md-6">
 	              	 	<label class="field select">
@@ -370,22 +428,23 @@
               	<div class="section row">    
               	<div class="col-md-12">
                       <label for="model" class="field prepend-icon">
-                        <input type="text" name="accident_speed" id="speed" class="gui-input" placeholder="Weather Condition">
+                        <input type="text" name="weather" id="weather" class="gui-input" placeholder="Weather Condition">
                         <label for="model icon" class="field-icon">
                           <i class="fa fa-sun-o"></i>
                         </label>
                       </label>
                     </div>
                 </div>
+				</div>
 
 			  <!--Scenarios->
 			  
 			  
               <!-- General Bottom details-->
               	<div class="section" id="spy3">
-                     <label for="comment" class="field prepend-icon">
-                        <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describe what happened"></textarea>
-                        <label for="comment" class="field-icon">
+                     <label for="incidence_desc" class="field prepend-icon">
+                        <textarea class="gui-textarea" id="incidence_desc" name="incidence_desc" placeholder="Describe what happened"></textarea>
+                        <label for="incidence_desc" class="field-icon">
                           <i class="fa fa-comments"></i>
                         </label>
                         <span class="input-footer">
@@ -405,17 +464,18 @@
                     <!-- reported?-->
                     <div class="col-md-6">
                        <div class="radio-custom radio-primary mb5">
-						  <input type="radio" id="radioExample4" name="reported" value="Yes">
-						  <label for="radioExample4">Yes</label>
+						  <input type="radio" id="incidence_reported_yes" name="incidence_reported" value="Y">
+						  <label for="incidence_reported_yes">Yes</label>
 						
-						  <input type="radio" id="radioExample5" name="reported" value="No">
-						  <label for="radioExample5">No</label>
+						  <input type="radio" id="incidence_reported_no" name="incidence_reported" value="N">
+						  <label for="incidence_reported_no">No</label>
 						</div>
                     </div>
                 </div>
-               </div>	 
-			</div>
-            </section>
+               </div>
+               <!--</form>-->	 
+				</div>
+	            </section>
 
                 <!-- Claim step 3 -->
                 <h4 class="wizard-section-title">
@@ -431,9 +491,9 @@
 
                     <div class="section row hidden" id="spy1">
                       <div class="col-md-12">
-                        <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
-                          <label for="claimNo" class="field-icon">
+                        <label for="btn_driver" class="field prepend-icon">
+                           <input class="gui-input" name="btn_driver" id="btn_driver" type="hidden" value="0" readonly>
+                          <label for="btn_driver" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
                         </label>
@@ -541,9 +601,6 @@
                   </div>
 
                 </div>
-                <div class="col-md-12">
-                	<input name="btn_driver" class="btn btn-primary" type="submit" value="Submit Driver"/>
-                </div>
             	</div>
 		 <!-- </form> -->
               
@@ -556,6 +613,7 @@
                 <section class="wizard-section">
 				  <div class="panel-body bg-light">
                   <div class="section" id="spy3">
+                   <input class="gui-input" name="btn_uploads" id="btn_damage" type="hidden" value="0" readonly>
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describle the Damage to the vehicle"></textarea>
                         <label for="comment" class="field-icon">
@@ -737,7 +795,7 @@
                 <div class="section row hidden" id="spy1">
                     <div class="col-md-12">
                         <label for="Claim Number" class="field prepend-icon">
-                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="1" readonly>
+                          <input class="gui-input" name="btn_upload" id="btn_uploads" type="hidden" value="0" readonly>
                           <label for="firstname" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
@@ -788,14 +846,10 @@
                   	</label>
                     </div>
                 </div>
-                
-				<div class="col-md-12">
-                	<input name="btn_upload" class="btn btn-primary" type="submit" value="upload"/>
-                </div>
                 <!--</form>-->
 				</div>
-				
                 </section>
+				
 				
 				<!--Wizard step 6 -->
                 <h4 class="wizard-section-title">
@@ -804,10 +858,10 @@
 				<!--<div class="panel heading-border"></div> -->
 				<div class="panel-body bg-light">
                   <!-- create new order panel -->
-          <div class="panel mb25 mt5">
-            <div class="panel-heading">
-              <span class="panel-title hidden-xs"> Confirm the Details</span>
-              <ul class="nav panel-tabs-border panel-tabs">
+          		<div class="panel mb25 mt5">
+            	<div class="panel-heading">
+              	<span class="panel-title hidden-xs"> Confirm the Details</span>
+              	<ul class="nav panel-tabs-border panel-tabs">
                 <li class="active">
                   <a href="#tab1_1" data-toggle="tab">Vehicle Details</a>
                 </li>
@@ -827,7 +881,7 @@
             </div>
             <div class="panel-body p20 pb10">
             <div class="tab-content pn br-n admin-form">
-            <form method="post" action="/">
+           
                 <!-- Vehicle Details -->
             	<div id="tab1_1" class="tab-pane active">
 
@@ -843,7 +897,7 @@
                     <label for="names" class="field-label col-md-3 text-center">Registration Number : </label>
                     <div class="col-md-9">
                       <label class="field prepend-icon">
-                        <input type="text" name="store-weight" id="jb_mito" class="gui-input" placeholder="Car Make" required readonly>
+                        <input type="text" name="store-weight" id="jb_mito" class="gui-input" placeholder="Car Make"  readonly>
                         <label for="store-desc" class="field-icon">
                           <i class="fa fa-car"></i>
                         </label>
@@ -974,7 +1028,7 @@
                     <label for="names" class="field-label col-md-3 text-center">First Name : </label>
                     <div class="col-md-9">
                       <label class="field prepend-icon">
-                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="First Name" required readonly>
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="First Name"  readonly>
                         <label for="store-desc" class="field-icon">
                           <i class="fa fa-male"></i>
                         </label>
@@ -1084,7 +1138,7 @@
                     <label for="names" class="field-label col-md-3 text-center">Damage Description : </label>
                     <div class="col-md-9">
                       <label class="field prepend-icon">
-                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Damage Desc" required readonly>
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Damage Desc"  readonly>
                         <label for="store-desc" class="field-icon">
                           <i class="fa fa-times"></i>
                         </label>
@@ -1259,7 +1313,7 @@
                     </div>
                   </div>
 				</div>
-				</form>
+				
               </div>
             </div>
           </div>
@@ -1270,7 +1324,9 @@
 				
 			  </div>
               <!-- End: Wizard -->
-
+			<div class="col-md-12">
+					<input type="submit" class="btn btn-warning" name="btn_sub_form" value="Submit form"/>
+				</div>
             </form>
             <!-- End Account2 Form -->
 
@@ -1281,3 +1337,4 @@
 
       </section>
       <!-- End: Content -->
+      
