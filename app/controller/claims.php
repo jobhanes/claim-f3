@@ -32,7 +32,26 @@ class Claims extends Base {
     	$data['name']	= 'Pending Claims';
     	$data['status']	= 'warning';
     	$data['icon']	= 'exclamation';
-    	$data['CONTENT']= 'templates/claim-content.html';
+    	//from the database 
+    	$claim_details 	= new \Model\Claim();
+    	//$claim_details->load();
+    	$claim_details->load();
+    	if(!$claim_details->dry())
+    	{
+			$pendingclaims = $claim_details->afind(array('action = ?','Pending'));
+			//post the data in the table 
+			//echo "<pre>";
+			//print_r($pendingclaims);
+			//echo "</pre>";
+			//foreach($pendingclaims as $item)
+			//echo $item['insuranceId']."<br>";
+			//exit();
+			
+		}
+		//print_r($pendingclaims);
+		//exit();
+    	$data['claim_data'] = $pendingclaims;
+    	$data['CONTENT']	= 'templates/claim-content.html';
     	$f3->set('page',$data);
         $this->response;
     }     
@@ -42,6 +61,14 @@ class Claims extends Base {
     	$data['name']	= 'Approved Claims';
     	$data['status']	= 'success';
     	$data['icon']	= 'check'; 
+    	//from the database 
+    	$claim_details 	= new \Model\Claim();
+    	$claim_details->load();
+    	if(!$claim_details->dry())
+    	{
+			$solvedclaims = $claim_details->afind(array('action = ?','Solved'));		
+		}
+    	$data['claim_data'] = $solvedclaims;    	
     	$data['CONTENT']= 'templates/claim-content.html';   	
     	$f3->set('page',$data);
         $this->response;
@@ -52,6 +79,14 @@ class Claims extends Base {
     	$data['name']	= 'Rejected Claims';
     	$data['status']	= 'danger';
     	$data['icon']	= 'ban';
+    	//from the database 
+    	$claim_details 	= new \Model\Claim();
+    	$claim_details->load();
+    	if(!$claim_details->dry())
+    	{
+			$rejectedclaims = $claim_details->afind(array('action = ?','Rejected'));		
+		}
+    	$data['claim_data'] = $rejectedclaims;
     	$data['CONTENT']= 'templates/claim-content.html';
     	$f3->set('page',$data);
         $this->response;
@@ -62,6 +97,14 @@ class Claims extends Base {
     	$data['name']	= 'Processing Claims';
     	$data['status']	= 'info';
     	$data['icon']	= 'spinner';
+    	//from the database 
+    	$claim_details 	= new \Model\Claim();
+    	$claim_details->load();
+    	if(!$claim_details->dry())
+    	{
+			$processingclaims = $claim_details->afind(array('action = ?','Processing'));		
+		}
+    	$data['claim_data'] = $processingclaims;
     	$data['CONTENT']= 'templates/claim-content.html';
     	$f3->set('page',$data);
         $this->response;
@@ -74,7 +117,7 @@ class Claims extends Base {
     	$data['CONTENT']= 'templates/new-claim.html';
     	$this->response->bottomscripts('templates/includes/forms-bottom-scripts.html');
     	//$this->response->otherbottomscripts('templates/includes/forms-validation-script.html');
-    	
+    	$this->claimFill($f3, $params);
     	//$damage = new \Model\Insurance();
     	//$damage->load();
     	//print_r ($damage->last()->_id);
@@ -112,7 +155,7 @@ class Claims extends Base {
 				$this->IncidenceFill($f3, $params);
 				
 			}
-			if($f3->exists('POST.btn_vehicle')&&$f3->exists('POST.btn_driver')&&$f3->exists('POST.btn_damage')&&$f3->exists('POST.btn_upload')&&$f3->exists('POST.btn_incidence'))
+			if($f3->exists('POST.btn_vehicle') && $f3->exists('POST.btn_driver') && $f3->exists('POST.btn_damage') && $f3->exists('POST.btn_upload') && $f3->exists('POST.btn_incidence'))
 			{
 				$this->claimFill($f3, $params);
 			}
@@ -127,8 +170,8 @@ class Claims extends Base {
 	public function claimFill(\Base $f3, $params)
 	{
 		//file
-		if ($f3->get('VERB') == 'POST')
-		{ 
+		//if ($f3->get('VERB') == 'POST')
+		//{ 
 			$claim = new \Model\Claim();
 			$claim->insuranceId 	= $f3->get('SESSION.insurance');
             $claim->userId 			= $f3->get('SESSION.user_id');
@@ -139,7 +182,7 @@ class Claims extends Base {
             $claim->action 			= 'Pending';
             $claim->save();
 			
-		}
+		//}
 	}
 	
 	//Fill the filing vehicle details
@@ -309,7 +352,7 @@ class Claims extends Base {
 	}
 	
 	//Incidence Filling 
-      //Fill the Upload files
+    //Fill the Upload files
 	public function IncidenceFill(\Base $f3, $params)
 	{	
 		if ($f3->get('VERB') == 'POST')

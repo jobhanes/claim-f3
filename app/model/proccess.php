@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Stage extends Base {
+class Process extends Base {
 
     protected
         $fieldConf = array(
@@ -11,21 +11,15 @@ class Stage extends Base {
 	        'type' => \DB\SQL\Schema::DT_TIMESTAMP,
 	        'default' => \DB\SQL\Schema::DF_CURRENT_TIMESTAMP,
     	),
-    	'lastUpdate' => array(
-	        'type' => \DB\SQL\Schema::DT_TIMESTAMP,
-	        'default' => \DB\SQL\Schema::DF_CURRENT_TIMESTAMP,
-    	),
     	'status' => array(
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
     	),
-    	'id' => array(
-	    	'has-one' => '\Model\Claim','stageId'
-		),
         ),
         
-        $table = 'stages',
+        $table = 'proccess',
         $db = 'DB';
 
 
+   
 }

@@ -19,6 +19,9 @@ class Insurance extends Base {
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
     	),
+    	'id' => array(
+	    	'has-many' => '\Model\Claim','insuranceId'
+		),
         ),
         
         $table = 'insurance',

@@ -24,7 +24,10 @@ class User extends Base {
     	'status' => array(
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
-    	),	        
+    	),
+    	'id' => array(
+	    	'has-many' => '\Model\Claim','userId'
+		),	        
         ),
         
         $table = 'user',

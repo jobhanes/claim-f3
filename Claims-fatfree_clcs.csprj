@@ -186,7 +186,7 @@
 </treenode>
 </treenode>
 </treenode>
-<treenode node="Auth;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f0;23;1;248;;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f0;5;1;140;;;;vpos;;vBase;;c;;r;;d0,6;;b0,0;;m">
+<treenode node="Auth;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f0;23;1;248;;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f0;5;1;140;;;;vpos;;v;;r;;d11,23;;b0,0;;m">
 <treenode node="E_LDAP;PHP:PHP Word;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f0;27;8;27;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 <treenode node="E_SMTP;PHP:PHP Word;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f0;28;8;28;;;;vpos;;v;;r&apos;SMTP connection failure&apos;;;d-1,-1;;b0,0;;m">
 </treenode>
@@ -213,7 +213,7 @@
 </treenode>
 <treenode node="isLoggedIn;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f18;28;5;41;;;;vpos;;vbool;;r&#10;Definition&#10;    isLoggedIn()&#10;&#10;Description&#10;     check login state;;d4,29;;b1,5;;m">
 </treenode>
-<treenode node="login;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f1;196;2;198;;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f11;46;5;88;;;;vpos;;v;;r&#10;Definition&#10;    login($f3,$params)&#10;&#10;Description&#10;     login procedure;;d4,47;;b1,0;;mf3;;pparams;;p">
+<treenode node="login;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\auth.php;f1;196;2;198;;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f11;46;5;88;;;;vpos;;vbool;;r&#10;Definition&#10;    login($id,$pw,$realm=NULL)&#10;&#10;Description&#10;     Login auth mechanism&#10;&#10;Parameters:&#10;     $id - string&#10;     $pw - string&#10;     $realm - string;;d37,196;;b0,0;;m $id;;p $pw;;p $realm;;p">
 </treenode>
 <treenode node="logout;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\auth.php;f11;134;5;138;;;;vpos;;v;;r;;d4,135;;b1,0;;mf3;;pparams;;p">
 </treenode>
@@ -640,41 +640,45 @@
 <treenode node="set;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\base.php;f1;2490;2;2518;;;;vpos;;vmixed;;r&#10;Definition&#10;    set($key,$val,$ttl=0)&#10;&#10;Description&#10;     Store value in cache&#10;&#10;Parameters:&#10;     $key - string&#10;     $val - mixed&#10;     $ttl - int&#10;&#10;Return:&#10;   |FALSE;;d32,2490;;b0,0;;m $key;;p $val;;p $ttl;;p">
 </treenode>
 </treenode>
-<treenode node="Claim;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\claim.php;f0;4;1;28;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
+<treenode node="Claim;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\claim.php;f0;4;1;46;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
 </treenode>
-<treenode node="Claims;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f0;4;1;54;;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f0;5;1;198;;;;vpos;;vBase;;c;;r;;d26,5;;b0,0;;m">
+<treenode node="Claims;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f0;4;1;54;;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f0;5;1;418;;;;vpos;;vBase;;c;;r;;d26,5;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f8;11;2;21;;;;vpos;;v;;r;;d31,11;;b1,0;;m">
 </treenode>
-<treenode node="approved;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;39;5;47;;;;vpos;;v;;r;;d49,39;;b1,0;;mf3;;pparams;;p">
+<treenode node="approved;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;58;5;74;;;;vpos;;v;;r;;d49,58;;b1,0;;mf3;;pparams;;p">
 </treenode>
 <treenode node="beforeroute;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;13;5;15;;;;vpos;;v;;r&#10;Definition&#10;    beforeroute($f3)&#10;&#10;Description&#10;     init the View;;d37,13;;b1,0;;mf3;;p">
 </treenode>
 <treenode node="bottomscripts;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f8;32;2;38;;;;vpos;;v;;r;;d1,33;;b1,0;;mtemplate;;p">
 </treenode>
-<treenode node="DamageFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;169;2;195;;;;vpos;;v;;r;;d1,170;;b1,0;;mf3;;pparams;;p">
+<treenode node="claimFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;169;2;185;;;;vpos;;v;;r;;d1,170;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="DriverFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;127;2;166;;;;vpos;;v;;r;;d1,128;;b1,0;;mf3;;pparams;;p">
+<treenode node="damageFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;283;2;325;;;;vpos;;v;;r;;d1,284;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="fileClaim;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;69;2;95;;;;vpos;;v;;r;;d49,69;;b1,0;;mf3;;pparams;;p">
+<treenode node="driverFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;241;2;280;;;;vpos;;v;;r;;d1,242;;b1,0;;mf3;;pparams;;p">
+</treenode>
+<treenode node="fileClaim;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;112;2;166;;;;vpos;;v;;r;;d49,112;;b1,0;;mf3;;pparams;;p">
+</treenode>
+<treenode node="IncidenceFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;355;2;414;;;;vpos;;v;;r;;d1,356;;b1,0;;mf3;;pparams;;p">
 </treenode>
 <treenode node="index;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;20;5;27;;;;vpos;;v;;r&#10;Definition&#10;    index(\Base $f3, $params)&#10;&#10;Description&#10;     Home / frontend controller;;d46,20;;b1,0;;mf3;;pparams;;p">
 </treenode>
 <treenode node="otherbottomscripts;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f8;41;2;47;;;;vpos;;v;;r;;d1,42;;b1,0;;mtemplate;;p">
 </treenode>
-<treenode node="pending;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;29;5;37;;;;vpos;;v;;r;;d48,29;;b1,0;;mf3;;pparams;;p">
+<treenode node="pending;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;29;5;56;;;;vpos;;v;;r;;d48,29;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="processing;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;59;5;67;;;;vpos;;v;;r;;d51,59;;b1,0;;mf3;;pparams;;p">
+<treenode node="processing;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;94;5;110;;;;vpos;;v;;r;;d51,94;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="rejected;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;49;5;57;;;;vpos;;v;;r;;d49,49;;b1,0;;mf3;;pparams;;p">
+<treenode node="rejected;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f11;76;5;92;;;;vpos;;v;;r;;d49,76;;b1,0;;mf3;;pparams;;p">
 </treenode>
 <treenode node="render;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f8;49;5;52;;;;vpos;;v;;r;;d26,49;;b1,0;;m">
 </treenode>
 <treenode node="topscripts;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\claims.php;f8;23;2;29;;;;vpos;;v;;r;;d1,24;;b1,0;;mtemplate;;p">
 </treenode>
-<treenode node="vehicleFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;98;2;123;;;;vpos;;v;;r;;d1,99;;b1,0;;mf3;;pparams;;p">
+<treenode node="uploadFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;328;2;351;;;;vpos;;v;;r;;d1,329;;b1,0;;mf3;;pparams;;p">
 </treenode>
+<treenode node="vehicleFill;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\claims.php;f8;188;2;237;;;;vpos;;v;;r;;d1,189;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="ClaimType;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\claimtype.php;f0;4;1;28;;;;vpos;;vBase;;c;;r;;d29,4;;b0,0;;m">
 </treenode>
 <treenode node="ClassLoader;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\composer\ClassLoader.php;f0;42;1;434;;;;vpos;;v;;r&#10;Definition&#10;    class ClassLoader&#10;&#10;Description&#10;     ClassLoader implements a PSR-0, PSR-4 and classmap class loader.;;d0,43;;b0,0;;m">
 <treenode node="add;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\composer\ClassLoader.php;f11;108;5;143;;;;vpos;;v;;r&#10;Definition&#10;    add($prefix, $paths, $prepend = false)&#10;&#10;Description&#10;     Registers a set of PSR-0 directories for a given prefix, either appending or prepending to the ones previously set for this prefix.&#10;&#10;Parameters:&#10;    string $prefix - The prefix&#10;    array|string $paths - The PSR-0 root directories&#10;    bool $prepend - Whether to prepend the directories;;d4,109;;b1,0;;mstring $prefix;;parray|string $paths;;pbool $prepend;;p">
@@ -1448,12 +1452,12 @@
 </treenode>
 <treenode node="Damage;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\damage.php;f0;4;1;24;;;;vpos;;vBase;;c;;r;;d26,4;;b0,0;;m">
 </treenode>
-<treenode node="Dashboard;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php;f0;5;1;24;;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f0;5;1;39;;;;vpos;;vBase;;c;;r;;d29,5;;b0,0;;m">
+<treenode node="Dashboard;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php;f0;5;1;24;;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f0;5;1;59;;;;vpos;;vBase;;c;;r;;d29,5;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f8;10;2;16;;;;vpos;;v;;r;;d40,10;;b1,0;;mf3;;p">
 </treenode>
-<treenode node="beforeroute;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php;f11;13;5;15;;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f11;21;5;23;;;;vpos;;v;;r&#10;Definition&#10;    beforeroute($f3)&#10;&#10;Description&#10;     init the View;;d37,13;;b1,0;;mf3;;p">
+<treenode node="beforeroute;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php;f11;13;5;15;;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f11;21;5;23;;;;vpos;;v;;r&#10;Definition&#10;    beforeroute($f3)&#10;&#10;Description&#10;     init the View;;d37,21;;b1,0;;mf3;;p">
 </treenode>
-<treenode node="index;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f11;28;5;35;;;;vpos;;v;;r&#10;Definition&#10;    index(\Base $f3, $params)&#10;&#10;Description&#10;     Home / frontend controller;;d46,28;;b1,0;;mf3;;pparams;;p">
+<treenode node="index;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard.php;f11;28;5;55;;;;vpos;;v;;r&#10;Definition&#10;    index(\Base $f3, $params)&#10;&#10;Description&#10;     Home / frontend controller;;d46,28;;b1,0;;mf3;;pparams;;p">
 </treenode>
 <treenode node="main;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\dashboard0.php;f11;20;5;22;;;;vpos;;v;;r&#10;Definition&#10;    main($f3)&#10;&#10;Description&#10;     fetch data for an overview page;;d30,20;;b1,0;;mf3;;p">
 </treenode>
@@ -1916,13 +1920,15 @@
 <treenode node="width;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\image.php;f1;461;2;463;;;;vpos;;vint;;r&#10;Definition&#10;    width()&#10;&#10;Description&#10;     Return image width;;d18,461;;b0,0;;m">
 </treenode>
 </treenode>
+<treenode node="Incidence;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\incidence.php;f0;4;1;24;;;;vpos;;vBase;;c;;r;;d29,4;;b0,0;;m">
+</treenode>
 <treenode node="Input;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\inc\template\tags\input.php;f0;19;1;71;;;;vpos;;vTagHandler;;c;;r&#10;Definition&#10;    class Input extends \Template\TagHandler&#10;&#10;Description&#10;     Input TagHandler;;d41,19;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\inc\template\tags\input.php;f1;21;2;27;;;;vpos;;v;;r;;d24,21;;b0,0;;m">
 </treenode>
 <treenode node="build;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\inc\template\tags\input.php;f1;35;2;70;;;;vpos;;vstring;;r&#10;Definition&#10;    build($attr, $content)&#10;&#10;Description&#10;     build tag string&#10;&#10;Parameters:&#10;     $attr&#10;     $content;;d33,35;;b0,0;;m $attr;;p $content;;p">
 </treenode>
 </treenode>
-<treenode node="Insurance;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\insurance.php;f0;4;1;28;;;;vpos;;vBase;;c;;r;;d29,4;;b0,0;;m">
+<treenode node="Insurance;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\insurance.php;f0;4;1;31;;;;vpos;;vBase;;c;;r;;d29,4;;b0,0;;m">
 </treenode>
 <treenode node="ISO;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\base.php;f0;3037;9;3037;;;;vpos;;vPrefab;;c;;r;;d25,3037;;b0,0;;m">
 <treenode node="CC_af;PHP:PHP Word;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\base.php;f0;3041;7;3041;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
@@ -2898,7 +2904,7 @@
 <treenode node="verified;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\web\openid.php;f1;173;2;196;;;;vpos;;vbool;;r&#10;Definition&#10;    verified($proxy=NULL)&#10;&#10;Description&#10;     Return TRUE if OpenID verification was successful&#10;&#10;Parameters:&#10;     $proxy - string;;d32,173;;b0,0;;m $proxy;;p">
 </treenode>
 </treenode>
-<treenode node="Owner;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\owner.php;f0;4;1;26;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
+<treenode node="Owner;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\owner.php;f0;4;1;29;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
 </treenode>
 <treenode node="Pagination;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\ikkez\f3-pagination\lib\pagination.php;f0;16;1;259;;;;vpos;;v;;r&#10;Definition&#10;    class Pagination&#10;&#10;Description&#10;     Pagination class for the PHP Fat-Free Framework The contents of this file are subject to the terms of the GNU General Public License Version 3.0. You may not use this file except in compliance with the license. Any of the license terms and conditions can be waived if you get permission from the copyright holder. Copyright (c) 2012-2017 by ikkez Christian Knuth &lt;mail ikkez.de&gt; version 1.4.4;;d17,16;;b0,0;;m">
 <treenode node="TEXT_MissingItemsAttr;PHP:PHP Word;C:\xampp\htdocs\claims-fab\vendor\ikkez\f3-pagination\lib\pagination.php;f0;29;29;29;;;;vpos;;v;;r&apos;You need to specify items attribute for a pagination.&apos;;;d-1,-1;;b0,0;;m">
@@ -3017,6 +3023,8 @@
 </treenode>
 <treenode node="token;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\base.php;f1;2861;2;2875;;;;vpos;;vstring;;r&#10;Definition&#10;    token($str)&#10;&#10;Description&#10;     Convert token to variable&#10;&#10;Parameters:&#10;     $str - string;;d22,2861;;b0,0;;m $str;;p">
 </treenode>
+</treenode>
+<treenode node="Process;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\proccess.php;f0;4;1;31;;C:\xampp\htdocs\claims-fab\app\model\claimtype.php;f0;4;1;24;;;;vpos;;vBase;;c;;r;;d27,4;;b0,0;;m">
 </treenode>
 <treenode node="ProductsModel;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\ikkez\f3-cortex\test\productsmodel.php;f0;2;1;17;;;;vpos;;vCortex;;c;;r;;d39,2;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\vendor\ikkez\f3-cortex\test\productsmodel.php;f11;12;5;15;;;;vpos;;v;;r;;d34,12;;b1,0;;m">
@@ -3428,7 +3436,7 @@
 <treenode node="sql_exec;PHP:Function Name;C:\xampp\htdocs\claims-fab\ui\former\vendor\plugins\datatables\examples\server_side\scripts\ssp.class.php;f8;294;2;322;;C:\xampp\htdocs\claims-fab\app\ui\vendor\plugins\datatables\examples\server_side\scripts\ssp.class.php;f8;294;2;322;;;;vpos;;varray;;r&#10;Definition&#10;    sql_exec ( $db, $bindings, $sql=null )&#10;&#10;Description&#10;     Execute an SQL query on the database&#10;&#10;Parameters:&#10;    resource $db - Database handler&#10;    array $bindings - Array of PDO binding values from bind() to be&#10;    string $sql - SQL query to execute&#10;&#10;Return:&#10;   Result from the query (all rows);;d1,295;;b0,5;;mresource $db;;parray $bindings;;pstring $sql;;p">
 </treenode>
 </treenode>
-<treenode node="Stage;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\stage.php;f0;4;1;27;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
+<treenode node="Stage;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\stage.php;f0;4;1;30;;;;vpos;;vBase;;c;;r;;d25,4;;b0,0;;m">
 </treenode>
 <treenode node="StaticMap;PHP:Class Name;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\web\google\staticmap.php;f0;25;1;64;;;;vpos;;v;;r;;d16,25;;b0,0;;m">
 <treenode node="URL_Static;PHP:PHP Word;C:\xampp\htdocs\claims-fab\vendor\bcosca\fatfree-core\web\google\staticmap.php;f0;29;12;29;;;;vpos;;v;;r&apos;http://maps.googleapis.com/maps/api/staticmap&apos;;;d-1,-1;;b0,0;;m">
@@ -3712,7 +3720,7 @@
 </treenode>
 <treenode node="ThirdParty;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\thirdparty.php;f0;4;1;24;;;;vpos;;vBase;;c;;r;;d30,4;;b0,0;;m">
 </treenode>
-<treenode node="User;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\user.php;f0;4;1;68;;C:\xampp\htdocs\claims-fab\app\controller\user.php;f0;4;1;59;;;;vpos;;vBase;;c;;r;;d24,4;;b0,0;;m">
+<treenode node="User;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\controller\user.php;f0;4;1;59;;C:\xampp\htdocs\claims-fab\app\model\user.php;f0;4;1;71;;;;vpos;;vBase;;c;;r;;d24,4;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\user.php;f8;7;2;10;;;;vpos;;v;;r;;d31,7;;b1,0;;m">
 </treenode>
 <treenode node="delete;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\user.php;f8;43;2;57;;;;vpos;;v;;r;;d44,43;;b1,0;;mf3;;pparams;;p">
@@ -3723,9 +3731,9 @@
 </treenode>
 <treenode node="post;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\controller\user.php;f8;27;2;41;;;;vpos;;v;;r;;d42,27;;b1,0;;mf3;;pparams;;p">
 </treenode>
-<treenode node="set_mail;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\model\user.php;f11;63;5;66;;;;vpos;;vnull;;r&#10;Definition&#10;    set_mail($val)&#10;&#10;Description&#10;     validate email address&#10;&#10;Parameters:&#10;     $val;;d35,63;;b1,0;;m $val;;p">
+<treenode node="set_mail;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\model\user.php;f11;66;5;69;;;;vpos;;vnull;;r&#10;Definition&#10;    set_mail($val)&#10;&#10;Description&#10;     validate email address&#10;&#10;Parameters:&#10;     $val;;d35,66;;b1,0;;m $val;;p">
 </treenode>
-<treenode node="set_password;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\model\user.php;f11;38;5;56;;;;vpos;;vstring;;r&#10;Definition&#10;    set_password($val)&#10;&#10;Description&#10;     crypt password&#10;&#10;Parameters:&#10;     $val;;d39,38;;b1,0;;m $val;;p">
+<treenode node="set_password;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\model\user.php;f11;41;5;59;;;;vpos;;vstring;;r&#10;Definition&#10;    set_password($val)&#10;&#10;Description&#10;     crypt password&#10;&#10;Parameters:&#10;     $val;;d39,41;;b1,0;;m $val;;p">
 </treenode>
 </treenode>
 <treenode node="UserType;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\usertype.php;f0;4;1;27;;;;vpos;;vBase;;c;;r;;d28,4;;b0,0;;m">
@@ -3812,7 +3820,7 @@
 <treenode node="unique;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\inc\validation.php;f1;37;2;54;;;;vpos;;vbool;;r&#10;Definition&#10;    unique($model, $val, $field, $context=null)&#10;&#10;Description&#10;     check if a model field value is unique&#10;&#10;Parameters:&#10;    \DB\Cortex $model&#10;    mixed $val&#10;    string $field&#10;    string $context;;d54,37;;b0,0;;m\DB\Cortex $model;;pmixed $val;;pstring $field;;pstring $context;;p">
 </treenode>
 </treenode>
-<treenode node="Vehicle;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\vehicle.php;f0;4;1;22;;;;vpos;;vBase;;c;;r;;d27,4;;b0,0;;m">
+<treenode node="Vehicle;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\model\vehicle.php;f0;4;1;25;;;;vpos;;vBase;;c;;r;;d27,4;;b0,0;;m">
 </treenode>
 <treenode node="Verification;PHP:Class Name;C:\xampp\htdocs\claims-fab\app\view\verification.php;f0;4;1;38;;;;vpos;;vBase;;c;;r;;d32,4;;b0,0;;m">
 <treenode node="__construct;PHP:Function Name;C:\xampp\htdocs\claims-fab\app\view\verification.php;f8;9;2;24;;;;vpos;;v;;r;;d31,9;;b1,0;;m">

@@ -9,7 +9,7 @@
                     <div class="panel-body pn pl20 p20" >
                       <i class="fa fa-th icon-bg"></i>
                       <h2 class="mt15 lh15">
-                        <b class="dash-fig">{{number_format('7949','0')}}</b>
+                        <b class="dash-fig">{{number_format(@page.totalCount,'0')}}</b>
                       </h2>
                       <h5 class="text-muted">Total Claims</h5>
                     </div>
@@ -22,7 +22,7 @@
                     <div class="panel-body pn pl20 p20">
                       <i class="fa fa-exclamation icon-bg"></i>
                       <h2 class="mt15 lh15">
-                        <b class="dash-fig">{{number_format('1100','0')}}</b>
+                        <b class="dash-fig">{{number_format(@page.pendingCount,'0')}}</b>
                       </h2>
                       <h5 class="text-muted">Pending</h5>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="panel-body pn pl20 p20">
                       <i class="fa fa-check icon-bg"></i>
                       <h2 class="mt15 lh15">
-                        <b class="dash-fig">{{number_format('47000','0')}}</b>
+                        <b class="dash-fig">{{number_format(@page.approvedCount,'0')}}</b>
                       </h2>
                       <h5 class="text-muted">Approved</h5>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="panel-body pn pl20 p20">
                       <i class="fa fa-times icon-bg"></i>
                       <h2 class="mt15 lh15">
-                        <b class="dash-fig">{{number_format('4500','0')}} </b>
+                        <b class="dash-fig">{{number_format(@page.rejectedCount,'0')}} </b>
                       </h2>
                       <h5 class="text-muted">Rejected</h5>
                     </div>
@@ -118,29 +118,21 @@
 			                          </tr>
 			                        </thead>
 			                        <tbody>
-			                          <tr>
-			                            <td>
-			                              <i class="fa fa-circle text-success fs8 pr15"></i>
-			                              <span>KCL-903-23P-A0034M</span>
-			                            </td>
-			                            <td><a href="#" class="label label-xs bg-success"><i class="fa fa-check"></i> Approved</a></td>
-			                          </tr>
-			                          <tr>
-			                            <td>
-			                              <i class="fa fa-circle text-warning fs8 pr15"></i>
-			                              <span>KBR-560-24J-A3465D</span>
-			                            </td>
-			                             <td><a href="#" class="label label-xs bg-warning"><i class="fa fa-exclamation"></i> Pending</a></td>
-			                          </tr>
-			                          <tr>
-			                            <td>
-			                              <i class="fa fa-circle text-danger fs8 pr15"></i>
-			                              <span>KAP-345-76M-A0056H</span>
-			                            </td>
-			                             <td><a href="#" class="label label-xs bg-danger"><i class="fa fa-times"></i> Rejected</a></td>
-			                          </tr>
+			                        <repeat group="{{@page.recentClaims}}" value="{{@item }}">
+				                        <tr>
+				                            <td>
+				                              <i class="fa fa-circle text-success fs8 pr15"></i>
+				                              <span>{{@item.claimNo}}</span>
+				                            </td>
+				                            <td>
+				                            <a href="{{ @item.stageId.link}}" class="{{ @item.stageId.class}}"><i class="{{@item.stageId.icon}}"></i> {{@item.stageId.name}}</a>
+				                            </td>
+				                        </tr>
+			                        </repeat>
+			                          
 			                        </tbody>
 			                      </table>
+			                      <!--
 			                      <h5 class="mt15 mbn ph10 pb5 br-b fw600">Top Search Terms
 			                        <small class="pull-right fw600 text-primary">View Report </small>
 			                      </h5>
@@ -175,6 +167,7 @@
 			                          </tr>
 			                        </tbody>
 			                      </table>
+			                   -->
 			                    </div>
 
 			                    <!-- Flag/Icon Column -->
