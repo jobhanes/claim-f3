@@ -18,7 +18,10 @@ class UserType extends Base {
     	'status' => array(
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
-    	),           
+    	), 
+    	'_id' => array(
+	    'has-many' => '\Model\User','userTypeId'
+		),          
         ),
         $table = 'usertype',
         $db = 'DB';

@@ -30,6 +30,15 @@ class Dashboard extends Base {
     	$data = array();
     	$data['name']			= 'Dashboard';
     	$data['icon']			= 'dashboard';
+    	
+    	//dashboard tests
+    	//$claim	= new \Model\Claim();
+    	
+    	//$lastClaim = $claim->claim_gen('PSV',2);
+    	//echo "<pre>";
+		//print_r($lastClaim);
+		//echo "</pre>";
+    	//exit();
     	//let us count the loaded records
     	$claims 				= new \Model\Claim();
     	
@@ -46,7 +55,7 @@ class Dashboard extends Base {
     	$data['rejectedCount'] 	= (!$claims->load(array('action = ?','Rejected'))->dry) ? $claims->loaded() : 0;
     	
     	//recent claims 
-    	$recentClaims 			= $claims->afind(NULL)->orderBy('_id DESC');;
+    	$recentClaims 			= $claims->afind(NULL);//->orderBy('_id DESC');
     	//$recentClaims			= $recentClaims->orderBy('name DESC');
     	$data['recentClaims']	= $recentClaims;
 

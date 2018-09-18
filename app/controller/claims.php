@@ -8,6 +8,10 @@ class Claims extends Base {
     protected
         $response;
 
+    /*public function __construct(\Base $f3)
+    {
+		
+	} */
     /**
      * init the View
      */
@@ -22,6 +26,14 @@ class Claims extends Base {
     	$data['name']	= 'History';
     	$data['status']	= 'info';
     	$data['icon']	= 'history';
+    	//from the database 
+    	$claim_details 	= new \Model\Claim();
+    	$claim_details->load();
+    	if(!$claim_details->dry())
+    	{
+			$historyclaims = $claim_details->afind(NULL);		
+		}
+    	$data['claim_data'] = $historyclaims;  
     	$data['CONTENT']= 'templates/claim-content.html';
     	$f3->set('page',$data);	    	
         $this->response;
@@ -111,18 +123,16 @@ class Claims extends Base {
     }   
     
     public function fileClaim(\Base $f3, $params){
+		//create the claim number right here
+		$claim			= new \Model\Claim();
+		$claimNo		= $claim->claim_gen('New');
+		$f3->set('SESSION.claimNo',$claimNo);
 		$data = array();
     	$data['name']	= 'New Claim';
     	$this->response->topscripts('templates/includes/forms-top-css.html');
     	$data['CONTENT']= 'templates/new-claim.html';
     	$this->response->bottomscripts('templates/includes/forms-bottom-scripts.html');
     	//$this->response->otherbottomscripts('templates/includes/forms-validation-script.html');
-    	$this->claimFill($f3, $params);
-    	//$damage = new \Model\Insurance();
-    	//$damage->load();
-    	//print_r ($damage->last()->_id);
-    	//exit();
-    	
     	if ($f3->get('VERB') == 'POST')
     	{
 			//fill the car details
@@ -173,6 +183,7 @@ class Claims extends Base {
 		//if ($f3->get('VERB') == 'POST')
 		//{ 
 			$claim = new \Model\Claim();
+			$claim->claimNo		 	= $f3->get('SESSION.claimNo');
 			$claim->insuranceId 	= $f3->get('SESSION.insurance');
             $claim->userId 			= $f3->get('SESSION.user_id');
             $claim->claimTypeId 	= $f3->get('SESSION.claimTypeId');
@@ -189,26 +200,31 @@ class Claims extends Base {
 	public function vehicleFill(\Base $f3, $params)
 	{	
 		if ($f3->get('VERB') == 'POST')
-		{
+		{	
 			$vehicle = new \Model\Vehicle();
         	$vehicle->load(array('registrationNo = ?',$f3->get('POST.registrationNo')));
             if ($vehicle->dry()) {
                 // the car doesnt exist
                 $vehicle->reset();
-                $vehicle->copyfrom('POST','registrationNo','policyNo','exp_date','make','model','color','year_of_manufacture','claim_type','ownerName','ownerEmail','claimNo','insurance');
+                $vehicle->copyfrom('POST','registrationNo','claimId','policyNo','exp_date','make','model','color','year_of_manufacture','claim_type','ownerName','ownerEmail','claimNo','insurance');
                 $vehicle->registrationNo 	= trim($f3->get('POST.registrationNo'));
                 //set vehicle sessions 
  				$f3->set('SESSION.insurance',trim($f3->get('POST.insurance')));
  				$f3->set('SESSION.claimNo',trim($f3->get('POST.claimNo')));
+ 				$f3->set('SESSION.claimId',trim($f3->get('POST.claimId')));
                 $vehicle->make 				= trim($f3->get('POST.make'));
                 $vehicle->model 			= trim($f3->get('POST.model'));
                 $vehicle->yearOfManufacture = trim($f3->get('POST.year_of_manufacture'));
+                $vehicle->category 			= trim($f3->get('POST.vehicleCategory'));           
                 $vehicle->policyNo 			= trim($f3->get('POST.policyNo'));
                 $vehicle->expiryDate 		= trim($f3->get('POST.exp_date'));
                 $vehicle->save();
                 //store the inserted id
                 $vehicle->load();
-                $f3->set('SESSION.vehicleId',$vehicle->last()->_id);
+                $vehicle->loaded();
+                $vehicle->last();
+                $lastVehicleId				= $vehicle->_id;
+                $f3->set('SESSION.vehicleId',$lastVehicleId);
                 
                 //owner details
                 $owner = new \Model\Owner();
@@ -224,7 +240,10 @@ class Claims extends Base {
                 	
                 	//store the inserted id
                 	$owner->load();
-                	$f3->set('SESSION.ownerId',$owner->last()->_id);
+                	$owner->loaded();
+                	$ownerLast 				= $owner->last();
+                	
+                	$f3->set('SESSION.ownerId',$ownerLast->_id);
 				}
                 
                 
@@ -248,8 +267,8 @@ class Claims extends Base {
             if ($driver->dry()) {
                 // the Driver doesnt exist
                 $driver->reset();
-                $driver->copyfrom('POST','claimNo','firstName','lastName','phone','dob','lincence','expiry_date','experience','dl_category');
-                $driver->claimId 		= trim($f3->get('POST.claimNo'));
+                $driver->copyfrom('POST','claimId','firstName','lastName','phone','dob','lincence','expiry_date','experience','dl_category');
+                $driver->claimId 		= trim($f3->get('POST.claimId'));
                 $driver->lincenceNo 	= trim($f3->get('POST.lincence'));
                 $driver->firstName 		= trim($f3->get('POST.firstName'));
                 $driver->lastName 		= trim($f3->get('POST.lastName'));
@@ -286,13 +305,13 @@ class Claims extends Base {
 		if ($f3->get('VERB') == 'POST')
 		{
 			$damage = new \Model\Damage();
-        	$damage->load(array('claimId = ?',$f3->get('POST.claimNo')));
+        	$damage->load(array('claimId = ?',$f3->get('POST.claimId')));
             if ($damage->dry()) {
                 // the damage doesnt exist
                 $damage->reset();
-                $damage->copyfrom('POST','claimNo','damageDesc','still_in_use','repairDate','repairPlace','otherDamages','property_owner_name','property_owner_phone','damaged_car_reg_no','injured_name','injured_phone','kin_name','relationship_type');
+                $damage->copyfrom('POST','claimId','damageDesc','still_in_use','repairDate','repairPlace','otherDamages','property_owner_name','property_owner_phone','damaged_car_reg_no','injured_name','injured_phone','kin_name','relationship_type');
                 
-                $damage->claimId 				= trim($f3->get('POST.claimNo'));
+                $damage->claimId 				= trim($f3->get('POST.claimId'));
                 $damage->damageDesc 			= trim($f3->get('POST.damageDesc')); 
                 //store options in Json 
                 $damageoptions					= array();
@@ -331,12 +350,12 @@ class Claims extends Base {
 		if ($f3->get('VERB') == 'POST')
 		{
 			$upload = new \Model\Document();
-        	$upload->load(array('claimId = ?',$f3->get('POST.claimNo')));
+        	$upload->load(array('claimId = ?',$f3->get('POST.claimId')));
             if ($upload->dry()) {
                 // the upload doesnt exist
                 $upload->reset();
-                $upload->copyfrom('POST','claimNo','photos','licenceDoc','idDoc','video');
-                $upload->claimId 			= trim($f3->get('POST.claimNo'));
+                $upload->copyfrom('POST','claimId','photos','licenceDoc','idDoc','video');
+                $upload->claimId 			= trim($f3->get('POST.claimId'));
                 $upload->licence 			= trim($f3->get('POST.licenceDoc'));
                 $upload->identityDocument 	= trim($f3->get('POST.idDoc'));
                 $upload->video 				= trim($f3->get('POST.video'));
@@ -358,12 +377,12 @@ class Claims extends Base {
 		if ($f3->get('VERB') == 'POST')
 		{
 			$incidence = new \Model\Incidence();
-        	$incidence->load(array('claimId = ?',$f3->get('POST.claimNo')));
+        	$incidence->load(array('claimId = ?',$f3->get('POST.claimId')));
             if ($incidence->dry()) {
                 // the Incidence doesnt exist
                 $incidence->reset();
-                $incidence->copyfrom('POST','claimNo','incidence_date','incidence_time','claimTypeId','incidence_location','incidence_desc','incidence_reported');
-                $incidence->claimId 			= trim($f3->get('POST.claimNo'));
+                $incidence->copyfrom('POST','claimId','incidence_date','incidence_time','claimTypeId','incidence_location','incidence_desc','incidence_reported');
+                $incidence->claimId 			= trim($f3->get('POST.claimId'));
                 $incidence->date 				= trim($f3->get('POST.incidence_date'));
                 $incidence->time 				= trim($f3->get('POST.incidence_time'));
                 $incidence->location 			= trim($f3->get('POST.incidence_location'));
@@ -378,11 +397,11 @@ class Claims extends Base {
                 //if accident
                 if($f3->get('POST.claimTypeId')==1){
 					$accident = new \Model\Accident();
-        			$accident->load(array('claimId = ?',$f3->get('POST.claimNo')));
+        			$accident->load(array('claimId = ?',$f3->get('POST.claimId')));
 	        		if ($accident->dry()) {
 	        			$accident->reset();
 	        			$accident->copyfrom('POST','accident_speed','weather');
-	        			$accident->claimId 			= trim($f3->get('POST.claimNo'));
+	        			$accident->claimId 			= trim($f3->get('POST.claimId'));
 	        			//$accident->driving 			= trim($f3->get('POST.accident_driver'));
 	        			$accident->speed 			= trim($f3->get('POST.accident_speed'));
 	                	$accident->weather 			= trim($f3->get('POST.weather'));
@@ -394,11 +413,11 @@ class Claims extends Base {
                  //if Theft
                  if($f3->get('POST.claimTypeId')==2){
 					$theft = new \Model\Theft();
-        			$theft->load(array('claimId = ?',$f3->get('POST.claimNo')));
+        			$theft->load(array('claimId = ?',$f3->get('POST.claimId')));
 	        		if ($theft->dry()) {
 	        			$theft->reset();
 	        			$theft->copyfrom('POST','theft_type','stolen_parts');
-	        			$theft->claimId 			= trim($f3->get('POST.claimNo'));
+	        			$theft->claimId 			= trim($f3->get('POST.claimId'));
 	        			$theft->category 			= trim($f3->get('POST.theft_type'));
 	                	$theft->parts 				= trim($f3->get('POST.stolen_parts'));
 	                	$theft->save();

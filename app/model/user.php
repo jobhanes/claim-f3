@@ -25,8 +25,11 @@ class User extends Base {
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
     	),
-    	'id' => array(
+    	'_id' => array(
 	    	'has-many' => '\Model\Claim','userId'
+		),	    
+		'userTypeId' => array(
+	    	'belongs-to-one' => '\Model\UserType','_id'
 		),	        
         ),
         

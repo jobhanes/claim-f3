@@ -11,7 +11,7 @@
     Core.init();
 
     // Init Demo JS     
-    Demo.init();
+    //Demo.init();
 
     // Form Wizard 
     var form = $("#form-wizard");
@@ -36,9 +36,9 @@
         form.validate().settings.ignore = ":disabled";
         return form.valid();
       },
-      onFinished: function(event, currentIndex) {
+      /*onFinished: function(event, currentIndex) {
         alert("Submitted!");
-      }
+      } */
     });
 
     // Demo Wizard Functionality

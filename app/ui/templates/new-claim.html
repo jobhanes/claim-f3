@@ -68,6 +68,42 @@
 			  	}
 			  	else document.getElementById('stolen_parts').style.display = 'none';
 			  }
+			  
+			function claimChange() {
+			    var claimNo 	= document.getElementById("claimNo").value; 
+			    //selected Category
+			    var cat			= document.getElementById("vehicleCategory");
+				var carCategory	= cat.options[cat.selectedIndex].value;
+				
+				if(carCategory!='')
+			   	{
+			   		//let's detect the current value and change it 
+					if (claimNo.match("NEW")) {
+					     var newClaimNo 	= claimNo.replace("NEW", carCategory);
+					}
+					else if (claimNo.match("PC")) {
+					     var newClaimNo 	= claimNo.replace('PC', carCategory);
+					}	
+					else if (claimNo.match("PSV")) {
+					     var newClaimNo 	= claimNo.replace('PSV', carCategory);
+					}	
+					
+			    }
+			    else
+				{
+					var newClaimNo 		= claimNo.replace('NEW', carCategory);
+				}
+				//extract the claim Id from the Claim no 
+				var ClaimId1 		= claimNo.slice(-10); //do it from the right 11 chars
+				var realClaimId		= ClaimId1.slice(0,6);//then get the disired value 
+				
+				//display the ClaimId
+				document.getElementById("claimId").value = realClaimId;
+				
+				//display the claimNo
+			   document.getElementById("claimNo").value = newClaimNo; 
+			}
+
 
 		</script>
           <!-- Wizard Menubar -->
@@ -126,23 +162,30 @@
             	<!-- Vehicle Details -->
 				<div class="panel heading-border">
                   <div class="panel-body bg-light">
-
+					<input id="claimId" type="hidden" value="{{@SESSION.claimId}}"/>
                     <div class="section-divider mt20 mb40">
                       <span> Vehicle Details </span>
                     </div>
-                    <!-- .section-divider -->
-					<!--Hidden vehicle details-->
-					<!--<input type="hidden" name="ClaimNo" id="claimNo" />-->
                     <div class="section row" id="spy1">
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         <label for="Claim Number" class="field prepend-icon">
                         <input class="gui-input" name="btn_vehicle" id="btn_vehicle" type="hidden" value="0" readonly>
-                          <input class="gui-input" name="claimNo" id="claimNo" type="number" value="{{rand(1,100)}}" readonly>
+                          <input class="gui-input" name="claimNo" id="claimNo" type="text" value="{{@SESSION.claimNo}}" readonly>
                           <label for="firstname" class="field-icon">
                             <i class="fa fa-paperclip"></i>
                           </label>
                         </label>
                       </div>
+                      <div class="col-md-6">
+	                      <label class="field select">
+		                    <select id="vehicleCategory" onchange="javascript:claimChange();" name="vehicleCategory">
+		                      <option value="">Car Category</option>
+		                      <option value="PC">Private Car</option>
+		                      <option value="PSV">Public Service Vehicle</option>
+		                    </select>
+	                    	<i class="arrow double"></i>
+	                  		</label>
+                    	</div> 
                     </div>
                       
                     <!-- Registration Number -->
@@ -166,7 +209,7 @@
 		                    </select>
 	                    	<i class="arrow double"></i>
 	                  		</label>
-                    </div>   
+                    	</div>   
                     </div>
                                      
 				<!-- Policy Number -->

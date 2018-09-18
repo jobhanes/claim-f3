@@ -11,7 +11,7 @@ var Demo = function() {
   var runDemoForms = function() {
 
     // Prevents directory response when submitting a demo form
-    $('.admin-form-added').on('submit', function(e) {
+   /* $('.admin-form-added').on('submit', function(e) {
 
       if ($('body.timeline-page').length || $('body.admin-validation-page').length) {
         return;
@@ -19,7 +19,7 @@ var Demo = function() {
       e.preventDefault;
       alert('Your form has submitted!');
       return false;
-    });
+    }); */
 
     // give file-upload preview onclick functionality
     var fileUpload = $('.fileupload-preview');

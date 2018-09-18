@@ -51,10 +51,19 @@ class Auth extends Base
     		$f3->reroute('/dashboard');
 			//$f3->reroute($f3->get('SESSION.LastPageURL'));
 		}
+		//$user = new \Model\User();
+		//$user->load();
+    	//$allusers	= $user->cast(NULL);
+    	//echo "<pre>";
+    	
+		//print_r($allusers['username']);
+		//echo "</pre>";
+    	//exit();
         if ($f3->exists('POST.username') && $f3->exists('POST.password')) {
             sleep(3); // login should take a while to kick - ass brute force attacks
             $user = new \Model\User();
             $user->load(array('username = ?',$f3->get('POST.username')));
+            $user->cast();
             if (!$user->dry()) {
                 // check hash engine
                 $hash_engine = $f3->get('password_hash_engine');
@@ -68,17 +77,17 @@ class Auth extends Base
                 //$valid = $user->set_password($f3->get('POST.password'))
                 if ($valid) {
                     @$f3->clear('SESSION'); //recreate session id
-                    
+
                     //usertype details
-                    $userType = new \Model\UserType();
-                   	$userType->load(array('id = ?',$user->userTypeId));
+                    //$userType = new \Model\UserType();
+                   	//$userType->load(array('id = ?',$user->userTypeId));
                     
                     //store in the session
                     $f3->set('SESSION.user_id',$user->id);
                     $f3->set('SESSION.user_name',$user->username);
-                    $f3->set('SESSION.userTypeId',$userType->category);
+                    $f3->set('SESSION.userTypeId',$user->userTypeId->category);
                     if ($f3->get('CONFIG.ssl_backend'))
-                    $f3->reroute('https://'.$f3->get('HOST').$f3->get('BASE').'/admin');
+                    $f3->reroute('https://'.$f3->get('HOST').$f3->get('BASE').'/dashboard');
                     else $f3->reroute('/dashboard');
                 }
                 
