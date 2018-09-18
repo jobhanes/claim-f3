@@ -13,7 +13,33 @@
           <h2><b class="text-primary">Mix and Match</b> settings with our Admin Wizard</h2>
           <p class="lead">Built in options that make creating a new form wizard easier and faster than ever.</p>
         </div> -->
-
+<style>
+	/* located in demo.css and creates a little calendar icon
+ * instead of a text link for "Choose date"
+ */
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(calendar.png) no-repeat; 
+}
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+</style>
         <div class="mw1000 center-block">
 		<script type="text/javascript">
 				function incidenceOption() {
@@ -104,7 +130,13 @@
 			   document.getElementById("claimNo").value = newClaimNo; 
 			}
 
-
+	
+		</script>
+		<script>
+			$(function()
+			{
+				$('.date-pick').datePicker({clickInput:true})
+			});
 		</script>
           <!-- Wizard Menubar -->
          <!-- <div class="panel">
@@ -162,7 +194,7 @@
             	<!-- Vehicle Details -->
 				<div class="panel heading-border">
                   <div class="panel-body bg-light">
-					<input id="claimId" type="hidden" value="{{@SESSION.claimId}}"/>
+					<input id="claimId" name="claimId" type="text" value="{{@SESSION.claimId}}"/>
                     <div class="section-divider mt20 mb40">
                       <span> Vehicle Details </span>
                     </div>
@@ -202,13 +234,16 @@
 	                      <label class="field select">
 		                    <select id="insurance" name="insurance">
 		                      <option value="">Insurance Company</option>
-		                      <option value="1">Intra Insurance</option>
-		                      <option value="2">Jubilee Insurance </option>
-		                      <option value="3">Next Insurance</option>
-		                      <option value="4">CIC Insurance</option>
+		                      <repeat group="{{@page.Insurance}}" value="{{ @InsureItem }}">	
+                                <option value="{{ @InsureItem._id }}">   
+                                	{{ @InsureItem.name }}
+                                </option>
+                            </repeat>
 		                    </select>
 	                    	<i class="arrow double"></i>
 	                  		</label>
+	                  		
+	                  		
                     	</div>   
                     </div>
                                      
@@ -226,7 +261,7 @@
                   <!-- Expiry Date -->
                   <div class="col-md-6">
                     <label for="exp_date" class="field prepend-icon" title="Expiry Date">
-                      <input type="text" name="exp_date" id="datetimepicker1" class="gui-input" placeholder="Expiry Date">
+                      <input type="text" name="exp_date" id="date-pick" class="gui-input" placeholder="Expiry Date">
                       <label for="exp_date" class="field-icon">
                         <i class="fa fa-calendar"></i>
                       </label>
@@ -244,7 +279,8 @@
                         </label>
                       </label>
                     </div>
-                    
+
+
                     <!-- Car Model -->
                     <div class="col-md-6">
                       <label for="model" class="field prepend-icon">
