@@ -13,33 +13,6 @@
           <h2><b class="text-primary">Mix and Match</b> settings with our Admin Wizard</h2>
           <p class="lead">Built in options that make creating a new form wizard easier and faster than ever.</p>
         </div> -->
-<style>
-	/* located in demo.css and creates a little calendar icon
- * instead of a text link for "Choose date"
- */
-a.dp-choose-date {
-	float: left;
-	width: 16px;
-	height: 16px;
-	padding: 0;
-	margin: 5px 3px 0;
-	display: block;
-	text-indent: -2000px;
-	overflow: hidden;
-	background: url(calendar.png) no-repeat; 
-}
-a.dp-choose-date.dp-disabled {
-	background-position: 0 -20px;
-	cursor: default;
-}
-/* makes the input field shorter once the date picker code
- * has run (to allow space for the calendar icon
- */
-input.dp-applied {
-	width: 140px;
-	float: left;
-}
-</style>
         <div class="mw1000 center-block">
 		<script type="text/javascript">
 				function incidenceOption() {
@@ -132,11 +105,12 @@ input.dp-applied {
 
 	
 		</script>
-		<script>
-			$(function()
-			{
-				$('.date-pick').datePicker({clickInput:true})
-			});
+		<script type="text/javascript">
+		function Mycalendar(elementName)
+		{
+			// pureJSCalendar.open(dateFormat, x, y, firstDayOfWeek, minDate, maxDate, element, zindex)
+		return pureJSCalendar.open('yyyy-MM-dd', 810, 450, 1, '2018-1-1', '2025-1-1', elementName, 20);
+		}
 		</script>
           <!-- Wizard Menubar -->
          <!-- <div class="panel">
@@ -194,12 +168,14 @@ input.dp-applied {
             	<!-- Vehicle Details -->
 				<div class="panel heading-border">
                   <div class="panel-body bg-light">
-					<input id="claimId" name="claimId" type="text" value="{{@SESSION.claimId}}"/>
+					<input id="claimId" name="claimId" type="hidden" value="{{@SESSION.claimId}}"/>
                     <div class="section-divider mt20 mb40">
                       <span> Vehicle Details </span>
                     </div>
-                    <div class="section row" id="spy1">
-                      <div class="col-md-6">
+                    
+                    <div class="section row mb10 hidden">
+                    <label for="names" class="field-label col-md-3 text-left">Claim Number </label>
+                    <div class="col-md-9">
                         <label for="Claim Number" class="field prepend-icon">
                         <input class="gui-input" name="btn_vehicle" id="btn_vehicle" type="hidden" value="0" readonly>
                           <input class="gui-input" name="claimNo" id="claimNo" type="text" value="{{@SESSION.claimNo}}" readonly>
@@ -208,7 +184,11 @@ input.dp-applied {
                           </label>
                         </label>
                       </div>
-                      <div class="col-md-6">
+                  	</div>
+                  	
+                    <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-left">Car Category </label>
+                    <div class="col-md-9">
 	                      <label class="field select">
 		                    <select id="vehicleCategory" onchange="javascript:claimChange();" name="vehicleCategory">
 		                      <option value="">Car Category</option>
@@ -221,16 +201,21 @@ input.dp-applied {
                     </div>
                       
                     <!-- Registration Number -->
-                    <div class="section row">
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-left">Registration Number </label>
+                    <div class="col-md-9">
                         <label for="RegNo" class="field prepend-icon">
                           <input type="text" name="registrationNo" id="RegNo" class="gui-input" placeholder="Registration Number" >
                           <label for="RegNo" class="field-icon">
                             <i class="fa fa-car"></i>
                           </label>
                         </label>
-                        </div>
-                        <div class="col-md-6">
+                    </div>
+                    </div>
+                    
+                    <div class="section row mb10">
+                    <label for="names" class="field-label col-md-3 text-left">Insurance Company </label>
+                    <div class="col-md-9">
 	                      <label class="field select">
 		                    <select id="insurance" name="insurance">
 		                      <option value="">Insurance Company</option>
@@ -241,81 +226,88 @@ input.dp-applied {
                             </repeat>
 		                    </select>
 	                    	<i class="arrow double"></i>
-	                  		</label>
-	                  		
-	                  		
-                    	</div>   
+	                  		</label>	                  		
+                    </div>   
                     </div>
                                      
 				<!-- Policy Number -->
-               	<div class="section row">
-                  <div class="col-md-6">
+               	<div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Policy Number</label>
+                <div class="col-md-9">
                     <label for="policy number" class="field prepend-icon">
                         <input type="text" name="policyNo" id="policyNo" class="gui-input" placeholder="Policy Number">
                         <label for="policy number icon" class="field-icon">
-                          <i class="fa fa-file-text-o"></i>
+                        <i class="fa fa-file-text-o"></i>
                         </label>
                     </label>
                   </div>
+                  </div>
                   
                   <!-- Expiry Date -->
-                  <div class="col-md-6">
+                  <div class="section row mb10">
+                  <label for="names" class="field-label col-md-3 text-left">Expiry Date</label>
+                  <div class="col-md-9">
                     <label for="exp_date" class="field prepend-icon" title="Expiry Date">
-                      <input type="text" name="exp_date" id="date-pick" class="gui-input" placeholder="Expiry Date">
+                      <input type="text" name="exp_date" id="exp-date-icon" style="cursor: pointer;" onclick="javascript:Mycalendar(this.id);" class="gui-input" placeholder="Expiry Date">
                       <label for="exp_date" class="field-icon">
                         <i class="fa fa-calendar"></i>
                       </label>
                     </label>
                   </div>
-
                 </div>
-                <div class="section row">
-                    <!-- Car Make -->
-                    <div class="col-md-6">
+                
+                <div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Car Make</label>
+                <div class="col-md-9">
                       <label for="make" class="field prepend-icon">
                         <input type="text" name="make" id="Make" class="gui-input" placeholder="Car Make">
                         <label for="make icon" class="field-icon">
                           <i class="fa fa-text-width"></i>
                         </label>
                       </label>
-                    </div>
+                </div>
+				</div>
 
-
-                    <!-- Car Model -->
-                    <div class="col-md-6">
+                <!-- Car Model -->
+                <div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Car Model</label>
+                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <input type="text" name="model" id="Make" class="gui-input" placeholder="Car Model">
                         <label for="model icon" class="field-icon">
                           <i class="fa fa-text-height"></i>
                         </label>
                       </label>
-                    </div>
                 </div>
-                <div class="section row">    
-                    <!-- Color -->
-                	<div class="col-md-6">
+                </div>
+                
+                <div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Car Color</label>
+                <div class="col-md-9">
                 		<label for="model" class="field prepend-icon">
                         <input type="text" name="color" id="color" class="gui-input" placeholder="Car Color">
                         <label for="model icon" class="field-icon">
                           <i class="fa fa-tint"></i>
                         </label>
                       </label>
-                	</div> 
+                </div>
+                </div>	 
                     <!-- Car Year of Manufacture -->
-                    <div class="col-md-6">
+                <div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Year of Manufacture</label>
+                <div class="col-md-9">
                       <label class="field select">
 	                    <select id="year_of_manufacture" name="year_of_manufacture">
 	                      <option value="">Year of Manufacture</option>
-	                      <option value="{{DATE('Y')}}">{{DATE('Y')}}</option>
-	                      <option value="2017">2017</option>
-	                      <option value="2016">2016</option>
-	                      <option value="2015">2015</option>
-	                      <option value="2014">2014</option>
+                            <loop from="{{ @i=0}}" to="{{@i <=20 }}" step="{{@i++}}">
+							    {{@i}}
+							    <option value="{{DATE('Y')-@i}}">{{DATE('Y')-@i}}</option>
+							</loop>
 	                    </select>
                     	<i class="arrow double"></i>
                   		</label>
-                    </div>    	                    
-                 </div> 
+                </div>    	                    
+                </div> 
                  
                 <div class="section-divider mv40">
                     <span>Claim Type</span>
@@ -362,9 +354,11 @@ input.dp-applied {
 				<div class="section-divider mv40">
                     <span> Owner's Details </span>
                 </div>
-               	<div class="section row">
-                <!-- Owner Name -->
-                  <div class="col-md-6">
+        
+                <!-- Full Name -->
+                <div class="section row mb10">
+                <label for="names" class="field-label col-md-3 text-left">Full Name</label>
+                <div class="col-md-9">
                     <label for="name" class="field prepend-icon">
                         <input type="text" name="ownerName" id="name" class="gui-input" placeholder="Full Name">
                         <label for="Name icon" class="field-icon">
@@ -372,9 +366,12 @@ input.dp-applied {
                         </label>
                       </label>
                   </div>
+                  </div>
                   
-                  <!-- Email -->
-                  <div class="col-md-6">
+                  <!-- Email Address -->
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Email Address</label>
+	                <div class="col-md-9">
                     <label for="email" class="field prepend-icon" title="Expiry Date">
                       <input type="email" name="ownerEmail" id="ownerEmail" class="gui-input" placeholder="Email Address">
                       <label for="email" class="field-icon">
@@ -384,30 +381,33 @@ input.dp-applied {
                   </div>
 
                 </div>
-                <div class="section row">
-                <!-- Owner Name -->
-                  <div class="col-md-6">
+
+                <!-- Id Number -->
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Id Number</label>
+	                <div class="col-md-9">
                     <label for="name" class="field prepend-icon">
                         <input type="text" name="idNumber" id="idNumber" class="gui-input" placeholder="Id Number">
                         <label for="Name icon" class="field-icon">
                           <i class="fa fa-credit-card"></i>
                         </label>
                       </label>
-                  </div>
-                  
-                  <!-- Email -->
-                  <div class="col-md-6">
-                    <label for="email" class="field prepend-icon" title="Expiry Date">
+                  	</div>
+                	</div>
+                  <!--Physical Location -->
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Physical Location</label>
+	                <div class="col-md-9">
+                    <label for="email" class="field prepend-icon" title="Physical Location">
                       <input type="text" name="address" id="address" class="gui-input" placeholder="Physical Location">
                       <label for="email" class="field-icon">
                         <i class="fa fa-map-marker"></i>
                       </label>
                     </label>
-                  </div>
-
-                </div>
-            </div>
+                  	</div>
+                	</div>
 				</div>
+            	</div>
             	<!-- end: .vehicle-form -->
                 </section>
                 <!-- Claim step 2 -->
@@ -415,12 +415,12 @@ input.dp-applied {
                   <i class="fa fa-ambulance pr5"></i> Incidence Details</h4>
                 <section class="wizard-section">
 				<div class="panel heading-border">
-	<!--<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">-->
+				<!--<form method="post" action="{{@SCHEME.'://'.@HOST.@BASE.'/claims/file-claim'}}">-->
 				   <div class="panel-body bg-light">
 				  <!-- If Accident type if WINDSCREEN-->
-                    	<div class="section-divider mt20 mb40">
-                      		<span id="heading"> Incidence Details </span>
-                    	</div>
+                	<div class="section-divider mt20 mb40">
+                  		<span id="heading"> Incidence Details </span>
+                	</div>
                     <!-- .section-divider -->
 					<div class="section row hidden" id="spy1">
 	                    <input class="gui-input" name="btn_incidence" id="btn_incidence" type="hidden" value="0" readonly>
@@ -437,9 +437,11 @@ input.dp-applied {
                         </label>
                       </div>
                       </div> 
-                    <div class="section row">
+                      
                     <!-- Date -->
-	                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Date of Incidence</label>
+	                <div class="col-md-9">
 	                      <label for="make" class="field prepend-icon">
 	                        <input type="text" name="incidence_date" id="Make" class="gui-input" placeholder="Date of Incidence">
 	                        <label for="make icon" class="field-icon">
@@ -447,9 +449,11 @@ input.dp-applied {
 	                        </label>
 	                      </label>
 	                    </div>
-	                    
+	                  </div>  
 	                    <!-- time -->
-	                    <div class="col-md-6">
+	                    <div class="section row mb10">
+		                <label for="names" class="field-label col-md-3 text-left">Time of Incidence</label>
+		                <div class="col-md-9">
 	                      <label for="model" class="field prepend-icon">
 	                        <input type="text" name="incidence_time" id="Make" class="gui-input" placeholder="time of Incidence">
 	                        <label for="model icon" class="field-icon">
@@ -457,10 +461,12 @@ input.dp-applied {
 	                        </label>
 	                      </label>
 	                    </div>
-                	</div>
+	                    </div>
+                		
                 <!-- Location -->
-	            <div class="section row">
-	              <div class="col-md-12">
+	            <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Location of the Incidenc</label>
+	                <div class="col-md-9">
 	                <label for="incidence_location" class="field prepend-icon">
 	                  <input type="text" name="incidence_location" id="incidence_location" class="gui-input" placeholder="Location of the Incidence">
 	                  <label for="incidence_location" class="field-icon">
@@ -472,9 +478,9 @@ input.dp-applied {
               <!-- end IF -->
               
               <!-- IF Theft -->
-              <div id="option_theft" style="display: none">
-              	<div class="section row">
-              	  <div class="col-md-12">
+              <div class="section row mb10" id="option_theft" style="display: none">
+	            <label for="names" class="field-label col-md-3 text-left">Theft type</label>
+	             <div class="col-md-9">
               		<label class="field select">
 	                    <select id="theft_type" onchange="javascript:stolen();" name="theft_type">
 	                      <option value="">Theft type</option>
@@ -486,8 +492,9 @@ input.dp-applied {
                   </div>
               	</div>
               	<!-- IF Parts-->
-              	<div class="section row" style="display:none" id="stolen_parts">
-              	 <div class="col-md-12">
+              	<div class="section row mb10" style="display:none" id="stolen_parts">
+	                <label for="names" class="field-label col-md-3 text-left">Stolen Parts</label>
+	                <div class="col-md-9">
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="stolen_parts" placeholder="Describe the the stolen parts"></textarea>
                         <label for="comment" class="field-icon">
@@ -499,12 +506,12 @@ input.dp-applied {
                     </label>
                     </div>
                 </div>
-                </div>
                 
               <!-- IF Accident-->
               <div id="accident_options" style="display:none">
-              	<div class="section row">
-              		<div class="col-md-6">
+              	<div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Who was driving the car?</label>
+	                <div class="col-md-9">
 	              	 	<label class="field select">
 		                    <select id="accident_driver" name="accident_driver">
 		                      <option value=""> -- Who was driving the car? -- </option>
@@ -514,8 +521,11 @@ input.dp-applied {
 	                    	<i class="arrow double"></i>
 	                  	</label>
               		</div>               
+              		</div>               
                     <!-- time -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Speed of the Vehicle(Km/hr)</label>
+	                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <input type="text" name="accident_speed" id="speed" class="gui-input" placeholder="Speed of the Vehicle(Km/hr)">
                         <label for="model icon" class="field-icon">
@@ -525,8 +535,9 @@ input.dp-applied {
                     </div>
                 </div>
               	
-              	<div class="section row">    
-              	<div class="col-md-12">
+              	<div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Weather Condition</label>
+	                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <input type="text" name="weather" id="weather" class="gui-input" placeholder="Weather Condition">
                         <label for="model icon" class="field-icon">
@@ -541,7 +552,9 @@ input.dp-applied {
 			  
 			  
               <!-- General Bottom details-->
-              	<div class="section" id="spy3">
+              	<div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Describe what happened</label>
+	                <div class="col-md-9">
                      <label for="incidence_desc" class="field prepend-icon">
                         <textarea class="gui-textarea" id="incidence_desc" name="incidence_desc" placeholder="Describe what happened"></textarea>
                         <label for="incidence_desc" class="field-icon">
@@ -551,6 +564,7 @@ input.dp-applied {
                           <strong>Hint!:</strong> Explain/State the incidence took place.
                         </span>
                     </label>
+                  </div>
                   </div>
               	
                	<div class="section row">
@@ -573,8 +587,8 @@ input.dp-applied {
                     </div>
                 </div>
                </div>
+               	</div>
                <!--</form>-->	 
-				</div>
 	            </section>
 
                 <!-- Claim step 3 -->
@@ -601,8 +615,9 @@ input.dp-applied {
                     </div>
                                      
 				<!-- First Name -->
-               	<div class="section row">
-                  <div class="col-md-6">
+               	<div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">First Name</label>
+	                <div class="col-md-9">
                      <label for="First Name" class="field prepend-icon">
                         <input type="text" name="firstName" id="firstName" class="gui-input" placeholder="First Name">
                         <label for="first name icon" class="field-icon">
@@ -610,9 +625,12 @@ input.dp-applied {
                         </label>
                      </label>
                   </div>
+                  </div>
                   
                   <!-- Last Name -->
-                  <div class="col-md-6">
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Last Name</label>
+	                <div class="col-md-9">
                     <label for="last Name" class="field prepend-icon" title="Last Name">
                       <input type="text" name="lastName" id="lastName" class="gui-input" placeholder="Last Name">
                       <label for="lastName" class="field-icon">
@@ -621,9 +639,11 @@ input.dp-applied {
                     </label>
                   </div>
                 </div>
-                <div class="section row">
-                    <!-- Phone Number -->
-                    <div class="col-md-6">
+                
+                <!-- Phone Number -->
+                   <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Phone Number</label>
+	                <div class="col-md-9">
                       <label for="phone" class="field prepend-icon">
                         <input type="text" name="phone" id="phone" class="gui-input" placeholder="Phone Number">
                         <label for="phone icon" class="field-icon">
@@ -631,30 +651,37 @@ input.dp-applied {
                         </label>
                       </label>
                     </div>
+                    </div>
                     
                     <!-- Date of Birth -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Date of Birth</label>
+	                <div class="col-md-9">
                       <label for="dob" class="field prepend-icon">
-                        <input type="text" name="dob" id="dob" class="gui-input" placeholder="Date of Birth">
+                        <input type="text" name="dob" id="dob" class="gui-input" onclick="javascript:Mycalendar(this.id);" placeholder="Date of Birth">
                         <label for="model icon" class="field-icon">
                           <i class="fa fa-calendar"></i>
                         </label>
                       </label>
                     </div>
                 </div>
-                <div class="section row">
-                <div class="col-md-12">
+                
+                <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Identity Number</label>
+	                <div class="col-md-9">
                       <label for="idnumber" class="field prepend-icon">
                         <input type="number" name="idnumber" id="idnumber" class="gui-input" placeholder="Identity Number">
                         <label for="model icon" class="field-icon">
-                          <i class="fa fa-text"></i>
+                          <i class="fa fa-credit-card"></i>
                         </label>
                       </label>
                 </div>
                 </div>
-                <div class="section row">    
+                   
                     <!-- Lincence Number -->
-                	<div class="col-md-6">
+                	<div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <div class="col-md-9">
                 		<label for="dl" class="field prepend-icon">
                         <input type="text" name="lincence" id="lincence" class="gui-input" placeholder="Driving Lincence">
                         <label for="lincence icon" class="field-icon">
@@ -662,8 +689,11 @@ input.dp-applied {
                         </label>
                       	</label>
                 	</div> 
+                	</div> 
                     <!-- Expiry date -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Expiry Date</label>
+	                <div class="col-md-9">
                       <label for="dl" class="field prepend-icon">
                         <input type="text" name="dl_expiry_date" id="dl_expiry_date" class="gui-input" placeholder="Expiry Date">
                         <label for="lincence icon" class="field-icon">
@@ -671,22 +701,25 @@ input.dp-applied {
                         </label>
                       </label>
                     </div>    	                    
-                 </div>              
-               	<div class="section row">
-    
+                 </div>  
+                             
                 <!-- Years of Experience -->
-                  <div class="col-md-6">
+                 <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Year of Experience</label>
+	                <div class="col-md-9">
                     <label for="name" class="field prepend-icon">
-                        <input type="number" name="experience" id="experience" class="gui-input" placeholder="Year of Experience">
+                        <input type="number" name="experience" id="experience" class="gui-input" placeholder="Years of Experience">
                         <label for="experience icon" class="field-icon">
                           <i class="fa fa-clock-o-o"></i>
                         </label>
                       </label>
                   </div>
+                  </div>
                   
                   <!-- Category -->
-                  <div class="col-md-6">
-                  	  <label>Lincence Category</label>
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Lincence Category</label>
+	                <div class="col-md-9">
                       <label class="field select-multiple">
 	                    <select name="dl_category[]" id="dl_category" multiple>
 	                      <option value="A">A</option>
@@ -699,7 +732,6 @@ input.dp-applied {
 	                    </select>
                   	 </label>
                   </div>
-
                 </div>
             	</div>
 		 <!-- </form> -->
@@ -712,8 +744,10 @@ input.dp-applied {
                 <i class="fa fa-medkit pr5"></i> Damage</h4>
                 <section class="wizard-section">
 				  <div class="panel-body bg-light">
-                  <div class="section" id="spy3">
-                   <input class="gui-input" name="btn_uploads" id="btn_damage" type="hidden" value="0" readonly>
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <div class="col-md-9">
+                   <input class="gui-input" name="btn_damage" id="btn_damage" type="hidden" value="0" readonly>
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="Describle the Damage to the vehicle"></textarea>
                         <label for="comment" class="field-icon">
@@ -723,6 +757,7 @@ input.dp-applied {
                           <strong>Hint!:</strong> Explain/State the damage done to the car.
                         </span>
                     </label>
+                  </div>
                   </div>
                   <!-- end section -->
 
@@ -748,8 +783,10 @@ input.dp-applied {
 
                     </div>
                   </div>
-                  <div class="section row">
-                    <div class="section" id="spy3">
+                  
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <div class="col-md-9">
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="When and where can it be repaired?"></textarea>
                         <label for="comment" class="field-icon">
@@ -762,8 +799,10 @@ input.dp-applied {
                   </div>
                   </div>
                   <!-- end section -->
-                  <div class="section row">
-                  <div class="section" id="spy3">
+                  
+                  <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <div class="col-md-9">
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="Other Vehicle and /or Property Damaged?"></textarea>
                         <label for="comment" class="field-icon">
@@ -775,14 +814,16 @@ input.dp-applied {
                      </label>
                   </div>
                   </div>
+                  
                   <!-- Property details-->
                   <div class="section-divider mv40">
                       <span> Property Details </span>
                   </div>
-                    <!-- .section-divider -->
-                  <div class="section row">
+                    <!-- .section-divider --> 
                     <!-- Owner name -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Owner's Full Name</label>
+	                <div class="col-md-9">
                       <label for="make" class="field prepend-icon">
                         <input type="text" name="property_owner_name" id="property_owner_name" class="gui-input" placeholder="Owner's Full Name">
                         <label for="make icon" class="field-icon">
@@ -790,9 +831,12 @@ input.dp-applied {
                         </label>
                       </label>
                     </div>
+                    </div>
                     
                     <!-- Phone Number -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Phone Number</label>
+	                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <input type="text" name="property_owner_phone" id="property_owner_phone" class="gui-input" placeholder="Phone Number">
                         <label for="model icon" class="field-icon">
@@ -801,9 +845,11 @@ input.dp-applied {
                       </label>
                     </div>
                   </div>
-                  <div class="section row">
+                  
                     <!-- Car Registration Number -->
-                    <div class="col-md-6">
+                   <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Damaged Car Registration Number</label>
+	                <div class="col-md-9">
                       <label for="make" class="field prepend-icon">
                         <input type="text" name="damaged_car_reg_no" id="damaged_car_reg_no" class="gui-input" placeholder="Damaged Car Registration Number">
                         <label for="make icon" class="field-icon">
@@ -811,9 +857,12 @@ input.dp-applied {
                         </label>
                       </label>
                     </div>
+                    </div>
                     
                     <!-- Phone Number -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Property Damaged</label>
+	                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="damaged_propertys" placeholder="Property Damaged?"></textarea>
                         <label for="comment" class="field-icon">
@@ -832,7 +881,9 @@ input.dp-applied {
                   </div>
                   <div class="section row">
                     <!-- Injured Person name -->
-                    <div class="col-md-6">
+                    <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Injured Person Full Name</label>
+	                <div class="col-md-9">
                       <label for="person_name" class="field prepend-icon">
                         <input type="text" name="person_name" id="person_name" class="gui-input" placeholder="Injured Person Full Name">
                         <label for="make icon" class="field-icon">
@@ -840,9 +891,12 @@ input.dp-applied {
                         </label>
                       </label>
                     </div>
+                    </div>
                     
                     <!--Injured Phone Number -->
-                    <div class="col-md-6">
+                   <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Injured Person's Phone Number</label>
+	                <div class="col-md-9">
                       <label for="model" class="field prepend-icon">
                         <input type="text" name="injured_phone" id="injured_phone" class="gui-input" placeholder="Injured Person's Phone Number">
                         <label for="model icon" class="field-icon">
@@ -853,9 +907,10 @@ input.dp-applied {
                   </div>
                   
                   <!-- Relationship With the injured person-->
-	               <div class="section row">
 	                <!--Relationship Person name -->
-	                <div class="col-md-6">
+	                <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Next of Kin Full Name</label>
+	                <div class="col-md-9">
 	                  <label for="person_name" class="field prepend-icon">
 	                    <input type="text" name="kin_name" id="kin_name" class="gui-input" placeholder="Next of Kin Full Name">
 	                    <label for="make icon" class="field-icon">
@@ -863,12 +918,15 @@ input.dp-applied {
 	                    </label>
 	                  </label>
 	                </div>
+	                </div>
 	                
 	                <!--Relationship Type -->
-	                <div class="col-md-6">
+	                <div class="section row mb10">
+	                <label for="names" class="field-label col-md-3 text-left">Relationship</label>
+	                <div class="col-md-9">
                       <label class="field select">
 	                    <select id="relationship_type" name="relationship_type">
-	                      <option value="">Relatioship Type</option>
+	                      <option value="">Relationship Type</option>
 	                      <option value="Father_Mother">Father/Mother</option>
 	                      <option value="Brother_Sister">Brother/Sister</option>
 	                      <option value="Auncle_Aunt">Auncle/Aunt</option>
@@ -917,7 +975,7 @@ input.dp-applied {
                 <div class="section row mb10">
                     <label for="store-desc" class="field-label col-md-3 text-center">Scene Photos </label>
                     <div class="col-md-9">
-                      <div class="tray-bin pl10 mb10" style="min-height: 250px;">
+                      <div class="tray-bin pl10 mb10" style="min-height: 200px;">
 		                <h5 class="text-muted mt10 fw600 pl10">
 		                <i class="fa fa-exclamation-circle text-info fa-lg pr10"></i> Drag and Drop Pictures and other related ducuments </h5>
 		                  <div class="fallback">
@@ -1187,7 +1245,7 @@ input.dp-applied {
                   <label for="store-desc" class="field-label col-md-3 text-center">Expiry Date	 : </label>
                     <div class="col-md-9">
                       <label class="field prepend-icon">
-                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Expiery Date" readonly>
+                        <input type="text" name="store-weight" id="store-weight" class="gui-input" value="" placeholder="Expiry Date" readonly>
                         <label for="store-desc" class="field-icon">
                           <i class="fa fa-calendar"></i>
                         </label>
@@ -1408,7 +1466,8 @@ input.dp-applied {
                     </div>
                     <div class="col-sm-4">
                       <p class="text-right">
-                        <input type="submit" name="btn_confirm" class="btn btn-primary" value="Submit the claim">
+                        <!--<input type="submit" name="btn_confirm" class="btn btn-primary" value="Submit the claim">-->
+                        <input type="submit" class="btn btn-warning" name="btn_sub_form" value="Submit form"/>
                       </p>
                     </div>
                   </div>
@@ -1424,9 +1483,9 @@ input.dp-applied {
 				
 			  </div>
               <!-- End: Wizard -->
-			<div class="col-md-12">
-				<input type="submit" class="btn btn-warning" name="btn_sub_form" value="Submit form"/>
-			</div>
+			<!--<div class="col-md-12">
+				
+			</div> -->
             </form>
             <!-- End Account2 Form -->
 
@@ -1434,7 +1493,6 @@ input.dp-applied {
           <!-- end: .admin-form -->
 
         </div>
-
       </section>
       <!-- End: Content -->
       

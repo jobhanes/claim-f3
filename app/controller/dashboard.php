@@ -55,7 +55,8 @@ class Dashboard extends Base {
     	$data['rejectedCount'] 	= (!$claims->load(array('action = ?','Rejected'))->dry) ? $claims->loaded() : 0;
     	
     	//recent claims 
-    	$recentClaims 			= $claims->afind(NULL);//->orderBy('_id DESC');
+    	$claims					= $claims->load();
+    	$recentClaims 			= $claims->find(NULL, array('limit'=>5, 'order'=>'id DESC'));
     	//$recentClaims			= $recentClaims->orderBy('name DESC');
     	$data['recentClaims']	= $recentClaims;
 

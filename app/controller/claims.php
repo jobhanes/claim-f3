@@ -130,6 +130,11 @@ class Claims extends Base {
 		$data = array();
     	$data['name']	= 'New Claim';
     	$this->response->topscripts('templates/includes/forms-top-css.html');
+    	//Insurance load
+    	$Insurance		= new \Model\Insurance();
+    	$Insurance->load();  
+    	$data['Insurance']	= $Insurance->afind(NULL);
+    	
     	$data['CONTENT']= 'templates/new-claim.html';
     	$this->response->bottomscripts('templates/includes/forms-bottom-scripts.html');
     	//$this->response->otherbottomscripts('templates/includes/forms-validation-script.html');
