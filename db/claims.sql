@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2018 at 05:11 PM
+-- Generation Time: Sep 20, 2018 at 03:14 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -42,8 +42,9 @@ CREATE TABLE `accident` (
 --
 
 INSERT INTO `accident` (`id`, `claimId`, `speed`, `weather`, `driving`, `lastUpdate`, `status`) VALUES
-(6, 1, 50, 'foggy', 'self', '2018-09-13 12:35:31', '1'),
-(7, 58, 50, 'foggy', 'self', '2018-09-13 14:56:52', '1');
+(8, 13, 50, 'foggy', 'self', '2018-09-19 12:29:02', '1'),
+(9, 15, 50, 'foggy', 'self', '2018-09-20 08:29:01', '1'),
+(10, 17, 70, 'SUNNY', 'self', '2018-09-20 12:17:17', '1');
 
 -- --------------------------------------------------------
 
@@ -82,11 +83,12 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `claim` (
   `id` int(15) NOT NULL,
-  `claimNo` varchar(150) BINARY DEFAULT '0',
+  `claimNo` varchar(150) BINARY NOT NULL,
   `insuranceId` int(15) NOT NULL,
   `userId` int(15) NOT NULL,
   `claimTypeId` int(15) NOT NULL,
   `vehicleId` int(15) NOT NULL,
+  `driverId` int(15) DEFAULT NULL,
   `ownerId` int(15) NOT NULL,
   `dateTime` datetime NOT NULL,
   `stageId` int(15) NOT NULL,
@@ -100,9 +102,16 @@ CREATE TABLE `claim` (
 -- Dumping data for table `claim`
 --
 
-INSERT INTO `claim` (`id`, `claimNo`, `insuranceId`, `userId`, `claimTypeId`, `vehicleId`, `ownerId`, `dateTime`, `stageId`, `action`, `dateCreated`, `lastUpdate`, `status`) VALUES
-(1, 'KCB-356R-15900-NRB', 1, 1, 1, 1, 1, '2018-09-14 11:29:49', 1, 'Pending', '2018-09-14 08:29:49', '2018-09-17 15:00:48', '1'),
-(2, 'KBQ-789G-34546-KSM', 2, 1, 1, 1, 1, '2018-09-14 11:55:20', 1, 'Pending', '2018-09-14 08:55:20', '2018-09-17 15:00:51', '1');
+INSERT INTO `claim` (`id`, `claimNo`, `insuranceId`, `userId`, `claimTypeId`, `vehicleId`, `driverId`, `ownerId`, `dateTime`, `stageId`, `action`, `dateCreated`, `lastUpdate`, `status`) VALUES
+(1, 'KCB-356R-15900-NRB', 1, 1, 1, 1, NULL, 1, '2018-09-14 11:29:49', 1, 'Pending', '2018-09-14 08:29:49', '2018-09-17 15:00:48', '1'),
+(2, 'KBQ-789G-34546-KSM', 2, 1, 1, 1, NULL, 1, '2018-09-14 11:55:20', 3, 'Processing', '2018-09-14 08:55:20', '2018-09-20 11:05:41', '1'),
+(12, 'C/PC/000012/018', 3, 2, 2, 12, NULL, 1, '2018-09-19 14:58:28', 1, 'Pending', '2018-09-19 11:58:28', '2018-09-20 07:58:00', '1'),
+(13, 'C/PC/000013/018', 3, 4, 1, 13, NULL, 1, '2018-09-19 15:29:02', 1, 'Pending', '2018-09-19 12:29:02', '2018-09-20 07:58:01', '1'),
+(14, 'C/PSV/000014/018', 2, 2, 2, 15, NULL, 1, '2018-09-20 10:21:11', 8, 'Rejected', '2018-09-20 07:21:11', '2018-09-20 11:06:43', '1'),
+(15, 'C/PC/000015/018', 1, 2, 1, 16, NULL, 1, '2018-09-20 11:33:55', 1, 'Pending', '2018-09-20 08:33:55', '2018-09-20 08:33:55', '1'),
+(16, 'C/PC/000016/018', 2, 2, 3, 17, NULL, 20, '2018-09-20 12:00:11', 7, 'Solved', '2018-09-20 09:00:11', '2018-09-20 11:05:35', '1'),
+(19, 'C/PSV/000017/018', 3, 4, 1, 19, NULL, 6, '2018-09-20 15:17:17', 1, 'Pending', '2018-09-20 12:17:17', '2018-09-20 12:17:17', '1'),
+(20, 'C/PC/000020/018', 4, 4, 2, 20, NULL, 1, '2018-09-20 15:22:45', 1, 'Pending', '2018-09-20 12:22:45', '2018-09-20 12:22:45', '1');
 
 -- --------------------------------------------------------
 
@@ -167,6 +176,19 @@ CREATE TABLE `damage` (
   `status` enum('1','0') NOT NULL DEFAULT '1'
 ) ;
 
+--
+-- Dumping data for table `damage`
+--
+
+INSERT INTO `damage` (`id`, `claimId`, `damageDesc`, `optionCategory`, `otherDamages`, `ownerDetails`, `personsInured`, `lastUpdate`, `status`) VALUES
+(1, 12, '', '{\"stillInUse\":\"Yes\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"Matthew Okusima\",\"pOwnerPhone\":\"0726784521\",\"damagedCarNo\":\"KBZ 342P\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"0723146534\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"\"}', '2018-09-19 11:58:28', '1'),
+(2, 13, '', '{\"stillInUse\":\"No\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"Matthew Okusima\",\"pOwnerPhone\":\"0703466767\",\"damagedCarNo\":\"\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"07234344343\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"Father_Mother\"}', '2018-09-19 12:29:01', '1'),
+(3, 14, '', '{\"stillInUse\":\"Yes\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"Matthew Okusima\",\"pOwnerPhone\":\"070243124\",\"damagedCarNo\":\"KBX342D\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"073465313\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"Auncle_Aunt\"}', '2018-09-20 07:21:11', '1'),
+(4, 15, '', '{\"stillInUse\":\"No\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"Matthew Okusima\",\"pOwnerPhone\":\"0702435465\",\"damagedCarNo\":\"KBA 342T\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"07235465254\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"Father_Mother\"}', '2018-09-20 08:29:00', '1'),
+(5, 16, '', '{\"stillInUse\":\"Yes\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"Matthew Okusima\",\"pOwnerPhone\":\"02546565767\",\"damagedCarNo\":\"KBA 342TF\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"072354656\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"Guardian\"}', '2018-09-20 09:00:11', '1'),
+(6, 17, '', '{\"stillInUse\":\"Yes\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"KEVIN\",\"pOwnerPhone\":\"0723545656556\",\"damagedCarNo\":\"KBF 342D\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"072355465656\",\"kinName\":\"KIMANI VUVU\",\"relationship\":\"Brother_Sister\"}', '2018-09-20 12:17:16', '1'),
+(7, 20, '', '{\"stillInUse\":\"Yes\",\"repairDate\":\"\",\"repairPlace\":\"\"}', '', '{\"pOwnerName\":\"\",\"pOwnerPhone\":\"\",\"damagedCarNo\":\"\"}', '{\"injuredName\":\"\",\"injuredPhone\":\"0743124365\",\"kinName\":\"VICTOR KABERIA\",\"relationship\":\"Father_Mother\"}', '2018-09-20 12:22:45', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -190,7 +212,18 @@ CREATE TABLE `document` (
 
 INSERT INTO `document` (`id`, `claimId`, `licence`, `photo`, `identityDocument`, `video`, `lastUpdate`, `status`) VALUES
 (2, 58, 'dash.jpg', '', 'image002.png', 'PHOTO-2018-05-10-15-19-14.jpg', '2018-09-13 14:56:52', '1'),
-(3, 1, '', '', '', '', '2018-09-14 09:34:19', '1');
+(3, 1, '', '', '', '', '2018-09-14 09:34:19', '1'),
+(4, 0, '', '', '', '', '2018-09-18 12:40:50', '1'),
+(5, 0, 'dash.jpg', 'dash.jpg', 'image002.png', '', '2018-09-18 15:11:28', '1'),
+(6, 0, '', '', '', '', '2018-09-18 15:16:52', '1'),
+(7, 0, '', '', '', '', '2018-09-18 15:17:04', '1'),
+(9, 12, 'image001.png', 'dash.jpg', 'ri_motor_accident_claim_form 12-06-2015.pdf', '', '2018-09-19 11:58:28', '1'),
+(10, 13, 'ri_motor_accident_claim_form 12-06-2015.pdf', 'PHOTO-2018-05-10-15-19-14.jpg', 'image001.png', '', '2018-09-19 12:29:02', '1'),
+(11, 14, 'dash.jpg', 'image001.png', 'image002.png', '', '2018-09-20 07:21:11', '1'),
+(12, 15, 'PHOTO-2018-05-10-15-19-14.jpg', 'PHOTO-2018-05-10-15-19-14.jpg', 'image002.png', '', '2018-09-20 08:29:00', '1'),
+(13, 16, 'dash.jpg', 'dash.jpg', 'dash.jpg', '', '2018-09-20 09:00:11', '1'),
+(14, 17, 'dash.jpg', 'PHOTO-2018-05-10-15-19-14.jpg', 'dash.jpg', '', '2018-09-20 12:17:16', '1'),
+(15, 20, 'dash.jpg', 'image001.png', 'image002.png', '', '2018-09-20 12:22:45', '1');
 
 -- --------------------------------------------------------
 
@@ -227,8 +260,16 @@ INSERT INTO `driver` (`id`, `claimId`, `firstName`, `lastName`, `phone`, `idNumb
 (9, 1, 'JOBHANES', 'BWIRE', 702263351, '452313565', '1991-11-03', 'D23454654', '2018-09-10', '7', 'G', '1'),
 (10, 1, 'JOBHANES', 'BWIRE', 702263351, '452313565', '1991-11-03', 'D4345e654', '2018-09-10', '7', 'A,B,C,D,E,F,G,', '1'),
 (11, 1, 'MATTHEW', 'OKUSIMA', 722435465, '259845231', '1991-11-03', 'DZ3454654', '2018-09-10', '8', 'E,F,G', '1'),
-(12, 2, '', '', 0, '', '0000-00-00', '', '0000-00-00', '', '', '1'),
-(13, 58, 'MATTHEW', 'OKUSIMA', 722435465, '2345231232', '1991-11-03', 'BTTP34546', '2018-09-10', '4', 'E,F,G', '1');
+(13, 4, 'MATTHEW', 'OKUSIMA', 722435465, '2345231232', '1991-11-03', 'BTTP34546', '2018-09-10', '4', 'E,F,G', '1'),
+(14, 0, 'JOBHANES', 'BWIRE', 722435465, '23452316', '1991-11-03', 'DX3454654', '2018-09-10', '45', '', '1'),
+(16, 12, 'JOBHANES', 'BWIRE', 722435465, '22452316', '1990-09-07', 'WAP043L', '2019-09-10', '5', 'D,E,F,G', '1'),
+(17, 13, 'JOBHANES', 'BWIRE', 722435465, '23452316', '1990-08-01', 'WP6775', '2018-11-10', '6', 'E,F,G', '1'),
+(18, 14, 'JOBHANES', 'BWIRE', 722435465, '24452316', '1991-11-03', 'VP9034', '2019-03-30', '7', 'B,C,E', '1'),
+(19, 15, 'JOBHANES', 'BWIRE', 702263351, '23452317', '1991-11-03', 'WP5672F', '2019-06-19', '25', 'C,D,E,F,G', '1'),
+(20, 16, 'MATTHEW', 'OKUSIMA', 722435465, '23452316', '1987-09-04', 'WR667', '2019-04-01', '2', 'D,E,F,G', '1'),
+(21, 16, 'MATTHEW', 'OKUSIMA', 722435465, '234523167', '1987-09-04', 'WR6675', '2019-04-01', '5', '', '1'),
+(22, 17, 'KIMANI', 'VINICENT', 72354231, '2345454665', '2018-05-01', 'W79834', '2019-02-06', '41', 'D,E,F,G', '1'),
+(23, 20, 'MATTHEW', 'OKUSIMA', 722435465, '23452316', '1982-06-06', 'V65454', '2020-01-11', '3', 'A,B,C,D,E,F,G', '1');
 
 -- --------------------------------------------------------
 
@@ -256,7 +297,18 @@ CREATE TABLE `incidence` (
 INSERT INTO `incidence` (`id`, `claimId`, `claimtypeId`, `date`, `time`, `location`, `description`, `reported`, `lastUpdate`, `status`) VALUES
 (8, 1, 1, '2010-01-10', '18:00:00', 'Kirutut', 'Happended', 'N', '2018-09-13 12:38:24', '1'),
 (9, 2, 0, '0000-00-00', '00:00:00', '', '', '', '2018-09-13 14:46:08', '1'),
-(10, 58, 1, '2019-01-10', '12:00:00', 'KAREN', 'N/A', 'Y', '2018-09-13 14:56:52', '1');
+(10, 58, 1, '2019-01-10', '12:00:00', 'KAREN', 'N/A', 'Y', '2018-09-13 14:56:52', '1'),
+(11, 0, 0, '0000-00-00', '00:00:00', '', '', '', '2018-09-18 12:41:11', '1'),
+(12, 0, 2, '2017-06-07', '23:00:00', 'BUSIA', 'RTRT', 'Y', '2018-09-18 15:11:28', '1'),
+(13, 0, 2, '2017-06-07', '23:00:00', 'BUSIA', '', 'Y', '2018-09-18 15:16:52', '1'),
+(14, 0, 2, '2017-06-07', '23:00:00', 'BUSIA', '', 'Y', '2018-09-18 15:17:04', '1'),
+(15, 12, 2, '2020-03-12', '20:02:10', 'KAREN MARKET', 'I was coming.....', 'Y', '2018-09-19 11:32:54', '1'),
+(16, 13, 1, '2018-01-01', '20:00:00', 'KAREN', 'NFGFGFGFG', 'Y', '2018-09-19 12:29:02', '1'),
+(17, 14, 2, '2018-09-07', '13:30:00', 'KAREN', 'I HAD PARKED THE CAR', 'Y', '2018-09-20 07:21:11', '1'),
+(18, 15, 1, '2018-08-09', '09:38:00', 'NGONG\' ROAD', 'I lost control and bumped into a tipper', 'Y', '2018-09-20 08:29:01', '1'),
+(19, 16, 3, '2018-08-07', '09:00:00', 'KAREN KENYA', 'KAREN KENYA', 'Y', '2018-09-20 09:00:11', '1'),
+(20, 17, 1, '2018-09-20', '13:00:00', 'KABWAGI', 'ZFSFBXXB B B DBBDFB', 'Y', '2018-09-20 12:17:17', '1'),
+(21, 20, 2, '2018-09-20', '01:04:00', 'Kirutut', 'KAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALA KAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALAKAMPLALA', 'N', '2018-09-20 12:22:45', '1');
 
 -- --------------------------------------------------------
 
@@ -340,9 +392,7 @@ CREATE TABLE `notification` (
 
 CREATE TABLE `owner` (
   `id` int(11) NOT NULL,
-  `firstName` varchar(50) BINARY NOT NULL,
-  `lastName` varchar(50) BINARY NOT NULL,
-  `phone` varchar(50) BINARY NOT NULL,
+  `fullName` varchar(150) BINARY NOT NULL,
   `emailAddress` varchar(50) BINARY DEFAULT NULL,
   `idNumber` varchar(50) BINARY DEFAULT NULL,
   `physicalAddress` varchar(50) BINARY NOT NULL,
@@ -355,8 +405,13 @@ CREATE TABLE `owner` (
 -- Dumping data for table `owner`
 --
 
-INSERT INTO `owner` (`id`, `firstName`, `lastName`, `phone`, `emailAddress`, `idNumber`, `physicalAddress`, `dateCreated`, `lastUpdate`, `status`) VALUES
-(1, 'JOBHANES', 'BWIRE', '0702263351', 'jobhanesbwire@gamil.com', '29304210', 'KWARARA RD', '2018-09-17 11:42:46', '2018-09-17 11:42:49', '1');
+INSERT INTO `owner` (`id`, `fullName`, `emailAddress`, `idNumber`, `physicalAddress`, `dateCreated`, `lastUpdate`, `status`) VALUES
+(1, 'JOBHANES', 'jobhanesbwire@gmail.com', '29304210', 'KWARARA RD', '2018-09-17 11:42:46', '2018-09-20 07:29:48', '1'),
+(2, '', 'jobhanesbwire@gmail.com', '23454656', 'KAREN', '2018-09-18 15:12:28', '2018-09-18 15:12:28', '1'),
+(3, '', 'james@gmail.com', '20234541', 'KIKUYU', '2018-09-19 15:31:04', '2018-09-19 15:31:04', '1'),
+(4, '', 'jameskisima@gmail.com', '124365789', 'KAREN KENYA', '2018-09-20 08:49:05', '2018-09-20 08:49:05', '1'),
+(5, 'MICHAEL DINA', 'michaeldina@gmail.com', '124365745', 'KAREN KENYA', '2018-09-20 09:03:38', '2018-09-20 09:03:38', '1'),
+(6, 'JOHNAH KIMEMIA', 'jmes@kim.com', '56342335545', 'HONDA', '2018-09-20 12:17:16', '2018-09-20 12:17:16', '1');
 
 -- --------------------------------------------------------
 
@@ -477,6 +532,17 @@ CREATE TABLE `theft` (
   `status` enum('1','0') NOT NULL DEFAULT '1'
 ) ;
 
+--
+-- Dumping data for table `theft`
+--
+
+INSERT INTO `theft` (`id`, `claimId`, `category`, `parts`, `otherDetails`, `lastUpdate`, `status`) VALUES
+(1, 0, '', 'YTYTYT,TRTRT', 'N/A', '2018-09-18 15:11:28', '1'),
+(2, 0, '', '', 'N/A', '2018-09-18 15:16:52', '1'),
+(3, 0, '', '', 'N/A', '2018-09-18 15:17:04', '1'),
+(4, 14, '', 'HEAD LAMPS', 'N/A', '2018-09-20 07:21:11', '1'),
+(5, 20, '', 'KAMPLALA', 'N/A', '2018-09-20 12:22:45', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -521,7 +587,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `emailAddress`, `userTypeId`, `active`, `dateCreated`, `lastUpdate`, `status`) VALUES
 (1, 'JOBHANES', '94fb8724357c60ca55d578b8bfdf776c', 'jobhanes@dimehub.com', 1, '0', '2018-08-30 14:21:24', '2018-08-30 14:21:41', '1'),
 (2, 'muriuki', '94fb8724357c60ca55d578b8bfdf776c', 'jobhanesbwire@gmail.com', 3, '0', '2018-08-30 14:21:24', '2018-08-30 14:21:41', '1'),
-(3, 'JAMES', '40e3d4bc0dbbe3bcc36b4aaa163a0691', 'test@gmail.com', 3, '0', '2018-09-05 15:04:35', '2018-09-05 15:04:35', '1');
+(3, 'JAMES', '40e3d4bc0dbbe3bcc36b4aaa163a0691', 'test@gmail.com', 3, '0', '2018-09-05 15:04:35', '2018-09-05 15:04:35', '1'),
+(4, 'Matt', '94fb8724357c60ca55d578b8bfdf776c', 'matt@g.com', 1, '0', '2018-09-19 12:08:19', '2018-09-19 12:08:19', '1'),
+(5, 'insureafrika', '94fb8724357c60ca55d578b8bfdf776c', 'info@insureafrika.com', 1, '0', '2018-09-20 09:56:23', '2018-09-20 09:56:23', '1');
 
 -- --------------------------------------------------------
 
@@ -530,7 +598,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `emailAddress`, `userTypeId`, 
 --
 
 CREATE TABLE `usertype` (
-  `id` int(15) NOT NULL,
+  `id` int(11) NOT NULL,
   `category` enum('client','agent','admin') NOT NULL DEFAULT 'client',
   `name` enum('Applier','Admin') NOT NULL DEFAULT 'Applier',
   `dateCreated` timestamp NOT NULL,
@@ -560,6 +628,7 @@ CREATE TABLE `vehicle` (
   `model` varchar(50) BINARY NOT NULL,
   `yearOfManufacture` varchar(10) BINARY NOT NULL,
   `policyNo` varchar(50) BINARY NOT NULL,
+  `category` enum('PC','PSV') NOT NULL,
   `expiryDate` date NOT NULL,
   `lastUpdate` timestamp NULL,
   `status` enum('1','0') NOT NULL DEFAULT '1'
@@ -569,13 +638,24 @@ CREATE TABLE `vehicle` (
 -- Dumping data for table `vehicle`
 --
 
-INSERT INTO `vehicle` (`id`, `registrationNo`, `make`, `model`, `yearOfManufacture`, `policyNo`, `expiryDate`, `lastUpdate`, `status`) VALUES
-(1, 'KBR 459P', 'HONDBA', 'BB', 'SP', 'INS-3454-2H8', '2002-03-04', '2018-09-17 09:51:48', '1'),
-(2, 'KCVBDFF', 'HONDBA', 'BB', '', 'INS-3454-2H8', '2002-03-04', '2018-09-12 10:39:21', '1'),
-(3, 'KCVBDCC', 'HONDBA', 'BB', '', 'INS-3454-2H8', '2002-03-04', '2018-09-12 10:40:32', '1'),
-(4, 'KCVBDCCe', 'HONDBA', 'BB', '', 'INS-3454-2H8', '2002-03-04', '2018-09-12 10:42:44', '1'),
-(5, 'KCVBDFF7', 'HONDBA', 'BB', 'FR', 'INS-3454-2H8', '2002-03-04', '2018-09-12 11:26:36', '1'),
-(7, 'KCVBD54', 'HONDA', 'CROSSROADS', '2014', 'G003-3434-ERT', '2007-01-01', '2018-09-13 14:56:52', '1');
+INSERT INTO `vehicle` (`id`, `registrationNo`, `make`, `model`, `yearOfManufacture`, `policyNo`, `category`, `expiryDate`, `lastUpdate`, `status`) VALUES
+(1, 'KBR 459P', 'HONDBA', 'BB', 'SP', 'INS-3454-2H8', 'PSV', '2002-03-04', '2018-09-18 08:43:02', '1'),
+(2, 'KCVBDFF', 'HONDBA', 'BB', '', 'INS-3454-2H8', 'PC', '2002-03-04', '2018-09-12 10:39:21', '1'),
+(3, 'KCVBDCC', 'HONDBA', 'BB', '', 'INS-3454-2H8', 'PSV', '2002-03-04', '2018-09-18 08:43:04', '1'),
+(4, 'KCVBDCCe', 'HONDBA', 'BB', '', 'INS-3454-2H8', 'PC', '2002-03-04', '2018-09-12 10:42:44', '1'),
+(5, 'KCVBDFF7', 'HONDBA', 'BB', 'FR', 'INS-3454-2H8', 'PSV', '2002-03-04', '2018-09-18 08:43:07', '1'),
+(7, 'KCVBD54', 'HONDA', 'CROSSROADS', '2014', 'G003-3434-ERT', 'PC', '2007-01-01', '2018-09-13 14:56:52', '1'),
+(9, 'KBY 345G', 'HONDA', 'CROSSROADS', '2014', 'P/3454/018', 'PC', '2017-06-07', '2018-09-18 15:09:15', '1'),
+(10, 'KBZ345W', 'HONDA', 'CROSSROADS', '', 'P/3454/018', 'PSV', '2017-06-07', '2018-09-18 15:12:28', '1'),
+(12, 'KCQ 341B', 'TOYOTA', 'PREMIO', '2011', 'P/34543/2341/017', 'PC', '2018-09-01', '2018-09-19 11:58:27', '1'),
+(13, 'KCP 456T', 'HONDA', 'CROSSROADS', '2012', 'P/A5656/3434', 'PC', '2018-09-20', '2018-09-19 12:29:01', '1'),
+(14, 'KBV 324Q', 'HONDA', 'CROSSROADS', '2004', 'P/3405/018', 'PSV', '2019-01-01', '2018-09-19 15:31:04', '1'),
+(15, 'KBW 3454', 'TOYOTA', 'CROSSROADS', '2010', 'P/E0004/018', 'PSV', '2018-09-13', '2018-09-20 07:21:11', '1'),
+(16, 'KCL 312L', 'TOYOTA', 'PREMIO', '2017', 'P/0853/2343/546', 'PC', '2018-09-03', '2018-09-20 08:29:00', '1'),
+(17, 'KCR 354J', 'TOYOTA', 'CROSSROADS', '2015', 'P/09093/017', 'PC', '2018-10-19', '2018-09-20 08:49:05', '1'),
+(18, 'KCR 354R', 'TOYOTA', 'CROSSROADS', '2010', 'P/09092/018', 'PSV', '2018-10-19', '2018-09-20 09:03:38', '1'),
+(19, 'KBW 345A', 'HONDBA', 'CROSSROADS', '2007', 'P/345454/018', 'PSV', '2019-01-17', '2018-09-20 12:17:15', '1'),
+(20, 'KVA 342H', 'TOYOTA', 'CROSSROADS', '2001', 'P/34545/231', 'PC', '2018-02-07', '2018-09-20 12:22:45', '1');
 
 --
 -- Indexes for dumped tables
@@ -605,6 +685,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `claim`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `claimNumber` (`claimNo`),
   ADD KEY `FK_claim_insurance` (`insuranceId`),
   ADD KEY `FK_claim_users` (`userId`),
   ADD KEY `FK_claim_claimtype` (`claimTypeId`),
@@ -881,7 +962,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `usertype`
 --
 ALTER TABLE `usertype`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
