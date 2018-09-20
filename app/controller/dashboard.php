@@ -5,15 +5,23 @@ namespace Controller;
 
 class Dashboard extends Base {
 
-    protected
-        $response;
+    protected $response;
+    protected $userId;
 
 	public function __construct(\Base $f3) {
 		$f3 = \Base::instance();
-		$f3->set('CONTENT','templates/dash-content.html');
-		$f3->set('TOPSCRIPTS','templates/includes/dash-top-scripts.html');
-		$f3->set('BOTTOMSCRIPTS','templates/includes/dash-bottom-scripts.html');
-		
+		$this->userId 	= $f3->get('SESSION.user_id');
+		//check id 
+		if(!empty($this->userId))
+		{
+			$f3->set('CONTENT','templates/dash-content.html');
+			$f3->set('TOPSCRIPTS','templates/includes/dash-top-scripts.html');
+			$f3->set('BOTTOMSCRIPTS','templates/includes/dash-bottom-scripts.html');
+		}
+		else
+		{
+			$f3->reroute('/auth');
+		}	
 	}
 
     /**
@@ -43,20 +51,20 @@ class Dashboard extends Base {
     	$claims 				= new \Model\Claim();
     	
     	//total claims
-    	$data['totalCount'] 	= (!$claims->load()->dry) ? $claims->loaded() : 0;
+    	$data['totalCount'] 	= (!$claims->load(array('userId = ?',$this->userId))->dry) ? $claims->loaded() : 0;
     	
     	//pending Counts
-    	$data['pendingCount'] 	= (!$claims->load(array('action = ?','Pending'))->dry) ? $claims->loaded() : 0;
+    	$data['pendingCount'] 	= (!$claims->load(array('userId = ? AND action = ?',$this->userId,'Pending'))->dry) ? $claims->loaded() : 0;
     	
     	//Approved
-    	$data['approvedCount'] 	= (!$claims->load(array('action = ?','Solved'))->dry) ? $claims->loaded() : 0;
+    	$data['approvedCount'] 	= (!$claims->load(array('userId = ? AND action = ?',$this->userId,'Solved'))->dry) ? $claims->loaded() : 0;
     	
     	//Rejected
-    	$data['rejectedCount'] 	= (!$claims->load(array('action = ?','Rejected'))->dry) ? $claims->loaded() : 0;
+    	$data['rejectedCount'] 	= (!$claims->load(array('userId = ? AND action = ?',$this->userId,'Rejected'))->dry) ? $claims->loaded() : 0;
     	
     	//recent claims 
     	$claims					= $claims->load();
-    	$recentClaims 			= $claims->find(NULL, array('limit'=>5, 'order'=>'id DESC'));
+    	$recentClaims 			= $claims->find(array('userId = ?',$this->userId), array('limit'=>5, 'order'=>'id DESC'));
     	//$recentClaims			= $recentClaims->orderBy('name DESC');
     	$data['recentClaims']	= $recentClaims;
 

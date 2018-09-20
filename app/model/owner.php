@@ -19,8 +19,8 @@ class Owner extends Base {
 	        'type' => \DB\SQL\Schema::DT_TINYINT,
 	        'default' => 1,
     	),
-    	'id' => array(
-	    'has-one' => '\Model\Claim','ownerId'
+    	'_id' => array(
+	    'has-many' => '\Model\Claim','ownerId'
 		),
         ),
         

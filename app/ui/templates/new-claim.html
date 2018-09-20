@@ -109,7 +109,7 @@
 		function Mycalendar(elementName)
 		{
 			// pureJSCalendar.open(dateFormat, x, y, firstDayOfWeek, minDate, maxDate, element, zindex)
-		return pureJSCalendar.open('yyyy-MM-dd', 810, 450, 1, '2018-1-1', '2025-1-1', elementName, 20);
+		//return pureJSCalendar.open('yyyy-MM-dd', 810, 450, 1, '2018-1-1', '2025-1-1', elementName, 20);
 		}
 		</script>
           <!-- Wizard Menubar -->
@@ -248,7 +248,7 @@
                   <label for="names" class="field-label col-md-3 text-left">Expiry Date</label>
                   <div class="col-md-9">
                     <label for="exp_date" class="field prepend-icon" title="Expiry Date">
-                      <input type="text" name="exp_date" id="exp-date-icon" style="cursor: pointer;" onclick="javascript:Mycalendar(this.id);" class="gui-input" placeholder="Expiry Date">
+                      <input type="date" name="exp_date" id="exp-date-icon" style="cursor: pointer;" class="gui-input" placeholder="Expiry Date">
                       <label for="exp_date" class="field-icon">
                         <i class="fa fa-calendar"></i>
                       </label>
@@ -372,7 +372,7 @@
                   <div class="section row mb10">
 	                <label for="names" class="field-label col-md-3 text-left">Email Address</label>
 	                <div class="col-md-9">
-                    <label for="email" class="field prepend-icon" title="Expiry Date">
+                    <label for="email" class="field prepend-icon" title="Email Address">
                       <input type="email" name="ownerEmail" id="ownerEmail" class="gui-input" placeholder="Email Address">
                       <label for="email" class="field-icon">
                         <i class="fa fa-keyboard-o"></i>
@@ -443,7 +443,7 @@
 	                <label for="names" class="field-label col-md-3 text-left">Date of Incidence</label>
 	                <div class="col-md-9">
 	                      <label for="make" class="field prepend-icon">
-	                        <input type="text" name="incidence_date" id="Make" class="gui-input" placeholder="Date of Incidence">
+	                        <input type="date" name="incidence_date" id="Make" class="gui-input" title="Date of Incidence" placeholder="Date of Incidence">
 	                        <label for="make icon" class="field-icon">
 	                          <i class="fa fa-calendar"></i>
 	                        </label>
@@ -455,7 +455,7 @@
 		                <label for="names" class="field-label col-md-3 text-left">Time of Incidence</label>
 		                <div class="col-md-9">
 	                      <label for="model" class="field prepend-icon">
-	                        <input type="text" name="incidence_time" id="Make" class="gui-input" placeholder="time of Incidence">
+	                        <input type="time" name="incidence_time" id="Make" class="gui-input"  title="time of Incidence" placeholder="time of Incidence">
 	                        <label for="model icon" class="field-icon">
 	                          <i class="fa fa-clock-o"></i>
 	                        </label>
@@ -658,7 +658,7 @@
 	                <label for="names" class="field-label col-md-3 text-left">Date of Birth</label>
 	                <div class="col-md-9">
                       <label for="dob" class="field prepend-icon">
-                        <input type="text" name="dob" id="dob" class="gui-input" onclick="javascript:Mycalendar(this.id);" placeholder="Date of Birth">
+                        <input type="date" name="dob" id="dob" class="gui-input" title="Date of Birth" placeholder="Date of Birth">
                         <label for="model icon" class="field-icon">
                           <i class="fa fa-calendar"></i>
                         </label>
@@ -695,7 +695,7 @@
 	                <label for="names" class="field-label col-md-3 text-left">Expiry Date</label>
 	                <div class="col-md-9">
                       <label for="dl" class="field prepend-icon">
-                        <input type="text" name="dl_expiry_date" id="dl_expiry_date" class="gui-input" placeholder="Expiry Date">
+                        <input type="date" name="dl_expiry_date" id="dl_expiry_date" class="gui-input" title="Expiry Date" placeholder="Expiry Date">
                         <label for="lincence icon" class="field-icon">
                           <i class="fa fa-calendar"></i>
                         </label>
@@ -745,7 +745,7 @@
                 <section class="wizard-section">
 				  <div class="panel-body bg-light">
                   <div class="section row mb10">
-	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <label for="names" class="field-label col-md-3 text-left">Damage to the vehicle</label>
 	                <div class="col-md-9">
                    <input class="gui-input" name="btn_damage" id="btn_damage" type="hidden" value="0" readonly>
                      <label for="comment" class="field prepend-icon">
@@ -785,7 +785,7 @@
                   </div>
                   
                   <div class="section row mb10">
-	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <label for="names" class="field-label col-md-3 text-left">When & where to repair it</label>
 	                <div class="col-md-9">
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="When and where can it be repaired?"></textarea>
@@ -801,7 +801,7 @@
                   <!-- end section -->
                   
                   <div class="section row mb10">
-	                <label for="names" class="field-label col-md-3 text-left">Driving Lincence Number</label>
+	                <label for="names" class="field-label col-md-3 text-left">Property Damaged</label>
 	                <div class="col-md-9">
                      <label for="comment" class="field prepend-icon">
                         <textarea class="gui-textarea" id="comment" name="comment" placeholder="Other Vehicle and /or Property Damaged?"></textarea>
@@ -1079,7 +1079,7 @@
                     <label for="store-units" class="field-label col-md-3 text-center">Expiry Date : </label>
                     <div class="col-md-9">
                       <label for="store-units" class="field prepend-icon">
-                        <input type="text" name="store-units" id="store-units" class="gui-input" value="" placeholder="Metric System" disabled>
+                        <input type="text" name="store-units" id="store-units" class="gui-input" value="" placeholder="Expiry Date" disabled>
                         <label for="store-units" class="field-icon">
                           <i class="fa fa-exchange"></i>
                         </label>

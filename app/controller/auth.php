@@ -117,7 +117,7 @@ class Auth extends Base
 
 	                //@todo: Send a confirmation Email
 
-	                \Flash::instance()->addMessage('Account has been created, a confirmation email has been sent to your email','success');
+	                \Flash::instance()->addMessage('Account has been created, proceed to login','success');
 	                //reroute if you want
 	                $f3->reroute('/auth/register');
 	            }

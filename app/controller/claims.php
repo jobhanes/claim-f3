@@ -5,13 +5,16 @@ namespace Controller;
 
 class Claims extends Base {
 
-    protected
-        $response;
+    protected $response;
+    protected $userId;
 
-    /*public function __construct(\Base $f3)
-    {
-		
-	} */
+    public function __construct(\Base $f3)
+    {   
+		$this->userId 	= $f3->get('SESSION.user_id');
+		//check id 
+		if(empty($this->userId))
+		$f3->reroute('/auth');
+	} 
     /**
      * init the View
      */
@@ -29,10 +32,11 @@ class Claims extends Base {
     	//from the database 
     	$claim_details 	= new \Model\Claim();
     	$claim_details->load();
+    	//$f3->get('SESSION.user_id')
     	if(!$claim_details->dry())
     	{
-			$historyclaims = $claim_details->afind(NULL);		
-		}
+			$historyclaims = $claim_details->afind(array('userId = ?',$this->userId));		
+		}          
     	$data['claim_data'] = $historyclaims;  
     	$data['CONTENT']= 'templates/claim-content.html';
     	$f3->set('page',$data);	    	
@@ -50,7 +54,8 @@ class Claims extends Base {
     	$claim_details->load();
     	if(!$claim_details->dry())
     	{
-			$pendingclaims = $claim_details->afind(array('action = ?','Pending'));
+			$pendingclaims = $claim_details->afind(array('userId = ? AND action = ?',$this->userId,'Pending'));
+			//$pendingclaims = $claim_details;
 			//post the data in the table 
 			//echo "<pre>";
 			//print_r($pendingclaims);
@@ -78,7 +83,7 @@ class Claims extends Base {
     	$claim_details->load();
     	if(!$claim_details->dry())
     	{
-			$solvedclaims = $claim_details->afind(array('action = ?','Solved'));		
+			$solvedclaims = $claim_details->afind(array('userId = ? AND action = ?',$this->userId,'Solved'));		
 		}
     	$data['claim_data'] = $solvedclaims;    	
     	$data['CONTENT']= 'templates/claim-content.html';   	
@@ -96,7 +101,7 @@ class Claims extends Base {
     	$claim_details->load();
     	if(!$claim_details->dry())
     	{
-			$rejectedclaims = $claim_details->afind(array('action = ?','Rejected'));		
+			$rejectedclaims = $claim_details->afind(array('userId = ? AND action = ?',$this->userId,'Rejected'));	
 		}
     	$data['claim_data'] = $rejectedclaims;
     	$data['CONTENT']= 'templates/claim-content.html';
@@ -114,7 +119,7 @@ class Claims extends Base {
     	$claim_details->load();
     	if(!$claim_details->dry())
     	{
-			$processingclaims = $claim_details->afind(array('action = ?','Processing'));		
+			$processingclaims = $claim_details->afind(array('userId = ? AND action = ?',$this->userId,'Processing'));		
 		}
     	$data['claim_data'] = $processingclaims;
     	$data['CONTENT']= 'templates/claim-content.html';
@@ -123,6 +128,14 @@ class Claims extends Base {
     }   
     
     public function fileClaim(\Base $f3, $params){
+		/*$owner = new \Model\Owner();
+        $owner->load(array('emailAddress = ?','jobhanesbwire@gmail.com'));
+        $owner->cast();
+        echo "<pre>";
+        print_r($owner->firstName);
+        echo "</pre>";
+        exit(); */
+		
 		//create the claim number right here
 		$claim			= new \Model\Claim();
 		$claimNo		= $claim->claim_gen('New');
@@ -190,14 +203,22 @@ class Claims extends Base {
 			$claim = new \Model\Claim();
 			$claim->claimNo		 	= $f3->get('SESSION.claimNo');
 			$claim->insuranceId 	= $f3->get('SESSION.insurance');
-            $claim->userId 			= $f3->get('SESSION.user_id');
+            $claim->userId 			= $this->userId;
             $claim->claimTypeId 	= $f3->get('SESSION.claimTypeId');
             $claim->vehicleId 		= $f3->get('SESSION.vehicleId');
+            
+            //drivers id wont always be in the POST thread
+            if($f3->exists($f3->get('SESSION.driverId')) && !empty($f3->get('SESSION.driverId'))){
+            	$claim->driverId 	= $f3->get('SESSION.driverId');
+			}
             $claim->ownerId 		= $f3->get('SESSION.ownerId');
             $claim->stageId 		= '1';
             $claim->action 			= 'Pending';
             $claim->save();
-			
+			//@todo: You can update this data or just leave it.
+			$f3->clear('SESSION.claimNo');
+			$f3->clear('SESSION.claimId');
+             \Flash::instance()->addMessage('You have successfully filed a claim number, please wait for futher processing','success');
 		//}
 	}
 	
@@ -250,13 +271,50 @@ class Claims extends Base {
                 	
                 	$f3->set('SESSION.ownerId',$ownerLast->_id);
 				}
-                
-                
-				//\Flash::instance()->addMessage('Sucessfully inserted the vehicle details','success');
+				else
+				{
+					//get the ownerId without dublicating it.
+					$owner->cast();
+					$f3->set('SESSION.ownerId',$owner->_id);
+				}
             }
             else
-            //@todo: You can update this data or just leave it.
-             \Flash::instance()->addMessage('This car details are already available','danger');
+            {
+				//dont update the car details
+				$vehicle->cast();
+				$f3->set('SESSION.vehicleId',$vehicle->_id);
+				//set vehicle sessions 
+ 				$f3->set('SESSION.insurance',trim($f3->get('POST.insurance')));
+ 				$f3->set('SESSION.claimNo',trim($f3->get('POST.claimNo')));
+ 				$f3->set('SESSION.claimId',trim($f3->get('POST.claimId')));
+ 				
+ 				//owner Id is requred in the process 
+                $owner = new \Model\Owner();
+                $owner->load(array('emailAddress = ?',$f3->get('POST.ownerEmail')));
+                if($owner->dry())
+                {
+					$owner->reset();
+					$owner->fullName 		= trim($f3->get('POST.ownerName'));
+                	$owner->emailAddress 	= trim($f3->get('POST.ownerEmail'));
+                	$owner->idNumber 		= trim($f3->get('POST.idNumber'));
+                	$owner->physicalAddress = trim($f3->get('POST.address'));
+                	$owner->save();
+                	
+                	//store the inserted id
+                	$owner->load();
+                	$owner->loaded();
+                	$ownerLast 				= $owner->last();
+                	
+                	$f3->set('SESSION.ownerId',$ownerLast->_id);
+				}
+				else
+				{
+					//get the ownerId without dublicating it.
+					$owner->cast();
+					$f3->set('SESSION.ownerId',$owner->_id);
+				}
+				
+			}
 		} 
 		       
 	}
@@ -291,15 +349,24 @@ class Claims extends Base {
 						$selectedOption .= $value.','; // I am separating Values with a comma (,) so that I can extract data using explode()
 					}
 				$driver->category 		= rtrim($selectedOption,',');//remove the last comma
-				}	
-				
+				}			
                 $driver->save();
                 
-				//\Flash::instance()->addMessage('Sucessfully inserted the Driver\'s details','success');
+                //store the inserted id
+            	$driver->load();
+            	$driver->loaded();
+            	$driverLast 				= $driver->last();	
+            	$f3->set('SESSION.driverId',$driverLast->_id);
             }
             else
-            //@todo: You can update this data or just leave it.
-             \Flash::instance()->addMessage('This Driver details are already available','danger');
+            {
+				//dont update the driver's details just Pick the Id
+				$driver->cast();
+				$f3->set('SESSION.driverId',$driver->_id);
+				
+				
+			}
+            
 		} 
 		       
 	}
